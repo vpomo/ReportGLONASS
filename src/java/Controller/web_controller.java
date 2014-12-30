@@ -31,6 +31,8 @@ import javax.servlet.http.HttpSession;
 public class web_controller extends HttpServlet {
 @EJB
 UsersFacade usersFacade;
+@EJB
+ReportsManager reportManager;
 
     @Override
     public void init() throws ServletException {
@@ -93,8 +95,10 @@ UsersFacade usersFacade;
                 //printWriter.println(login);
                 userRep = usersFacade.getUserLogin(login);
                 if (userRep.size()>0) {
+                    
                     reportsUsr = userRep.get(0).getReportList();
                     countReports = reportsUsr.size();
+                    
                     //printWriter.println(Integer.toString(reportsUsr.size()));
                     getServletContext().setAttribute("reportToForm",reportsUsr );
                     getServletContext().setAttribute("countReports",countReports );
@@ -109,8 +113,15 @@ UsersFacade usersFacade;
         }
         
                 if (countReports == 0) {
+                String name_user = request.getRemoteUser();
+                String login = (String) getServletContext().getAttribute("login");
+                getServletContext().setAttribute("notif", "Вы авторизованы в системе как пользователь: "+ name_user + " !");
+                    if (name_user.equals(login)) {
                     request.getRequestDispatcher("/WEB-INF/private/create_report.jsp").forward(request, response);
+                    } else {request.getRequestDispatcher("/WEB-INF/views/error_user_login_first_report.jsp").forward(request, response);}
+                    
                 } else {
+                        
                     request.getRequestDispatcher("/WEB-INF/views/common_phorm.jsp").forward(request, response);
                 //request.getRequestDispatcher("/WEB-INF/views"+userPath+".jsp").forward(request, response);
             }

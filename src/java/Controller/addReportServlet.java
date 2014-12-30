@@ -100,7 +100,12 @@ UsersManager userManager;
         Integer icatDepartCommercAll=0, icatDepartCommercEquip=0, icatDepartCommercRNIS=0, icatDepartCommercOther=0; 
         String catDepartCommercAll=null, catDepartCommercEquip=null, catDepartCommercRNIS=null, catDepartCommercOther=null;
         
-        
+        String name_user = request.getRemoteUser();
+        login = (String) getServletContext().getAttribute("login");
+
+    if (request.authenticate(response)){
+        getServletContext().setAttribute("notif", "Вы авторизованы в системе как пользователь: "+request.getRemoteUser() + " !");
+        if (name_user.equals(login)) {
         
             Enumeration<String> parameters = request.getParameterNames();
             while (parameters.hasMoreElements()) {
@@ -502,7 +507,7 @@ UsersManager userManager;
         if (catDepartCommercOther != null){ try {icatDepartCommercOther = Integer.parseInt(catDepartCommercOther);} catch (NumberFormatException e) {System.err.println("Неверный формат строки!");} }
 //end Depart            
         
-        login = (String) getServletContext().getAttribute("login");
+        //login = (String) getServletContext().getAttribute("login");
         userR = (List<Users>) usersFacade.getUserLogin(login);
 //        out.println(userR.get(0).getNameUser());
         Date currentDate = new Date();
@@ -550,6 +555,10 @@ UsersManager userManager;
         
         //========================================================================================
        request.getRequestDispatcher("/WEB-INF/views/end_create_report.jsp").forward(request, response);
+    
+                } else {request.getRequestDispatcher("/WEB-INF/views/error_user_login_report.jsp").forward(request, response);}
+
+    } //authenticate
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

@@ -39,7 +39,7 @@
             
             <section>
                 <div id="iogv">
-                    <h2>Государственные</h2>
+                    <h2>Государственные органы</h2>
                     <table class="table" border=1 cellpadding=0 cellspacing=0 width=290 style='border-collapse: collapse;table-layout:fixed;width:290pt'>
                         <col style='width:18pt'>
                         <col style='width:212pt'>
@@ -61,7 +61,7 @@
                 </div>    
 
             <div id="omsu">    
-                <h2>Муниципальные</h2>
+                <h2>Муниципальные органы</h2>
                 <table class="table" border=1 cellpadding=0 cellspacing=0 width=487 style='border-collapse: collapse;table-layout:fixed;width:290pt'>
                         <col style='width:18pt'>
                         <col style='width:212pt'>

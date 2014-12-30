@@ -154,7 +154,7 @@ public class Report implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "id_report")
-    private Integer idReport;
+    public Integer idReport;
     @Column(name = "date_report")
     @Temporal(TemporalType.TIMESTAMP)
     private Date dateReport;
