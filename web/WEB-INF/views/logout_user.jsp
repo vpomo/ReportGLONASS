@@ -5,17 +5,13 @@
     <h2>Выход из системы</h2>
     <p>Вы осуществили выход из системы.
     </p>
-     <a href="http://localhost:8080/reportglonass/">Перейти на главную страницу</a> 
+     <a href="./">Перейти на главную страницу</a> 
       <br> </br>
 </aside>
 
 <article>
-    <div class="h1">
-    <h1>Пользователь с логином: <%=request.getRemoteUser()%></h1>
-    </div>
     <div class="h2">
     <h2>Спасибо за использование системы!</h2>  
-   
     </div>
 </article>
 

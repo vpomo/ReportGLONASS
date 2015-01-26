@@ -1,11 +1,22 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<% 
+    if (request.getRemoteUser() == null) {
+    request.getSession().setAttribute("notif", "Пожалуйста, пройдите авторизацию!");
+    request.getSession().setAttribute("sessionUser", request.getRemoteUser());
+    } else {
+    request.getSession().setAttribute("notif", "Вы авторизованы в системе как пользователь: "+request.getRemoteUser() + " !");    
+    }
+%>
 <div id="main">
 
 <aside class="leftAside">
     <h2>Что нужно для записи отчета</h2>
-    <p>Что бы все прошло успешно, заполните поля числами и нажмите на
-    кнопку "Сохранить"
+    <p>Заполните поля числами и нажмите на
+    кнопку "Опубликовать отчет". Вы можете сохранить предварительный вариант отчета, нажав на кнопку
+    "Сохранить черновик".
     </p>
+    <a href="./">Перейти на главную страницу</a> 
+      <br> </br>
 </aside>
 <article>
     <div class="h1">
@@ -24,11 +35,13 @@
 
 </div>
     <br> </br> 
-
+<%
+//report.dateReport=null;    
+%>   
 <section>
 <form method="POST" action="addReportServlet">
 
-        
+<p style='font-style:bold; color:#191970; text-align:center'>Пожалуйста, выберите отчетную дату:  <input required size="6" type="text" name="dateReport" id="popupDatepicker"> </p>
 <table border=1 cellpadding=0 cellspacing=0 width=1165 style='border-collapse: collapse;table-layout:fixed;width:875pt'>
  <col style='width:20pt'>
  <col style='width:158pt'>
@@ -234,9 +247,10 @@
  </tr>
 
 </table>
-    
+
     <p>    
-        <button type="submit">Сохранить</button>
+        <button type="submit" name="saveDraft">Сохранить черновик</button>
+        <button type="submit" name="publicReport">Опубликовать отчет</button>
     </p>    
 </form>
   

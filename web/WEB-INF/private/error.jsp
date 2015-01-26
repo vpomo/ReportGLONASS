@@ -5,14 +5,14 @@
     <h2>Авторизация</h2>
     <p>Процесс регистрации в системе.
     </p>
-     <a href="http://localhost:8080/reportglonass/">Перейти на главную страницу</a> 
+     <a href="./">Перейти на главную страницу</a> 
       <br> </br>
 </aside>
 
 <article>
     <div class="h1">
     <h1>Ошибка входа</h1>
-     <p>Вернуться <strong><a href="http://localhost:8080/reportglonass/login_user">к авторизации</a></strong>.</p>  
+     <p>Вернуться <strong><a href="./login_user">к авторизации</a></strong>.</p>  
     </div>
     <div class="h2">
     

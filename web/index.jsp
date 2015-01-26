@@ -19,15 +19,9 @@
                 <h2>Работа с системой</h2>
                 <p>Чтобы начать работу с системой пройдите авторизацию и выберите интересующую организацию
                 </p>
-               
-                <c:choose>
-                    <c:when test="${sessionUser eq null}">
-                        <a href="http://localhost:8080/reportglonass/login_user">Пройти авторизацию</a>
-                    </c:when>
-                    <c:otherwise>
-                        <a href="http://localhost:8080/reportglonass/logout_user">Выйти из системы</a> 
-                    </c:otherwise>
-                </c:choose>                
+                        <a href="./login_user">Пройти авторизацию</a>
+                        <br> </br>
+                        <a href="./logout_user">Выйти из системы</a> 
                 <br> </br>
             </aside>
             

@@ -197,6 +197,21 @@ position:absolute;
 left: 620px;
 top:187px;
 }
+#panel {    
+	display: none;
+	padding: 5px;
+	width: 400px;
+	height: 200px;
+	background: #09F;
+	color: #FFF;
+	}
+.btn-slide {
+	background: #CCC;
+	color: #06F;
+	}
+.active {
+	background: #FF9;
+}
 
 
 footer{	

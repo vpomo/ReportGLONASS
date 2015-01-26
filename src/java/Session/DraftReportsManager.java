@@ -1,7 +1,7 @@
 package Session;
 
 
-import Entity.Report;
+import Entity.Draftreport;
 import Entity.Users;
 import java.util.Date;
 import javax.persistence.EntityManager;
@@ -23,7 +23,7 @@ import javax.persistence.PersistenceContext;
 
 @Stateless
 @TransactionManagement(TransactionManagementType.CONTAINER)
-public class ReportsManager {
+public class DraftReportsManager {
 @PersistenceContext(unitName = "ReportGLONASSPU")
 private EntityManager em;
 @Resource
@@ -63,7 +63,7 @@ public Integer addReport(
         ) {
 
         try{
-            Report report = newReport(
+            Draftreport report = newReport(
                         userR, currentDate, 
                         icatM1StateAll, icatM1StateEquip, icatM1StateRNIS, icatM1StateOther,
 			icatM1MunicAll, icatM1MunicEquip, icatM1MunicRNIS, icatM1MunicOther,
@@ -102,7 +102,7 @@ public Integer addReport(
     }
 
  
-private Report newReport(Users userR, Date dateReport,
+private Draftreport newReport(Users userR, Date dateReport,
                         Integer icatM1StateAll, Integer icatM1StateEquip, Integer icatM1StateRNIS, Integer icatM1StateOther,
 			Integer icatM1MunicAll, Integer icatM1MunicEquip, Integer icatM1MunicRNIS, Integer icatM1MunicOther,
 			Integer icatM1CommercAll, Integer icatM1CommercEquip, Integer icatM1CommercRNIS, Integer icatM1CommercOther,
@@ -131,7 +131,7 @@ private Report newReport(Users userR, Date dateReport,
                         Integer icatDepartMunicAll, Integer icatDepartMunicEquip, Integer icatDepartMunicRNIS, Integer icatDepartMunicOther, 
                         Integer icatDepartCommercAll, Integer icatDepartCommercEquip, Integer icatDepartCommercRNIS,  Integer icatDepartCommercOther 
 ) {
-        Report report = new Report (userR, dateReport,
+        Draftreport report = new Draftreport (userR, dateReport,
                         icatM1StateAll, icatM1StateEquip, icatM1StateRNIS, icatM1StateOther,
 			icatM1MunicAll, icatM1MunicEquip, icatM1MunicRNIS, icatM1MunicOther,
 			icatM1CommercAll, icatM1CommercEquip, icatM1CommercRNIS, icatM1CommercOther,
@@ -164,32 +164,89 @@ private Report newReport(Users userR, Date dateReport,
         return report;
     }
 
- 
+public void updateReport(Draftreport report, Users userR, Date dateReport,
+                        Integer icatM1StateAll, Integer icatM1StateEquip, Integer icatM1StateRNIS, Integer icatM1StateOther,
+			Integer icatM1MunicAll, Integer icatM1MunicEquip, Integer icatM1MunicRNIS, Integer icatM1MunicOther,
+			Integer icatM1CommercAll, Integer icatM1CommercEquip, Integer icatM1CommercRNIS, Integer icatM1CommercOther,
+			
+			Integer icatM2M3StateAll, Integer icatM2M3StateEquip, Integer icatM2M3StateRNIS, Integer icatM2M3StateOther, 
+			Integer icatM2M3MunicAll, Integer icatM2M3MunicEquip, Integer icatM2M3MunicRNIS, Integer icatM2M3MunicOther, 
+			Integer icatM2M3CommercAll, Integer icatM2M3CommercEquip, Integer icatM2M3CommercRNIS, Integer icatM2M3CommercOther, 
+        
+			Integer icatLargeStateAll, Integer icatLargeStateEquip, Integer icatLargeStateRNIS, Integer icatLargeStateOther, 
+			Integer icatLargeMunicAll, Integer icatLargeMunicEquip, Integer icatLargeMunicRNIS, Integer icatLargeMunicOther, 
+			Integer icatLargeCommercAll, Integer icatLargeCommercEquip, Integer icatLargeCommercRNIS, Integer icatLargeCommercOther, 
+
+			Integer icatDangerStateAll, Integer icatDangerStateEquip, Integer icatDangerStateRNIS, Integer icatDangerStateOther, 
+			Integer icatDangerMunicAll, Integer icatDangerMunicEquip, Integer icatDangerMunicRNIS, Integer  icatDangerMunicOther, 
+			Integer icatDangerCommercAll, Integer icatDangerCommercEquip, Integer icatDangerCommercRNIS, Integer icatDangerCommercOther, 
+
+                        Integer icatSchoolStateAll, Integer icatSchoolStateEquip, Integer icatSchoolStateRNIS, Integer icatSchoolStateOther, 
+                        Integer icatSchoolMunicAll, Integer icatSchoolMunicEquip, Integer icatSchoolMunicRNIS, Integer icatSchoolMunicOther, 
+                        Integer icatSchoolCommercAll, Integer icatSchoolCommercEquip, Integer icatSchoolCommercRNIS, Integer icatSchoolCommercOther, 
+
+                        Integer icatGKHStateAll, Integer icatGKHStateEquip, Integer icatGKHStateRNIS, Integer icatGKHStateOther, 
+                        Integer icatGKHMunicAll, Integer icatGKHMunicEquip, Integer icatGKHMunicRNIS, Integer icatGKHMunicOther, 
+                        Integer icatGKHCommercAll, Integer icatGKHCommercEquip, Integer icatGKHCommercRNIS, Integer icatGKHCommercOther, 
+
+                        Integer icatDepartStateAll, Integer icatDepartStateEquip, Integer icatDepartStateRNIS, Integer icatDepartStateOther, 
+                        Integer icatDepartMunicAll, Integer icatDepartMunicEquip, Integer icatDepartMunicRNIS, Integer icatDepartMunicOther, 
+                        Integer icatDepartCommercAll, Integer icatDepartCommercEquip, Integer icatDepartCommercRNIS,  Integer icatDepartCommercOther 
+) {
+    report.setDateReport(dateReport); 
+    report.setCatM1StateAll(icatM1StateAll); report.setCatM1StateEquip(icatM1StateEquip); report.setCatM1StateRNIS(icatM1StateRNIS); report.setCatM1StateOther(icatM1StateOther);
+    report.setCatM1MunicAll(icatM1MunicAll); report.setCatM1MunicEquip(icatM1MunicEquip); report.setCatM1MunicRNIS(icatM1MunicRNIS); report.setCatM1MunicOther(icatM1MunicOther);
+    report.setCatM1CommercAll(icatM1CommercAll); report.setCatM1CommercEquip(icatM1CommercEquip); report.setCatM1CommercRNIS(icatM1CommercRNIS); report.setCatM1CommercOther(icatM1CommercOther);
+
+    report.setCatM2M3StateAll(icatM2M3StateAll); report.setCatM2M3StateEquip(icatM1StateEquip); report.setCatM2M3StateRNIS(icatM2M3StateRNIS); report.setCatM2M3StateOther(icatM2M3StateOther);
+    report.setCatM2M3MunicAll(icatM2M3MunicAll); report.setCatM2M3MunicEquip(icatM2M3MunicEquip); report.setCatM2M3MunicRNIS(icatM2M3MunicRNIS); report.setCatM2M3MunicOther(icatM2M3MunicOther);
+    report.setCatM2M3CommercAll(icatM2M3CommercAll); report.setCatM2M3CommercEquip(icatM2M3CommercEquip); report.setCatM2M3CommercRNIS(icatM2M3CommercRNIS); report.setCatM2M3CommercOther(icatM2M3CommercOther);
+    
+    report.setCatLargeStateAll(icatLargeStateAll); report.setCatLargeStateEquip(icatLargeStateEquip); report.setCatLargeStateRNIS(icatLargeStateRNIS); report.setCatLargeStateOther(icatLargeStateOther);
+    report.setCatLargeMunicAll(icatLargeMunicAll); report.setCatLargeMunicEquip(icatLargeMunicEquip); report.setCatLargeMunicRNIS(icatLargeMunicRNIS); report.setCatLargeMunicOther(icatLargeMunicOther);
+    report.setCatLargeCommercAll(icatLargeCommercAll); report.setCatLargeCommercEquip(icatLargeCommercEquip); report.setCatLargeCommercRNIS(icatLargeCommercRNIS); report.setCatLargeCommercOther(icatLargeCommercOther);
+
+    report.setCatDangerStateAll(icatDangerStateAll); report.setCatDangerStateEquip(icatDangerStateEquip); report.setCatDangerStateRNIS(icatDangerStateRNIS); report.setCatDangerStateOther(icatDangerStateOther);
+    report.setCatDangerMunicAll(icatDangerMunicAll); report.setCatDangerMunicEquip(icatDangerMunicEquip); report.setCatDangerMunicRNIS(icatDangerMunicRNIS); report.setCatDangerMunicOther(icatDangerMunicOther);
+    report.setCatDangerCommercAll(icatDangerCommercAll); report.setCatDangerCommercEquip(icatDangerCommercEquip); report.setCatDangerCommercRNIS(icatDangerCommercRNIS); report.setCatDangerCommercOther(icatDangerCommercOther);
+
+    report.setCatSchoolStateAll(icatSchoolStateAll); report.setCatSchoolStateEquip(icatSchoolStateEquip); report.setCatSchoolStateRNIS(icatSchoolStateRNIS); report.setCatSchoolStateOther(icatSchoolStateOther);
+    report.setCatSchoolMunicAll(icatSchoolMunicAll); report.setCatSchoolMunicEquip(icatSchoolMunicEquip); report.setCatSchoolMunicRNIS(icatSchoolMunicRNIS); report.setCatSchoolMunicOther(icatSchoolMunicOther);
+    report.setCatSchoolCommercAll(icatSchoolCommercAll); report.setCatSchoolCommercEquip(icatSchoolCommercEquip); report.setCatSchoolCommercRNIS(icatSchoolCommercRNIS); report.setCatSchoolCommercOther(icatSchoolCommercOther);
+
+    report.setCatGKHStateAll(icatGKHStateAll); report.setCatGKHStateEquip(icatGKHStateEquip); report.setCatGKHStateRNIS(icatGKHStateRNIS); report.setCatGKHStateOther(icatGKHStateOther);
+    report.setCatGKHMunicAll(icatGKHMunicAll); report.setCatGKHMunicEquip(icatGKHMunicEquip); report.setCatGKHMunicRNIS(icatGKHMunicRNIS); report.setCatGKHMunicOther(icatGKHMunicOther);
+    report.setCatGKHCommercAll(icatGKHCommercAll); report.setCatGKHCommercEquip(icatGKHCommercEquip); report.setCatGKHCommercRNIS(icatGKHCommercRNIS); report.setCatGKHCommercOther(icatGKHCommercOther);
+
+    report.setCatDepartStateAll(icatDepartStateAll); report.setCatDepartStateEquip(icatDepartStateEquip); report.setCatDepartStateRNIS(icatDepartStateRNIS); report.setCatDepartStateOther(icatDepartStateOther);
+    report.setCatDepartMunicAll(icatDepartMunicAll); report.setCatDepartMunicEquip(icatDepartMunicEquip); report.setCatDepartMunicRNIS(icatDepartMunicRNIS); report.setCatDepartMunicOther(icatDepartMunicOther);
+    report.setCatDepartCommercAll(icatDepartCommercAll); report.setCatDepartCommercEquip(icatDepartCommercEquip); report.setCatDepartCommercRNIS(icatDepartCommercRNIS); report.setCatDepartCommercOther(icatDepartCommercOther);
+    
+        em.merge(report);
+        em.flush();
+
+    }
+
+
 public void removeReport(int id) {
-    Report report = em.find(Report.class, id);
+    Draftreport report = em.find(Draftreport.class, id);
     if (report != null) {
         em.remove(report);
         }
 }
 
-public List<Report> findAllReports() {
-    TypedQuery<Report> query = em.createQuery("SELECT r FROM Report r ORDER BY r.dateReport ASC", Report.class);
+public List<Draftreport> findAllReports() {
+    TypedQuery<Draftreport> query = em.createQuery("SELECT r FROM Draftreport r ORDER BY r.dateReport ASC", Draftreport.class);
     return query.getResultList();
 }
 
-    public String findReportsLogin(String login) {
-    List<Report> report;
+    public String findDraftReportsLogin(String login) {
+    List<Draftreport> report;
     Users user;
     List resultList = em.createQuery("SELECT u FROM Users u WHERE u.login = :login").setParameter("login", login).getResultList();
 //    userReports=query.getReursultList();
     
     return Integer.toString(resultList.size());
-    }
-
-    public List<Report> find(Integer id) {
-    
-    TypedQuery query = (TypedQuery<Report>) em.createQuery("SELECT r FROM Report r WHERE r.idReport = :idReport").setParameter("idReport", id).getResultList();
-    return query.getResultList();
     }
 
 }

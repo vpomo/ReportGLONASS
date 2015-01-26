@@ -2,6 +2,10 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/D:/Java/workspace/ReportGlonass/web/WEB-INF/views/common_phorm.jsp</file>
+            <file>file:/D:/Java/workspace/ReportGlonass/web/WEB-INF/views/report_phorm.jsp</file>
+            <file>file:/D:/Java/workspace/ReportGlonass/web/css/style.css</file>
+        </group>
     </open-files>
 </project-private>

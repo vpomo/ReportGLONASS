@@ -5,16 +5,23 @@
  */
 package Controller;
 
+import Entity.Draftreport;
 import Entity.Users;
+import Session.DraftReportsManager;
 import Session.LogsManager;
 import Session.ReportsManager;
 import Session.UsersFacade;
 import Session.UsersManager;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Enumeration;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -28,6 +35,9 @@ import javax.servlet.http.HttpServletResponse;
 public class addReportServlet extends HttpServlet {
 @EJB
 ReportsManager reportManager;
+@EJB
+DraftReportsManager draftreportManager;
+
 @EJB
 UsersFacade usersFacade;
 @EJB
@@ -43,14 +53,18 @@ UsersManager userManager;
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
+     * @throws java.text.ParseException
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+            throws ServletException, IOException, ParseException {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
         List<Users> userR;
         String login;
-               
+        List<Draftreport> draftreportsUsr = null;
+        
+        String dateReportForm=null; Date idateReport=null;
+        
         Integer icatM1StateAll=0, icatM1StateEquip=0, icatM1StateRNIS=0, icatM1StateOther=0; 
         String catM1StateAll=null, catM1StateEquip=null, catM1StateRNIS=null, catM1StateOther=null;
         Integer icatM1MunicAll=0, icatM1MunicEquip=0, icatM1MunicRNIS=0, icatM1MunicOther=0; 
@@ -102,6 +116,9 @@ UsersManager userManager;
         
         String name_user = request.getRemoteUser();
         login = (String) getServletContext().getAttribute("login");
+        Integer pressButton = 0;
+        Integer codeLogOperation = 3;
+        Integer codeReportOperation = 3;
 
     if (request.authenticate(response)){
         getServletContext().setAttribute("notif", "Вы авторизованы в системе как пользователь: "+request.getRemoteUser() + " !");
@@ -390,7 +407,22 @@ UsersManager userManager;
                 case "catDepartCommercOther":
                     catDepartCommercOther=request.getParameter(parameter);
                     break;
-// end Получаем все по Depart                
+// end Получаем все по Depart  
+                case "saveDraft":
+                    pressButton = 1;
+                    break;
+                case "publicReport":
+                    pressButton = 2;
+                    break;
+                case "exitNosave":
+                    pressButton = 3;
+                    break;
+                case "saveDraft2":
+                    pressButton = 4;
+                    break;
+                case "dateReport":
+                    dateReportForm=request.getParameter(parameter);
+                    break;
             }
         }
         //Преобразуем данные
@@ -506,13 +538,19 @@ UsersManager userManager;
         if (catDepartCommercRNIS != null){ try {icatDepartCommercRNIS = Integer.parseInt(catDepartCommercRNIS);} catch (NumberFormatException e) {System.err.println("Неверный формат строки!");} }
         if (catDepartCommercOther != null){ try {icatDepartCommercOther = Integer.parseInt(catDepartCommercOther);} catch (NumberFormatException e) {System.err.println("Неверный формат строки!");} }
 //end Depart            
+        if (dateReportForm != null){ try {idateReport = convertStringToDate(dateReportForm); } catch (NumberFormatException e) {System.err.println("Неверный формат строки!");} }
         
         //login = (String) getServletContext().getAttribute("login");
         userR = (List<Users>) usersFacade.getUserLogin(login);
 //        out.println(userR.get(0).getNameUser());
         Date currentDate = new Date();
-            Integer codeReportOperation = reportManager.addReport(
-			userR.get(0), currentDate,
+        
+    switch (pressButton) {
+                case 0:
+                    break;
+                case 1:  //saveDraft
+                        codeReportOperation = draftreportManager.addReport(
+			userR.get(0), idateReport,
                         icatM1StateAll, icatM1StateEquip, icatM1StateRNIS, icatM1StateOther,
 			icatM1MunicAll, icatM1MunicEquip, icatM1MunicRNIS, icatM1MunicOther,
 			icatM1CommercAll, icatM1CommercEquip, icatM1CommercRNIS, icatM1CommercOther,
@@ -541,21 +579,108 @@ UsersManager userManager;
                         icatDepartMunicAll, icatDepartMunicEquip, icatDepartMunicRNIS, icatDepartMunicOther, 
                         icatDepartCommercAll, icatDepartCommercEquip, icatDepartCommercRNIS, icatDepartCommercOther 
 			);
+                    switch (codeReportOperation) {
+                        case 0:
+                            request.setAttribute("notif", "Ошибка в базе данных!");
+                        break;
+                        case 1:
+                            request.setAttribute("notif", "Черновик успешно сохранен");
+                        break;
+                    }
+                    codeLogOperation = logManager.addLogUser(userR.get(0), currentDate, "Создан черновик");
+                    userManager.newDateUser(userR.get(0), currentDate);
+                    request.getRequestDispatcher("/WEB-INF/views/end_create_draftreport.jsp").forward(request, response);
 
-            switch (codeReportOperation) {
-                case 0:
-                    request.setAttribute("notif", "Ошибка в базе данных!");
                     break;
-                case 1:
-                    request.setAttribute("notif", "Отчет успешно записан");
-                    break;
-            }
-            Integer codeLogOperation = logManager.addLogUser(userR.get(0), currentDate, "Создан отчет");
-            userManager.newDateUser(userR.get(0), currentDate);
+                case 2:  //publicReport
+                        codeReportOperation = reportManager.addReport(
+			userR.get(0), idateReport,
+                        icatM1StateAll, icatM1StateEquip, icatM1StateRNIS, icatM1StateOther,
+			icatM1MunicAll, icatM1MunicEquip, icatM1MunicRNIS, icatM1MunicOther,
+			icatM1CommercAll, icatM1CommercEquip, icatM1CommercRNIS, icatM1CommercOther,
+			
+			icatM2M3StateAll, icatM2M3StateEquip, icatM2M3StateRNIS, icatM2M3StateOther, 
+			icatM2M3MunicAll, icatM2M3MunicEquip, icatM2M3MunicRNIS, icatM2M3MunicOther, 
+			icatM2M3CommercAll, icatM2M3CommercEquip, icatM2M3CommercRNIS, icatM2M3CommercOther, 
         
-        //========================================================================================
-       request.getRequestDispatcher("/WEB-INF/views/end_create_report.jsp").forward(request, response);
-    
+			icatLargeStateAll, icatLargeStateEquip, icatLargeStateRNIS, icatLargeStateOther, 
+			icatLargeMunicAll, icatLargeMunicEquip, icatLargeMunicRNIS, icatLargeMunicOther, 
+			icatLargeCommercAll, icatLargeCommercEquip, icatLargeCommercRNIS, icatLargeCommercOther, 
+
+			icatDangerStateAll, icatDangerStateEquip, icatDangerStateRNIS, icatDangerStateOther, 
+			icatDangerMunicAll, icatDangerMunicEquip, icatDangerMunicRNIS, icatDangerMunicOther, 
+			icatDangerCommercAll, icatDangerCommercEquip, icatDangerCommercRNIS, icatDangerCommercOther, 
+
+                        icatSchoolStateAll, icatSchoolStateEquip, icatSchoolStateRNIS, icatSchoolStateOther, 
+                        icatSchoolMunicAll, icatSchoolMunicEquip, icatSchoolMunicRNIS, icatSchoolMunicOther, 
+                        icatSchoolCommercAll, icatSchoolCommercEquip, icatSchoolCommercRNIS, icatSchoolCommercOther, 
+
+                        icatGKHStateAll, icatGKHStateEquip, icatGKHStateRNIS, icatGKHStateOther, 
+                        icatGKHMunicAll, icatGKHMunicEquip, icatGKHMunicRNIS, icatGKHMunicOther, 
+                        icatGKHCommercAll, icatGKHCommercEquip, icatGKHCommercRNIS, icatGKHCommercOther, 
+
+                        icatDepartStateAll, icatDepartStateEquip, icatDepartStateRNIS, icatDepartStateOther, 
+                        icatDepartMunicAll, icatDepartMunicEquip, icatDepartMunicRNIS, icatDepartMunicOther, 
+                        icatDepartCommercAll, icatDepartCommercEquip, icatDepartCommercRNIS, icatDepartCommercOther 
+			);
+                    switch (codeReportOperation) {
+                        case 0:
+                            request.setAttribute("notif", "Ошибка в базе данных!");
+                        break;
+                        case 1:
+                            request.setAttribute("notif", "Отчет успешно записан");
+                        break;
+                    }
+                    codeLogOperation = logManager.addLogUser(userR.get(0), currentDate, "Создан отчет");
+                    userManager.newDateUser(userR.get(0), idateReport);
+                    request.getRequestDispatcher("/WEB-INF/views/end_create_report.jsp").forward(request, response);
+                    break;
+                case 3:  //exitNosave
+                    request.getRequestDispatcher("/WEB-INF/index.jsp").forward(request, response);
+                    break;
+                case 4:  //saveDraft2
+                    draftreportsUsr = userR.get(0).getDraftreportList();
+
+                    draftreportManager.updateReport(
+			draftreportsUsr.get(0), userR.get(0), idateReport,
+                        icatM1StateAll, icatM1StateEquip, icatM1StateRNIS, icatM1StateOther,
+			icatM1MunicAll, icatM1MunicEquip, icatM1MunicRNIS, icatM1MunicOther,
+			icatM1CommercAll, icatM1CommercEquip, icatM1CommercRNIS, icatM1CommercOther,
+			
+			icatM2M3StateAll, icatM2M3StateEquip, icatM2M3StateRNIS, icatM2M3StateOther, 
+			icatM2M3MunicAll, icatM2M3MunicEquip, icatM2M3MunicRNIS, icatM2M3MunicOther, 
+			icatM2M3CommercAll, icatM2M3CommercEquip, icatM2M3CommercRNIS, icatM2M3CommercOther, 
+        
+			icatLargeStateAll, icatLargeStateEquip, icatLargeStateRNIS, icatLargeStateOther, 
+			icatLargeMunicAll, icatLargeMunicEquip, icatLargeMunicRNIS, icatLargeMunicOther, 
+			icatLargeCommercAll, icatLargeCommercEquip, icatLargeCommercRNIS, icatLargeCommercOther, 
+
+			icatDangerStateAll, icatDangerStateEquip, icatDangerStateRNIS, icatDangerStateOther, 
+			icatDangerMunicAll, icatDangerMunicEquip, icatDangerMunicRNIS, icatDangerMunicOther, 
+			icatDangerCommercAll, icatDangerCommercEquip, icatDangerCommercRNIS, icatDangerCommercOther, 
+
+                        icatSchoolStateAll, icatSchoolStateEquip, icatSchoolStateRNIS, icatSchoolStateOther, 
+                        icatSchoolMunicAll, icatSchoolMunicEquip, icatSchoolMunicRNIS, icatSchoolMunicOther, 
+                        icatSchoolCommercAll, icatSchoolCommercEquip, icatSchoolCommercRNIS, icatSchoolCommercOther, 
+
+                        icatGKHStateAll, icatGKHStateEquip, icatGKHStateRNIS, icatGKHStateOther, 
+                        icatGKHMunicAll, icatGKHMunicEquip, icatGKHMunicRNIS, icatGKHMunicOther, 
+                        icatGKHCommercAll, icatGKHCommercEquip, icatGKHCommercRNIS, icatGKHCommercOther, 
+
+                        icatDepartStateAll, icatDepartStateEquip, icatDepartStateRNIS, icatDepartStateOther, 
+                        icatDepartMunicAll, icatDepartMunicEquip, icatDepartMunicRNIS, icatDepartMunicOther, 
+                        icatDepartCommercAll, icatDepartCommercEquip, icatDepartCommercRNIS, icatDepartCommercOther 
+			);
+                   
+                    request.setAttribute("notif", "Черновик еще раз успешно сохранен");
+                  
+                    codeLogOperation = logManager.addLogUser(userR.get(0), currentDate, "Черновик повторно сохранен");
+                    userManager.newDateUser(userR.get(0), currentDate);
+                    request.getRequestDispatcher("/WEB-INF/views/end_create_draftreport.jsp").forward(request, response);
+
+
+                    break;
+    }                
                 } else {request.getRequestDispatcher("/WEB-INF/views/error_user_login_report.jsp").forward(request, response);}
 
     } //authenticate
@@ -573,7 +698,11 @@ UsersManager userManager;
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+    try {
         processRequest(request, response);
+    } catch (ParseException ex) {
+        Logger.getLogger(addReportServlet.class.getName()).log(Level.SEVERE, null, ex);
+    }
     }
 
     /**
@@ -587,7 +716,11 @@ UsersManager userManager;
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+    try {
         processRequest(request, response);
+    } catch (ParseException ex) {
+        Logger.getLogger(addReportServlet.class.getName()).log(Level.SEVERE, null, ex);
+    }
 
 
     }
@@ -602,4 +735,16 @@ UsersManager userManager;
         return "Short description";
     }// </editor-fold>
 
+    public Date convertStringToDate(String dateString)
+    {
+        Date formatteddate = null;
+        DateFormat df = new SimpleDateFormat("dd.MM.yyyy");
+        try{
+            formatteddate = df.parse(dateString);
+        }
+        catch ( Exception ex ){
+            System.out.println(ex);
+        }
+        return formatteddate;
+    }
 }

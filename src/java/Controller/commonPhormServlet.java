@@ -5,8 +5,14 @@
  */
 package Controller;
 
+import Entity.Draftreport;
+import Entity.Report;
+import Entity.Users;
+import Session.UsersFacade;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
+import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -17,29 +23,43 @@ import javax.servlet.http.HttpServletResponse;
  * @author Помогалов
  */
 public class commonPhormServlet extends HttpServlet {
-
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
+@EJB
+UsersFacade usersFacade;
+    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        
+    List<Users> userRep = null;
+    List<Draftreport> draftreportsUsr = null;
+    Integer countDraftreports = 0; 
+    
        String name_user = request.getRemoteUser();
        String login = (String) getServletContext().getAttribute("login");
-//        PrintWriter out = response.getWriter();
+        PrintWriter out = response.getWriter();
 //        out.println("login:" + login + " --- name_user:" + name_user);
 
         if (request.authenticate(response)){
         getServletContext().setAttribute("notif", "Вы авторизованы в системе как пользователь: "+request.getRemoteUser() + " !");
         if (name_user == null ? login == null : name_user.equals(login)) {
-            request.getRequestDispatcher("/WEB-INF/private/create_report.jsp").forward(request, response);
+            try{
+                userRep = usersFacade.getUserLogin(login);
+                if (userRep.size()>0) {
+                    
+                    draftreportsUsr = userRep.get(0).getDraftreportList();
+                    countDraftreports = draftreportsUsr.size();
+                    //out.println(countDraftreports);
+                    getServletContext().setAttribute("countDraftreports",countDraftreports);
+                    getServletContext().setAttribute("draftreportToForm",draftreportsUsr);
+                    getServletContext().setAttribute("nameUserReports",userRep.get(0).getNameUser());
+                        if (countDraftreports == 1) {
+                            request.getRequestDispatcher("/WEB-INF/private/create_draft_report.jsp").forward(request, response);
+                        } else {
+                            request.getRequestDispatcher("/WEB-INF/private/create_report.jsp").forward(request, response);
+                        }   
+                }
+                }catch(Exception e){
+                    e.printStackTrace();
+            }
             } else {request.getRequestDispatcher("/WEB-INF/views/error_user_login_report.jsp").forward(request, response);}
         }
         else { 

@@ -5,6 +5,7 @@
  */
 package Controller;
 
+import Entity.Draftreport;
 import Entity.Report;
 import Entity.Users;
 import Session.ReportsManager;
@@ -37,7 +38,8 @@ ReportsManager reportManager;
     @Override
     public void init() throws ServletException {
 //       getServletContext().setAttribute("usersIOGV", usersFacade.findAll());
-       getServletContext().setAttribute("usersIOGV", usersFacade.getUsersGroup("iogv"));
+       
+        getServletContext().setAttribute("usersIOGV", usersFacade.getUsersGroup("iogv"));
        getServletContext().setAttribute("usersMunicipal", usersFacade.getUsersGroup("municipal"));
        String sessionUser = (String) getServletContext().getAttribute("sessionUser");
        if (sessionUser == null){
@@ -68,6 +70,8 @@ ReportsManager reportManager;
         String prnRep="";
         List<Users> userRep = null;
         List<Report> reportsUsr = null;
+        List<Draftreport> draftreportsUsr = null;
+        Integer countDraftreports = 0; 
                 
         PrintWriter printWriter=response.getWriter();
         getServletContext().setAttribute("sessionUser",request.getRemoteUser());
@@ -111,13 +115,30 @@ ReportsManager reportManager;
             }
             
         }
-        
-                if (countReports == 0) {
+    
+        if (countReports == 0) {
                 String name_user = request.getRemoteUser();
                 String login = (String) getServletContext().getAttribute("login");
                 getServletContext().setAttribute("notif", "Вы авторизованы в системе как пользователь: "+ name_user + " !");
                     if (name_user.equals(login)) {
-                    request.getRequestDispatcher("/WEB-INF/private/create_report.jsp").forward(request, response);
+            try{
+                userRep = usersFacade.getUserLogin(login);
+                if (userRep.size()>0) {
+                    
+                    draftreportsUsr = userRep.get(0).getDraftreportList();
+                    countDraftreports = draftreportsUsr.size();
+                    getServletContext().setAttribute("countDraftreports",countDraftreports);
+                    getServletContext().setAttribute("draftreportToForm",draftreportsUsr);
+                    getServletContext().setAttribute("nameUserReports",userRep.get(0).getNameUser());
+                        if (countDraftreports == 1) {
+                            request.getRequestDispatcher("/WEB-INF/private/create_draft_report.jsp").forward(request, response);
+                        } else {
+                            request.getRequestDispatcher("/WEB-INF/private/create_report.jsp").forward(request, response);
+                        }   
+                }
+                }catch(Exception e){
+                    e.printStackTrace();
+            }
                     } else {request.getRequestDispatcher("/WEB-INF/views/error_user_login_first_report.jsp").forward(request, response);}
                     
                 } else {
@@ -157,7 +178,7 @@ ReportsManager reportManager;
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
          processRequest(request, response);
-        
+      
     }
 
     /**

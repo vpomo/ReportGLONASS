@@ -7,10 +7,10 @@ package Entity;
 
 import java.io.Serializable;
 import java.text.SimpleDateFormat;
-import java.util.Collection;
 import java.util.Date;
 import java.util.List;
 import javax.persistence.Basic;
+import javax.persistence.Cacheable;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -31,6 +31,7 @@ import javax.xml.bind.annotation.XmlTransient;
  * @author Pomogalov
  */
 @Entity
+@Cacheable(false)
 @Table(name = "users")
 @XmlRootElement
 @NamedQueries({
@@ -71,7 +72,10 @@ public class Users implements Serializable {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "userReport")
     private List<Report> reportList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "userLogin")
-    private Collection<LogUsers> logUsersCollection;
+    private List<LogUsers> logUsersList;
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "userDraftreport")
+    private List<Draftreport> draftreportList;
 
     public Users() {
     }
@@ -119,7 +123,6 @@ public class Users implements Serializable {
          return "Дата не определена";
        }
     }
-    
 
     public void setDateLastReport(Date dateLastReport) {
         this.dateLastReport = dateLastReport;
@@ -133,10 +136,15 @@ public class Users implements Serializable {
         this.groupUser = groupUser;
     }
 
-    /**
-     *
-     * @return
-     */
+    @XmlTransient
+    public List<Draftreport> getDraftreportList() {
+        return draftreportList;
+    }
+
+    public void setDraftreportList(List<Draftreport> draftreportList) {
+        this.draftreportList = draftreportList;
+    }
+
     @XmlTransient
     public List<Report> getReportList() {
         return reportList;
@@ -147,14 +155,15 @@ public class Users implements Serializable {
     }
 
     @XmlTransient
-    public Collection<LogUsers> getLogUsersCollection() {
-        return logUsersCollection;
+    public List<LogUsers> getLogUsersList() {
+        return logUsersList;
     }
 
-    public void setLogUsersCollection(Collection<LogUsers> logUsersCollection) {
-        this.logUsersCollection = logUsersCollection;
+    public void setLogUsersList(List<LogUsers> logUsersList) {
+        this.logUsersList = logUsersList;
     }
 
+    
     @Override
     public int hashCode() {
         int hash = 0;
@@ -177,7 +186,7 @@ public class Users implements Serializable {
 
     @Override
     public String toString() {
-        return "Entity.Users[ name=" + nameUser + " ]";
+        return "Entity.Users[ login=" + login + " ]";
     }
     
 }

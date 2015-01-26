@@ -28,7 +28,7 @@ public class UsersFacade extends AbstractFacade<Users> {
     public UsersFacade() {
         super(Users.class);
     }
-    public List getUsersGroup(String grUser) {
+    public List<Users> getUsersGroup(String grUser) {
         return  em.createNamedQuery("Users.findByGroupUser").setParameter("groupUser", grUser).getResultList();  
     }
     public List getUserLogin(String login) {

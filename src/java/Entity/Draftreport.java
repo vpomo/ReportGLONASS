@@ -26,135 +26,135 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author Помогалов
+ * @author Pomogalov
  */
 @Entity
 @Cacheable(false)
-@Table(name = "report")
+@Table(name = "draftreport")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Report.findAll", query = "SELECT r FROM Report r"),
-    @NamedQuery(name = "Report.findByIdReport", query = "SELECT r FROM Report r WHERE r.idReport = :idReport"),
-    @NamedQuery(name = "Report.findByDateReport", query = "SELECT r FROM Report r WHERE r.dateReport = :dateReport ORDER BY r.dateReport"),
-    @NamedQuery(name = "Report.findByCatM1StateAll", query = "SELECT r FROM Report r WHERE r.catM1StateAll = :catM1StateAll"),
-    @NamedQuery(name = "Report.findByCatM1MunicAll", query = "SELECT r FROM Report r WHERE r.catM1MunicAll = :catM1MunicAll"),
-    @NamedQuery(name = "Report.findByCatM1CommercAll", query = "SELECT r FROM Report r WHERE r.catM1CommercAll = :catM1CommercAll"),
-    @NamedQuery(name = "Report.findByCatM1ItogAll", query = "SELECT r FROM Report r WHERE r.catM1ItogAll = :catM1ItogAll"),
-    @NamedQuery(name = "Report.findByCatM2M3StateAll", query = "SELECT r FROM Report r WHERE r.catM2M3StateAll = :catM2M3StateAll"),
-    @NamedQuery(name = "Report.findByCatM2M3MunicAll", query = "SELECT r FROM Report r WHERE r.catM2M3MunicAll = :catM2M3MunicAll"),
-    @NamedQuery(name = "Report.findByCatM2M3CommercAll", query = "SELECT r FROM Report r WHERE r.catM2M3CommercAll = :catM2M3CommercAll"),
-    @NamedQuery(name = "Report.findByCatM2M3ItogAll", query = "SELECT r FROM Report r WHERE r.catM2M3ItogAll = :catM2M3ItogAll"),
-    @NamedQuery(name = "Report.findByCatLargeStateAll", query = "SELECT r FROM Report r WHERE r.catLargeStateAll = :catLargeStateAll"),
-    @NamedQuery(name = "Report.findByCatLargeMunicAll", query = "SELECT r FROM Report r WHERE r.catLargeMunicAll = :catLargeMunicAll"),
-    @NamedQuery(name = "Report.findByCatLargeCommercAll", query = "SELECT r FROM Report r WHERE r.catLargeCommercAll = :catLargeCommercAll"),
-    @NamedQuery(name = "Report.findByCatLargeItogAll", query = "SELECT r FROM Report r WHERE r.catLargeItogAll = :catLargeItogAll"),
-    @NamedQuery(name = "Report.findByCatDangerStateAll", query = "SELECT r FROM Report r WHERE r.catDangerStateAll = :catDangerStateAll"),
-    @NamedQuery(name = "Report.findByCatDangerMunicAll", query = "SELECT r FROM Report r WHERE r.catDangerMunicAll = :catDangerMunicAll"),
-    @NamedQuery(name = "Report.findByCatDangerCommercAll", query = "SELECT r FROM Report r WHERE r.catDangerCommercAll = :catDangerCommercAll"),
-    @NamedQuery(name = "Report.findByCatDangerItogAll", query = "SELECT r FROM Report r WHERE r.catDangerItogAll = :catDangerItogAll"),
-    @NamedQuery(name = "Report.findByCatSchoolStateAll", query = "SELECT r FROM Report r WHERE r.catSchoolStateAll = :catSchoolStateAll"),
-    @NamedQuery(name = "Report.findByCatSchoolMunicAll", query = "SELECT r FROM Report r WHERE r.catSchoolMunicAll = :catSchoolMunicAll"),
-    @NamedQuery(name = "Report.findByCatSchoolCommercAll", query = "SELECT r FROM Report r WHERE r.catSchoolCommercAll = :catSchoolCommercAll"),
-    @NamedQuery(name = "Report.findByCatSchoolItogAll", query = "SELECT r FROM Report r WHERE r.catSchoolItogAll = :catSchoolItogAll"),
-    @NamedQuery(name = "Report.findByCatGKHStateAll", query = "SELECT r FROM Report r WHERE r.catGKHStateAll = :catGKHStateAll"),
-    @NamedQuery(name = "Report.findByCatGKHMunicAll", query = "SELECT r FROM Report r WHERE r.catGKHMunicAll = :catGKHMunicAll"),
-    @NamedQuery(name = "Report.findByCatGKHCommercAll", query = "SELECT r FROM Report r WHERE r.catGKHCommercAll = :catGKHCommercAll"),
-    @NamedQuery(name = "Report.findByCatGKHItogAll", query = "SELECT r FROM Report r WHERE r.catGKHItogAll = :catGKHItogAll"),
-    @NamedQuery(name = "Report.findByCatDepartStateAll", query = "SELECT r FROM Report r WHERE r.catDepartStateAll = :catDepartStateAll"),
-    @NamedQuery(name = "Report.findByCatDepartMunicAll", query = "SELECT r FROM Report r WHERE r.catDepartMunicAll = :catDepartMunicAll"),
-    @NamedQuery(name = "Report.findByCatDepartCommercAll", query = "SELECT r FROM Report r WHERE r.catDepartCommercAll = :catDepartCommercAll"),
-    @NamedQuery(name = "Report.findByCatDepartItogAll", query = "SELECT r FROM Report r WHERE r.catDepartItogAll = :catDepartItogAll"),
-    @NamedQuery(name = "Report.findByCatM1StateEquip", query = "SELECT r FROM Report r WHERE r.catM1StateEquip = :catM1StateEquip"),
-    @NamedQuery(name = "Report.findByCatM1MunicEquip", query = "SELECT r FROM Report r WHERE r.catM1MunicEquip = :catM1MunicEquip"),
-    @NamedQuery(name = "Report.findByCatM1CommercEquip", query = "SELECT r FROM Report r WHERE r.catM1CommercEquip = :catM1CommercEquip"),
-    @NamedQuery(name = "Report.findByCatM1ItogEquip", query = "SELECT r FROM Report r WHERE r.catM1ItogEquip = :catM1ItogEquip"),
-    @NamedQuery(name = "Report.findByCatM2M3StateEquip", query = "SELECT r FROM Report r WHERE r.catM2M3StateEquip = :catM2M3StateEquip"),
-    @NamedQuery(name = "Report.findByCatM2M3MunicEquip", query = "SELECT r FROM Report r WHERE r.catM2M3MunicEquip = :catM2M3MunicEquip"),
-    @NamedQuery(name = "Report.findByCatM2M3CommercEquip", query = "SELECT r FROM Report r WHERE r.catM2M3CommercEquip = :catM2M3CommercEquip"),
-    @NamedQuery(name = "Report.findByCatM2M3ItogEquip", query = "SELECT r FROM Report r WHERE r.catM2M3ItogEquip = :catM2M3ItogEquip"),
-    @NamedQuery(name = "Report.findByCatLargeStateEquip", query = "SELECT r FROM Report r WHERE r.catLargeStateEquip = :catLargeStateEquip"),
-    @NamedQuery(name = "Report.findByCatLargeMunicEquip", query = "SELECT r FROM Report r WHERE r.catLargeMunicEquip = :catLargeMunicEquip"),
-    @NamedQuery(name = "Report.findByCatLargeCommercEquip", query = "SELECT r FROM Report r WHERE r.catLargeCommercEquip = :catLargeCommercEquip"),
-    @NamedQuery(name = "Report.findByCatLargeItogEquip", query = "SELECT r FROM Report r WHERE r.catLargeItogEquip = :catLargeItogEquip"),
-    @NamedQuery(name = "Report.findByCatDangerStateEquip", query = "SELECT r FROM Report r WHERE r.catDangerStateEquip = :catDangerStateEquip"),
-    @NamedQuery(name = "Report.findByCatDangerMunicEquip", query = "SELECT r FROM Report r WHERE r.catDangerMunicEquip = :catDangerMunicEquip"),
-    @NamedQuery(name = "Report.findByCatDangerCommercEquip", query = "SELECT r FROM Report r WHERE r.catDangerCommercEquip = :catDangerCommercEquip"),
-    @NamedQuery(name = "Report.findByCatDangerItogEquip", query = "SELECT r FROM Report r WHERE r.catDangerItogEquip = :catDangerItogEquip"),
-    @NamedQuery(name = "Report.findByCatSchoolStateEquip", query = "SELECT r FROM Report r WHERE r.catSchoolStateEquip = :catSchoolStateEquip"),
-    @NamedQuery(name = "Report.findByCatSchoolMunicEquip", query = "SELECT r FROM Report r WHERE r.catSchoolMunicEquip = :catSchoolMunicEquip"),
-    @NamedQuery(name = "Report.findByCatSchoolCommercEquip", query = "SELECT r FROM Report r WHERE r.catSchoolCommercEquip = :catSchoolCommercEquip"),
-    @NamedQuery(name = "Report.findByCatSchoolItogEquip", query = "SELECT r FROM Report r WHERE r.catSchoolItogEquip = :catSchoolItogEquip"),
-    @NamedQuery(name = "Report.findByCatGKHStateEquip", query = "SELECT r FROM Report r WHERE r.catGKHStateEquip = :catGKHStateEquip"),
-    @NamedQuery(name = "Report.findByCatGKHMunicEquip", query = "SELECT r FROM Report r WHERE r.catGKHMunicEquip = :catGKHMunicEquip"),
-    @NamedQuery(name = "Report.findByCatGKHCommercEquip", query = "SELECT r FROM Report r WHERE r.catGKHCommercEquip = :catGKHCommercEquip"),
-    @NamedQuery(name = "Report.findByCatGKHItogEquip", query = "SELECT r FROM Report r WHERE r.catGKHItogEquip = :catGKHItogEquip"),
-    @NamedQuery(name = "Report.findByCatDepartStateEquip", query = "SELECT r FROM Report r WHERE r.catDepartStateEquip = :catDepartStateEquip"),
-    @NamedQuery(name = "Report.findByCatDepartMunicEquip", query = "SELECT r FROM Report r WHERE r.catDepartMunicEquip = :catDepartMunicEquip"),
-    @NamedQuery(name = "Report.findByCatDepartCommercEquip", query = "SELECT r FROM Report r WHERE r.catDepartCommercEquip = :catDepartCommercEquip"),
-    @NamedQuery(name = "Report.findByCatDepartItogEquip", query = "SELECT r FROM Report r WHERE r.catDepartItogEquip = :catDepartItogEquip"),
-    @NamedQuery(name = "Report.findByCatM1StateRNIS", query = "SELECT r FROM Report r WHERE r.catM1StateRNIS = :catM1StateRNIS"),
-    @NamedQuery(name = "Report.findByCatM1MunicRNIS", query = "SELECT r FROM Report r WHERE r.catM1MunicRNIS = :catM1MunicRNIS"),
-    @NamedQuery(name = "Report.findByCatM1CommercRNIS", query = "SELECT r FROM Report r WHERE r.catM1CommercRNIS = :catM1CommercRNIS"),
-    @NamedQuery(name = "Report.findByCatM1ItogRNIS", query = "SELECT r FROM Report r WHERE r.catM1ItogRNIS = :catM1ItogRNIS"),
-    @NamedQuery(name = "Report.findByCatM2M3StateRNIS", query = "SELECT r FROM Report r WHERE r.catM2M3StateRNIS = :catM2M3StateRNIS"),
-    @NamedQuery(name = "Report.findByCatM2M3MunicRNIS", query = "SELECT r FROM Report r WHERE r.catM2M3MunicRNIS = :catM2M3MunicRNIS"),
-    @NamedQuery(name = "Report.findByCatM2M3CommercRNIS", query = "SELECT r FROM Report r WHERE r.catM2M3CommercRNIS = :catM2M3CommercRNIS"),
-    @NamedQuery(name = "Report.findByCatM2M3ItogRNIS", query = "SELECT r FROM Report r WHERE r.catM2M3ItogRNIS = :catM2M3ItogRNIS"),
-    @NamedQuery(name = "Report.findByCatLargeStateRNIS", query = "SELECT r FROM Report r WHERE r.catLargeStateRNIS = :catLargeStateRNIS"),
-    @NamedQuery(name = "Report.findByCatLargeMunicRNIS", query = "SELECT r FROM Report r WHERE r.catLargeMunicRNIS = :catLargeMunicRNIS"),
-    @NamedQuery(name = "Report.findByCatLargeCommercRNIS", query = "SELECT r FROM Report r WHERE r.catLargeCommercRNIS = :catLargeCommercRNIS"),
-    @NamedQuery(name = "Report.findByCatLargeItogRNIS", query = "SELECT r FROM Report r WHERE r.catLargeItogRNIS = :catLargeItogRNIS"),
-    @NamedQuery(name = "Report.findByCatDangerStateRNIS", query = "SELECT r FROM Report r WHERE r.catDangerStateRNIS = :catDangerStateRNIS"),
-    @NamedQuery(name = "Report.findByCatDangerMunicRNIS", query = "SELECT r FROM Report r WHERE r.catDangerMunicRNIS = :catDangerMunicRNIS"),
-    @NamedQuery(name = "Report.findByCatDangerCommercRNIS", query = "SELECT r FROM Report r WHERE r.catDangerCommercRNIS = :catDangerCommercRNIS"),
-    @NamedQuery(name = "Report.findByCatDangerItogRNIS", query = "SELECT r FROM Report r WHERE r.catDangerItogRNIS = :catDangerItogRNIS"),
-    @NamedQuery(name = "Report.findByCatSchoolStateRNIS", query = "SELECT r FROM Report r WHERE r.catSchoolStateRNIS = :catSchoolStateRNIS"),
-    @NamedQuery(name = "Report.findByCatSchoolMunicRNIS", query = "SELECT r FROM Report r WHERE r.catSchoolMunicRNIS = :catSchoolMunicRNIS"),
-    @NamedQuery(name = "Report.findByCatSchoolCommercRNIS", query = "SELECT r FROM Report r WHERE r.catSchoolCommercRNIS = :catSchoolCommercRNIS"),
-    @NamedQuery(name = "Report.findByCatSchoolItogRNIS", query = "SELECT r FROM Report r WHERE r.catSchoolItogRNIS = :catSchoolItogRNIS"),
-    @NamedQuery(name = "Report.findByCatGKHStateRNIS", query = "SELECT r FROM Report r WHERE r.catGKHStateRNIS = :catGKHStateRNIS"),
-    @NamedQuery(name = "Report.findByCatGKHMunicRNIS", query = "SELECT r FROM Report r WHERE r.catGKHMunicRNIS = :catGKHMunicRNIS"),
-    @NamedQuery(name = "Report.findByCatGKHCommercRNIS", query = "SELECT r FROM Report r WHERE r.catGKHCommercRNIS = :catGKHCommercRNIS"),
-    @NamedQuery(name = "Report.findByCatGKHItogRNIS", query = "SELECT r FROM Report r WHERE r.catGKHItogRNIS = :catGKHItogRNIS"),
-    @NamedQuery(name = "Report.findByCatDepartStateRNIS", query = "SELECT r FROM Report r WHERE r.catDepartStateRNIS = :catDepartStateRNIS"),
-    @NamedQuery(name = "Report.findByCatDepartMunicRNIS", query = "SELECT r FROM Report r WHERE r.catDepartMunicRNIS = :catDepartMunicRNIS"),
-    @NamedQuery(name = "Report.findByCatDepartCommercRNIS", query = "SELECT r FROM Report r WHERE r.catDepartCommercRNIS = :catDepartCommercRNIS"),
-    @NamedQuery(name = "Report.findByCatDepartItogRNIS", query = "SELECT r FROM Report r WHERE r.catDepartItogRNIS = :catDepartItogRNIS"),
-    @NamedQuery(name = "Report.findByCatM1StateOther", query = "SELECT r FROM Report r WHERE r.catM1StateOther = :catM1StateOther"),
-    @NamedQuery(name = "Report.findByCatM1MunicOther", query = "SELECT r FROM Report r WHERE r.catM1MunicOther = :catM1MunicOther"),
-    @NamedQuery(name = "Report.findByCatM1CommercOther", query = "SELECT r FROM Report r WHERE r.catM1CommercOther = :catM1CommercOther"),
-    @NamedQuery(name = "Report.findByCatM1ItogOther", query = "SELECT r FROM Report r WHERE r.catM1ItogOther = :catM1ItogOther"),
-    @NamedQuery(name = "Report.findByCatM2M3StateOther", query = "SELECT r FROM Report r WHERE r.catM2M3StateOther = :catM2M3StateOther"),
-    @NamedQuery(name = "Report.findByCatM2M3MunicOther", query = "SELECT r FROM Report r WHERE r.catM2M3MunicOther = :catM2M3MunicOther"),
-    @NamedQuery(name = "Report.findByCatM2M3CommercOther", query = "SELECT r FROM Report r WHERE r.catM2M3CommercOther = :catM2M3CommercOther"),
-    @NamedQuery(name = "Report.findByCatM2M3ItogOther", query = "SELECT r FROM Report r WHERE r.catM2M3ItogOther = :catM2M3ItogOther"),
-    @NamedQuery(name = "Report.findByCatLargeStateOther", query = "SELECT r FROM Report r WHERE r.catLargeStateOther = :catLargeStateOther"),
-    @NamedQuery(name = "Report.findByCatLargeMunicOther", query = "SELECT r FROM Report r WHERE r.catLargeMunicOther = :catLargeMunicOther"),
-    @NamedQuery(name = "Report.findByCatLargeCommercOther", query = "SELECT r FROM Report r WHERE r.catLargeCommercOther = :catLargeCommercOther"),
-    @NamedQuery(name = "Report.findByCatLargeItogOther", query = "SELECT r FROM Report r WHERE r.catLargeItogOther = :catLargeItogOther"),
-    @NamedQuery(name = "Report.findByCatDangerStateOther", query = "SELECT r FROM Report r WHERE r.catDangerStateOther = :catDangerStateOther"),
-    @NamedQuery(name = "Report.findByCatDangerMunicOther", query = "SELECT r FROM Report r WHERE r.catDangerMunicOther = :catDangerMunicOther"),
-    @NamedQuery(name = "Report.findByCatDangerCommercOther", query = "SELECT r FROM Report r WHERE r.catDangerCommercOther = :catDangerCommercOther"),
-    @NamedQuery(name = "Report.findByCatDangerItogOther", query = "SELECT r FROM Report r WHERE r.catDangerItogOther = :catDangerItogOther"),
-    @NamedQuery(name = "Report.findByCatSchoolStateOther", query = "SELECT r FROM Report r WHERE r.catSchoolStateOther = :catSchoolStateOther"),
-    @NamedQuery(name = "Report.findByCatSchoolMunicOther", query = "SELECT r FROM Report r WHERE r.catSchoolMunicOther = :catSchoolMunicOther"),
-    @NamedQuery(name = "Report.findByCatSchoolCommercOther", query = "SELECT r FROM Report r WHERE r.catSchoolCommercOther = :catSchoolCommercOther"),
-    @NamedQuery(name = "Report.findByCatSchoolItogOther", query = "SELECT r FROM Report r WHERE r.catSchoolItogOther = :catSchoolItogOther"),
-    @NamedQuery(name = "Report.findByCatGKHStateOther", query = "SELECT r FROM Report r WHERE r.catGKHStateOther = :catGKHStateOther"),
-    @NamedQuery(name = "Report.findByCatGKHMunicOther", query = "SELECT r FROM Report r WHERE r.catGKHMunicOther = :catGKHMunicOther"),
-    @NamedQuery(name = "Report.findByCatGKHCommercOther", query = "SELECT r FROM Report r WHERE r.catGKHCommercOther = :catGKHCommercOther"),
-    @NamedQuery(name = "Report.findByCatGKHItogOther", query = "SELECT r FROM Report r WHERE r.catGKHItogOther = :catGKHItogOther"),
-    @NamedQuery(name = "Report.findByCatDepartStateOther", query = "SELECT r FROM Report r WHERE r.catDepartStateOther = :catDepartStateOther"),
-    @NamedQuery(name = "Report.findByCatDepartMunicOther", query = "SELECT r FROM Report r WHERE r.catDepartMunicOther = :catDepartMunicOther"),
-    @NamedQuery(name = "Report.findByCatDepartCommercOther", query = "SELECT r FROM Report r WHERE r.catDepartCommercOther = :catDepartCommercOther"),
-    @NamedQuery(name = "Report.findByCatDepartItogOther", query = "SELECT r FROM Report r WHERE r.catDepartItogOther = :catDepartItogOther")})
-public class Report implements Serializable {
+    @NamedQuery(name = "Draftreport.findAll", query = "SELECT d FROM Draftreport d"),
+    @NamedQuery(name = "Draftreport.findByIdDraftreport", query = "SELECT d FROM Draftreport d WHERE d.idDraftreport = :idDraftreport"),
+    @NamedQuery(name = "Draftreport.findByDateReport", query = "SELECT d FROM Draftreport d WHERE d.dateReport = :dateReport"),
+    @NamedQuery(name = "Draftreport.findByCatM1StateAll", query = "SELECT d FROM Draftreport d WHERE d.catM1StateAll = :catM1StateAll"),
+    @NamedQuery(name = "Draftreport.findByCatM1MunicAll", query = "SELECT d FROM Draftreport d WHERE d.catM1MunicAll = :catM1MunicAll"),
+    @NamedQuery(name = "Draftreport.findByCatM1CommercAll", query = "SELECT d FROM Draftreport d WHERE d.catM1CommercAll = :catM1CommercAll"),
+    @NamedQuery(name = "Draftreport.findByCatM1ItogAll", query = "SELECT d FROM Draftreport d WHERE d.catM1ItogAll = :catM1ItogAll"),
+    @NamedQuery(name = "Draftreport.findByCatM2M3StateAll", query = "SELECT d FROM Draftreport d WHERE d.catM2M3StateAll = :catM2M3StateAll"),
+    @NamedQuery(name = "Draftreport.findByCatM2M3MunicAll", query = "SELECT d FROM Draftreport d WHERE d.catM2M3MunicAll = :catM2M3MunicAll"),
+    @NamedQuery(name = "Draftreport.findByCatM2M3CommercAll", query = "SELECT d FROM Draftreport d WHERE d.catM2M3CommercAll = :catM2M3CommercAll"),
+    @NamedQuery(name = "Draftreport.findByCatM2M3ItogAll", query = "SELECT d FROM Draftreport d WHERE d.catM2M3ItogAll = :catM2M3ItogAll"),
+    @NamedQuery(name = "Draftreport.findByCatLargeStateAll", query = "SELECT d FROM Draftreport d WHERE d.catLargeStateAll = :catLargeStateAll"),
+    @NamedQuery(name = "Draftreport.findByCatLargeMunicAll", query = "SELECT d FROM Draftreport d WHERE d.catLargeMunicAll = :catLargeMunicAll"),
+    @NamedQuery(name = "Draftreport.findByCatLargeCommercAll", query = "SELECT d FROM Draftreport d WHERE d.catLargeCommercAll = :catLargeCommercAll"),
+    @NamedQuery(name = "Draftreport.findByCatLargeItogAll", query = "SELECT d FROM Draftreport d WHERE d.catLargeItogAll = :catLargeItogAll"),
+    @NamedQuery(name = "Draftreport.findByCatDangerStateAll", query = "SELECT d FROM Draftreport d WHERE d.catDangerStateAll = :catDangerStateAll"),
+    @NamedQuery(name = "Draftreport.findByCatDangerMunicAll", query = "SELECT d FROM Draftreport d WHERE d.catDangerMunicAll = :catDangerMunicAll"),
+    @NamedQuery(name = "Draftreport.findByCatDangerCommercAll", query = "SELECT d FROM Draftreport d WHERE d.catDangerCommercAll = :catDangerCommercAll"),
+    @NamedQuery(name = "Draftreport.findByCatDangerItogAll", query = "SELECT d FROM Draftreport d WHERE d.catDangerItogAll = :catDangerItogAll"),
+    @NamedQuery(name = "Draftreport.findByCatSchoolStateAll", query = "SELECT d FROM Draftreport d WHERE d.catSchoolStateAll = :catSchoolStateAll"),
+    @NamedQuery(name = "Draftreport.findByCatSchoolMunicAll", query = "SELECT d FROM Draftreport d WHERE d.catSchoolMunicAll = :catSchoolMunicAll"),
+    @NamedQuery(name = "Draftreport.findByCatSchoolCommercAll", query = "SELECT d FROM Draftreport d WHERE d.catSchoolCommercAll = :catSchoolCommercAll"),
+    @NamedQuery(name = "Draftreport.findByCatSchoolItogAll", query = "SELECT d FROM Draftreport d WHERE d.catSchoolItogAll = :catSchoolItogAll"),
+    @NamedQuery(name = "Draftreport.findByCatGKHStateAll", query = "SELECT d FROM Draftreport d WHERE d.catGKHStateAll = :catGKHStateAll"),
+    @NamedQuery(name = "Draftreport.findByCatGKHMunicAll", query = "SELECT d FROM Draftreport d WHERE d.catGKHMunicAll = :catGKHMunicAll"),
+    @NamedQuery(name = "Draftreport.findByCatGKHCommercAll", query = "SELECT d FROM Draftreport d WHERE d.catGKHCommercAll = :catGKHCommercAll"),
+    @NamedQuery(name = "Draftreport.findByCatGKHItogAll", query = "SELECT d FROM Draftreport d WHERE d.catGKHItogAll = :catGKHItogAll"),
+    @NamedQuery(name = "Draftreport.findByCatDepartStateAll", query = "SELECT d FROM Draftreport d WHERE d.catDepartStateAll = :catDepartStateAll"),
+    @NamedQuery(name = "Draftreport.findByCatDepartMunicAll", query = "SELECT d FROM Draftreport d WHERE d.catDepartMunicAll = :catDepartMunicAll"),
+    @NamedQuery(name = "Draftreport.findByCatDepartCommercAll", query = "SELECT d FROM Draftreport d WHERE d.catDepartCommercAll = :catDepartCommercAll"),
+    @NamedQuery(name = "Draftreport.findByCatDepartItogAll", query = "SELECT d FROM Draftreport d WHERE d.catDepartItogAll = :catDepartItogAll"),
+    @NamedQuery(name = "Draftreport.findByCatM1StateEquip", query = "SELECT d FROM Draftreport d WHERE d.catM1StateEquip = :catM1StateEquip"),
+    @NamedQuery(name = "Draftreport.findByCatM1MunicEquip", query = "SELECT d FROM Draftreport d WHERE d.catM1MunicEquip = :catM1MunicEquip"),
+    @NamedQuery(name = "Draftreport.findByCatM1CommercEquip", query = "SELECT d FROM Draftreport d WHERE d.catM1CommercEquip = :catM1CommercEquip"),
+    @NamedQuery(name = "Draftreport.findByCatM1ItogEquip", query = "SELECT d FROM Draftreport d WHERE d.catM1ItogEquip = :catM1ItogEquip"),
+    @NamedQuery(name = "Draftreport.findByCatM2M3StateEquip", query = "SELECT d FROM Draftreport d WHERE d.catM2M3StateEquip = :catM2M3StateEquip"),
+    @NamedQuery(name = "Draftreport.findByCatM2M3MunicEquip", query = "SELECT d FROM Draftreport d WHERE d.catM2M3MunicEquip = :catM2M3MunicEquip"),
+    @NamedQuery(name = "Draftreport.findByCatM2M3CommercEquip", query = "SELECT d FROM Draftreport d WHERE d.catM2M3CommercEquip = :catM2M3CommercEquip"),
+    @NamedQuery(name = "Draftreport.findByCatM2M3ItogEquip", query = "SELECT d FROM Draftreport d WHERE d.catM2M3ItogEquip = :catM2M3ItogEquip"),
+    @NamedQuery(name = "Draftreport.findByCatLargeStateEquip", query = "SELECT d FROM Draftreport d WHERE d.catLargeStateEquip = :catLargeStateEquip"),
+    @NamedQuery(name = "Draftreport.findByCatLargeMunicEquip", query = "SELECT d FROM Draftreport d WHERE d.catLargeMunicEquip = :catLargeMunicEquip"),
+    @NamedQuery(name = "Draftreport.findByCatLargeCommercEquip", query = "SELECT d FROM Draftreport d WHERE d.catLargeCommercEquip = :catLargeCommercEquip"),
+    @NamedQuery(name = "Draftreport.findByCatLargeItogEquip", query = "SELECT d FROM Draftreport d WHERE d.catLargeItogEquip = :catLargeItogEquip"),
+    @NamedQuery(name = "Draftreport.findByCatDangerStateEquip", query = "SELECT d FROM Draftreport d WHERE d.catDangerStateEquip = :catDangerStateEquip"),
+    @NamedQuery(name = "Draftreport.findByCatDangerMunicEquip", query = "SELECT d FROM Draftreport d WHERE d.catDangerMunicEquip = :catDangerMunicEquip"),
+    @NamedQuery(name = "Draftreport.findByCatDangerCommercEquip", query = "SELECT d FROM Draftreport d WHERE d.catDangerCommercEquip = :catDangerCommercEquip"),
+    @NamedQuery(name = "Draftreport.findByCatDangerItogEquip", query = "SELECT d FROM Draftreport d WHERE d.catDangerItogEquip = :catDangerItogEquip"),
+    @NamedQuery(name = "Draftreport.findByCatSchoolStateEquip", query = "SELECT d FROM Draftreport d WHERE d.catSchoolStateEquip = :catSchoolStateEquip"),
+    @NamedQuery(name = "Draftreport.findByCatSchoolMunicEquip", query = "SELECT d FROM Draftreport d WHERE d.catSchoolMunicEquip = :catSchoolMunicEquip"),
+    @NamedQuery(name = "Draftreport.findByCatSchoolCommercEquip", query = "SELECT d FROM Draftreport d WHERE d.catSchoolCommercEquip = :catSchoolCommercEquip"),
+    @NamedQuery(name = "Draftreport.findByCatSchoolItogEquip", query = "SELECT d FROM Draftreport d WHERE d.catSchoolItogEquip = :catSchoolItogEquip"),
+    @NamedQuery(name = "Draftreport.findByCatGKHStateEquip", query = "SELECT d FROM Draftreport d WHERE d.catGKHStateEquip = :catGKHStateEquip"),
+    @NamedQuery(name = "Draftreport.findByCatGKHMunicEquip", query = "SELECT d FROM Draftreport d WHERE d.catGKHMunicEquip = :catGKHMunicEquip"),
+    @NamedQuery(name = "Draftreport.findByCatGKHCommercEquip", query = "SELECT d FROM Draftreport d WHERE d.catGKHCommercEquip = :catGKHCommercEquip"),
+    @NamedQuery(name = "Draftreport.findByCatGKHItogEquip", query = "SELECT d FROM Draftreport d WHERE d.catGKHItogEquip = :catGKHItogEquip"),
+    @NamedQuery(name = "Draftreport.findByCatDepartStateEquip", query = "SELECT d FROM Draftreport d WHERE d.catDepartStateEquip = :catDepartStateEquip"),
+    @NamedQuery(name = "Draftreport.findByCatDepartMunicEquip", query = "SELECT d FROM Draftreport d WHERE d.catDepartMunicEquip = :catDepartMunicEquip"),
+    @NamedQuery(name = "Draftreport.findByCatDepartCommercEquip", query = "SELECT d FROM Draftreport d WHERE d.catDepartCommercEquip = :catDepartCommercEquip"),
+    @NamedQuery(name = "Draftreport.findByCatDepartItogEquip", query = "SELECT d FROM Draftreport d WHERE d.catDepartItogEquip = :catDepartItogEquip"),
+    @NamedQuery(name = "Draftreport.findByCatM1StateRNIS", query = "SELECT d FROM Draftreport d WHERE d.catM1StateRNIS = :catM1StateRNIS"),
+    @NamedQuery(name = "Draftreport.findByCatM1MunicRNIS", query = "SELECT d FROM Draftreport d WHERE d.catM1MunicRNIS = :catM1MunicRNIS"),
+    @NamedQuery(name = "Draftreport.findByCatM1CommercRNIS", query = "SELECT d FROM Draftreport d WHERE d.catM1CommercRNIS = :catM1CommercRNIS"),
+    @NamedQuery(name = "Draftreport.findByCatM1ItogRNIS", query = "SELECT d FROM Draftreport d WHERE d.catM1ItogRNIS = :catM1ItogRNIS"),
+    @NamedQuery(name = "Draftreport.findByCatM2M3StateRNIS", query = "SELECT d FROM Draftreport d WHERE d.catM2M3StateRNIS = :catM2M3StateRNIS"),
+    @NamedQuery(name = "Draftreport.findByCatM2M3MunicRNIS", query = "SELECT d FROM Draftreport d WHERE d.catM2M3MunicRNIS = :catM2M3MunicRNIS"),
+    @NamedQuery(name = "Draftreport.findByCatM2M3CommercRNIS", query = "SELECT d FROM Draftreport d WHERE d.catM2M3CommercRNIS = :catM2M3CommercRNIS"),
+    @NamedQuery(name = "Draftreport.findByCatM2M3ItogRNIS", query = "SELECT d FROM Draftreport d WHERE d.catM2M3ItogRNIS = :catM2M3ItogRNIS"),
+    @NamedQuery(name = "Draftreport.findByCatLargeStateRNIS", query = "SELECT d FROM Draftreport d WHERE d.catLargeStateRNIS = :catLargeStateRNIS"),
+    @NamedQuery(name = "Draftreport.findByCatLargeMunicRNIS", query = "SELECT d FROM Draftreport d WHERE d.catLargeMunicRNIS = :catLargeMunicRNIS"),
+    @NamedQuery(name = "Draftreport.findByCatLargeCommercRNIS", query = "SELECT d FROM Draftreport d WHERE d.catLargeCommercRNIS = :catLargeCommercRNIS"),
+    @NamedQuery(name = "Draftreport.findByCatLargeItogRNIS", query = "SELECT d FROM Draftreport d WHERE d.catLargeItogRNIS = :catLargeItogRNIS"),
+    @NamedQuery(name = "Draftreport.findByCatDangerStateRNIS", query = "SELECT d FROM Draftreport d WHERE d.catDangerStateRNIS = :catDangerStateRNIS"),
+    @NamedQuery(name = "Draftreport.findByCatDangerMunicRNIS", query = "SELECT d FROM Draftreport d WHERE d.catDangerMunicRNIS = :catDangerMunicRNIS"),
+    @NamedQuery(name = "Draftreport.findByCatDangerCommercRNIS", query = "SELECT d FROM Draftreport d WHERE d.catDangerCommercRNIS = :catDangerCommercRNIS"),
+    @NamedQuery(name = "Draftreport.findByCatDangerItogRNIS", query = "SELECT d FROM Draftreport d WHERE d.catDangerItogRNIS = :catDangerItogRNIS"),
+    @NamedQuery(name = "Draftreport.findByCatSchoolStateRNIS", query = "SELECT d FROM Draftreport d WHERE d.catSchoolStateRNIS = :catSchoolStateRNIS"),
+    @NamedQuery(name = "Draftreport.findByCatSchoolMunicRNIS", query = "SELECT d FROM Draftreport d WHERE d.catSchoolMunicRNIS = :catSchoolMunicRNIS"),
+    @NamedQuery(name = "Draftreport.findByCatSchoolCommercRNIS", query = "SELECT d FROM Draftreport d WHERE d.catSchoolCommercRNIS = :catSchoolCommercRNIS"),
+    @NamedQuery(name = "Draftreport.findByCatSchoolItogRNIS", query = "SELECT d FROM Draftreport d WHERE d.catSchoolItogRNIS = :catSchoolItogRNIS"),
+    @NamedQuery(name = "Draftreport.findByCatGKHStateRNIS", query = "SELECT d FROM Draftreport d WHERE d.catGKHStateRNIS = :catGKHStateRNIS"),
+    @NamedQuery(name = "Draftreport.findByCatGKHMunicRNIS", query = "SELECT d FROM Draftreport d WHERE d.catGKHMunicRNIS = :catGKHMunicRNIS"),
+    @NamedQuery(name = "Draftreport.findByCatGKHCommercRNIS", query = "SELECT d FROM Draftreport d WHERE d.catGKHCommercRNIS = :catGKHCommercRNIS"),
+    @NamedQuery(name = "Draftreport.findByCatGKHItogRNIS", query = "SELECT d FROM Draftreport d WHERE d.catGKHItogRNIS = :catGKHItogRNIS"),
+    @NamedQuery(name = "Draftreport.findByCatDepartStateRNIS", query = "SELECT d FROM Draftreport d WHERE d.catDepartStateRNIS = :catDepartStateRNIS"),
+    @NamedQuery(name = "Draftreport.findByCatDepartMunicRNIS", query = "SELECT d FROM Draftreport d WHERE d.catDepartMunicRNIS = :catDepartMunicRNIS"),
+    @NamedQuery(name = "Draftreport.findByCatDepartCommercRNIS", query = "SELECT d FROM Draftreport d WHERE d.catDepartCommercRNIS = :catDepartCommercRNIS"),
+    @NamedQuery(name = "Draftreport.findByCatDepartItogRNIS", query = "SELECT d FROM Draftreport d WHERE d.catDepartItogRNIS = :catDepartItogRNIS"),
+    @NamedQuery(name = "Draftreport.findByCatM1StateOther", query = "SELECT d FROM Draftreport d WHERE d.catM1StateOther = :catM1StateOther"),
+    @NamedQuery(name = "Draftreport.findByCatM1MunicOther", query = "SELECT d FROM Draftreport d WHERE d.catM1MunicOther = :catM1MunicOther"),
+    @NamedQuery(name = "Draftreport.findByCatM1CommercOther", query = "SELECT d FROM Draftreport d WHERE d.catM1CommercOther = :catM1CommercOther"),
+    @NamedQuery(name = "Draftreport.findByCatM1ItogOther", query = "SELECT d FROM Draftreport d WHERE d.catM1ItogOther = :catM1ItogOther"),
+    @NamedQuery(name = "Draftreport.findByCatM2M3StateOther", query = "SELECT d FROM Draftreport d WHERE d.catM2M3StateOther = :catM2M3StateOther"),
+    @NamedQuery(name = "Draftreport.findByCatM2M3MunicOther", query = "SELECT d FROM Draftreport d WHERE d.catM2M3MunicOther = :catM2M3MunicOther"),
+    @NamedQuery(name = "Draftreport.findByCatM2M3CommercOther", query = "SELECT d FROM Draftreport d WHERE d.catM2M3CommercOther = :catM2M3CommercOther"),
+    @NamedQuery(name = "Draftreport.findByCatM2M3ItogOther", query = "SELECT d FROM Draftreport d WHERE d.catM2M3ItogOther = :catM2M3ItogOther"),
+    @NamedQuery(name = "Draftreport.findByCatLargeStateOther", query = "SELECT d FROM Draftreport d WHERE d.catLargeStateOther = :catLargeStateOther"),
+    @NamedQuery(name = "Draftreport.findByCatLargeMunicOther", query = "SELECT d FROM Draftreport d WHERE d.catLargeMunicOther = :catLargeMunicOther"),
+    @NamedQuery(name = "Draftreport.findByCatLargeCommercOther", query = "SELECT d FROM Draftreport d WHERE d.catLargeCommercOther = :catLargeCommercOther"),
+    @NamedQuery(name = "Draftreport.findByCatLargeItogOther", query = "SELECT d FROM Draftreport d WHERE d.catLargeItogOther = :catLargeItogOther"),
+    @NamedQuery(name = "Draftreport.findByCatDangerStateOther", query = "SELECT d FROM Draftreport d WHERE d.catDangerStateOther = :catDangerStateOther"),
+    @NamedQuery(name = "Draftreport.findByCatDangerMunicOther", query = "SELECT d FROM Draftreport d WHERE d.catDangerMunicOther = :catDangerMunicOther"),
+    @NamedQuery(name = "Draftreport.findByCatDangerCommercOther", query = "SELECT d FROM Draftreport d WHERE d.catDangerCommercOther = :catDangerCommercOther"),
+    @NamedQuery(name = "Draftreport.findByCatDangerItogOther", query = "SELECT d FROM Draftreport d WHERE d.catDangerItogOther = :catDangerItogOther"),
+    @NamedQuery(name = "Draftreport.findByCatSchoolStateOther", query = "SELECT d FROM Draftreport d WHERE d.catSchoolStateOther = :catSchoolStateOther"),
+    @NamedQuery(name = "Draftreport.findByCatSchoolMunicOther", query = "SELECT d FROM Draftreport d WHERE d.catSchoolMunicOther = :catSchoolMunicOther"),
+    @NamedQuery(name = "Draftreport.findByCatSchoolCommercOther", query = "SELECT d FROM Draftreport d WHERE d.catSchoolCommercOther = :catSchoolCommercOther"),
+    @NamedQuery(name = "Draftreport.findByCatSchoolItogOther", query = "SELECT d FROM Draftreport d WHERE d.catSchoolItogOther = :catSchoolItogOther"),
+    @NamedQuery(name = "Draftreport.findByCatGKHStateOther", query = "SELECT d FROM Draftreport d WHERE d.catGKHStateOther = :catGKHStateOther"),
+    @NamedQuery(name = "Draftreport.findByCatGKHMunicOther", query = "SELECT d FROM Draftreport d WHERE d.catGKHMunicOther = :catGKHMunicOther"),
+    @NamedQuery(name = "Draftreport.findByCatGKHCommercOther", query = "SELECT d FROM Draftreport d WHERE d.catGKHCommercOther = :catGKHCommercOther"),
+    @NamedQuery(name = "Draftreport.findByCatGKHItogOther", query = "SELECT d FROM Draftreport d WHERE d.catGKHItogOther = :catGKHItogOther"),
+    @NamedQuery(name = "Draftreport.findByCatDepartStateOther", query = "SELECT d FROM Draftreport d WHERE d.catDepartStateOther = :catDepartStateOther"),
+    @NamedQuery(name = "Draftreport.findByCatDepartMunicOther", query = "SELECT d FROM Draftreport d WHERE d.catDepartMunicOther = :catDepartMunicOther"),
+    @NamedQuery(name = "Draftreport.findByCatDepartCommercOther", query = "SELECT d FROM Draftreport d WHERE d.catDepartCommercOther = :catDepartCommercOther"),
+    @NamedQuery(name = "Draftreport.findByCatDepartItogOther", query = "SELECT d FROM Draftreport d WHERE d.catDepartItogOther = :catDepartItogOther")})
+public class Draftreport implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @Column(name = "id_report")
-    public Integer idReport;
+    @Column(name = "id_draftreport")
+    private Integer idDraftreport;
     @Column(name = "date_report")
     @Temporal(TemporalType.TIMESTAMP)
     private Date dateReport;
@@ -382,18 +382,17 @@ public class Report implements Serializable {
     private Integer catDepartCommercOther;
     @Column(name = "catDepartItogOther")
     private Integer catDepartItogOther;
-    @JoinColumn(name = "user_report", referencedColumnName = "login")
+    @JoinColumn(name = "user_draftreport", referencedColumnName = "login")
     @ManyToOne(optional = false)
-    private Users userReport;
+    private Users userDraftreport;
 
-    public Report() {
+    public Draftreport() {
     }
 
-    public Report(Integer idReport) {
-        this.idReport = idReport;
+    public Draftreport(Integer idDraftreport) {
+        this.idDraftreport = idDraftreport;
     }
-    
-    public Report(Users userReport, Date dateReport,
+    public Draftreport(Users userReport, Date dateReport,
                         Integer icatM1StateAll, Integer icatM1StateEquip, Integer icatM1StateRNIS, Integer icatM1StateOther,
 			Integer icatM1MunicAll, Integer icatM1MunicEquip, Integer icatM1MunicRNIS, Integer icatM1MunicOther,
 			Integer icatM1CommercAll, Integer icatM1CommercEquip, Integer icatM1CommercRNIS, Integer icatM1CommercOther,
@@ -423,7 +422,7 @@ public class Report implements Serializable {
                         Integer icatDepartCommercAll, Integer icatDepartCommercEquip, Integer icatDepartCommercRNIS,  Integer icatDepartCommercOther 
 
     ) {
-        this.userReport = userReport;
+        this.userDraftreport = userReport;
         this.dateReport = dateReport;
         
         this.catM1StateAll = icatM1StateAll;
@@ -550,16 +549,17 @@ public class Report implements Serializable {
         this.catDepartItogOther = icatDepartStateOther + icatDepartMunicOther + icatDepartCommercOther;
         
     }
-    
-    public Integer getIdReport() {
-        return idReport;
+
+    public Integer getIdDraftreport() {
+        return idDraftreport;
     }
 
-    public void setIdReport(Integer idReport) {
-        this.idReport = idReport;
+    public void setIdDraftreport(Integer idDraftreport) {
+        this.idDraftreport = idDraftreport;
     }
 
     public String getDateReport() {
+//        return dateReport;
         try{
          return new SimpleDateFormat("dd.MM.yyyy").format(this.dateReport);         
        }catch (NullPointerException e){
@@ -1467,29 +1467,29 @@ public class Report implements Serializable {
         this.catDepartItogOther = catDepartItogOther;
     }
 
-    public Users getUserReport() {
-        return userReport;
+    public Users getUserDraftreport() {
+        return userDraftreport;
     }
 
-    public void setUserReport(Users userReport) {
-        this.userReport = userReport;
+    public void setUserDraftreport(Users userDraftreport) {
+        this.userDraftreport = userDraftreport;
     }
 
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (idReport != null ? idReport.hashCode() : 0);
+        hash += (idDraftreport != null ? idDraftreport.hashCode() : 0);
         return hash;
     }
 
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Report)) {
+        if (!(object instanceof Draftreport)) {
             return false;
         }
-        Report other = (Report) object;
-        if ((this.idReport == null && other.idReport != null) || (this.idReport != null && !this.idReport.equals(other.idReport))) {
+        Draftreport other = (Draftreport) object;
+        if ((this.idDraftreport == null && other.idDraftreport != null) || (this.idDraftreport != null && !this.idDraftreport.equals(other.idDraftreport))) {
             return false;
         }
         return true;
@@ -1497,7 +1497,7 @@ public class Report implements Serializable {
 
     @Override
     public String toString() {
-        return "Entity.Report[ idReport=" + idReport + " ]";
+        return "Entity.Draftreport[ idDraftreport=" + idDraftreport + " ]";
     }
     
 }
