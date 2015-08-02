@@ -1,0 +1,352 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entity-mappings xmlns="http://java.sun.com/xml/ns/persistence/orm"
+        version="2.0">
+
+        <entity class="com.vpomo.reportglonass.model.Report">
+                <table name="report" schema="" catalog="reportglonass"/>
+                <attributes>
+                        <id name="idReport">
+                                <column name="id_report" nullable="false" precision="10"/>
+                        </id>
+                        <basic name="dateReport">
+                                <column name="date_report" precision="19"/>
+                        </basic>
+                        <basic name="catM1StateAll">
+                                <column name="catM1StateAll" precision="10"/>
+                        </basic>
+                        <basic name="catM1MunicAll">
+                                <column name="catM1MunicAll" precision="10"/>
+                        </basic>
+                        <basic name="catM1CommercAll">
+                                <column name="catM1CommercAll" precision="10"/>
+                        </basic>
+                        <basic name="catM1ItogAll">
+                                <column name="catM1ItogAll" precision="10"/>
+                        </basic>
+                        <basic name="catM2M3StateAll">
+                                <column name="catM2M3StateAll" precision="10"/>
+                        </basic>
+                        <basic name="catM2M3MunicAll">
+                                <column name="catM2M3MunicAll" precision="10"/>
+                        </basic>
+                        <basic name="catM2M3CommercAll">
+                                <column name="catM2M3CommercAll" precision="10"/>
+                        </basic>
+                        <basic name="catM2M3ItogAll">
+                                <column name="catM2M3ItogAll" precision="10"/>
+                        </basic>
+                        <basic name="catLargeStateAll">
+                                <column name="catLargeStateAll" precision="10"/>
+                        </basic>
+                        <basic name="catLargeMunicAll">
+                                <column name="catLargeMunicAll" precision="10"/>
+                        </basic>
+                        <basic name="catLargeCommercAll">
+                                <column name="catLargeCommercAll" precision="10"/>
+                        </basic>
+                        <basic name="catLargeItogAll">
+                                <column name="catLargeItogAll" precision="10"/>
+                        </basic>
+                        <basic name="catDangerStateAll">
+                                <column name="catDangerStateAll" precision="10"/>
+                        </basic>
+                        <basic name="catDangerMunicAll">
+                                <column name="catDangerMunicAll" precision="10"/>
+                        </basic>
+                        <basic name="catDangerCommercAll">
+                                <column name="catDangerCommercAll" precision="10"/>
+                        </basic>
+                        <basic name="catDangerItogAll">
+                                <column name="catDangerItogAll" precision="10"/>
+                        </basic>
+                        <basic name="catSchoolStateAll">
+                                <column name="catSchoolStateAll" precision="10"/>
+                        </basic>
+                        <basic name="catSchoolMunicAll">
+                                <column name="catSchoolMunicAll" precision="10"/>
+                        </basic>
+                        <basic name="catSchoolCommercAll">
+                                <column name="catSchoolCommercAll" precision="10"/>
+                        </basic>
+                        <basic name="catSchoolItogAll">
+                                <column name="catSchoolItogAll" precision="10"/>
+                        </basic>
+                        <basic name="catGkhStateAll">
+                                <column name="catGKHStateAll" precision="10"/>
+                        </basic>
+                        <basic name="catGkhMunicAll">
+                                <column name="catGKHMunicAll" precision="10"/>
+                        </basic>
+                        <basic name="catGkhCommercAll">
+                                <column name="catGKHCommercAll" precision="10"/>
+                        </basic>
+                        <basic name="catGkhItogAll">
+                                <column name="catGKHItogAll" precision="10"/>
+                        </basic>
+                        <basic name="catDepartStateAll">
+                                <column name="catDepartStateAll" precision="10"/>
+                        </basic>
+                        <basic name="catDepartMunicAll">
+                                <column name="catDepartMunicAll" precision="10"/>
+                        </basic>
+                        <basic name="catDepartCommercAll">
+                                <column name="catDepartCommercAll" precision="10"/>
+                        </basic>
+                        <basic name="catDepartItogAll">
+                                <column name="catDepartItogAll" precision="10"/>
+                        </basic>
+                        <basic name="catM1StateEquip">
+                                <column name="catM1StateEquip" precision="10"/>
+                        </basic>
+                        <basic name="catM1MunicEquip">
+                                <column name="catM1MunicEquip" precision="10"/>
+                        </basic>
+                        <basic name="catM1CommercEquip">
+                                <column name="catM1CommercEquip" precision="10"/>
+                        </basic>
+                        <basic name="catM1ItogEquip">
+                                <column name="catM1ItogEquip" precision="10"/>
+                        </basic>
+                        <basic name="catM2M3StateEquip">
+                                <column name="catM2M3StateEquip" precision="10"/>
+                        </basic>
+                        <basic name="catM2M3MunicEquip">
+                                <column name="catM2M3MunicEquip" precision="10"/>
+                        </basic>
+                        <basic name="catM2M3CommercEquip">
+                                <column name="catM2M3CommercEquip" precision="10"/>
+                        </basic>
+                        <basic name="catM2M3ItogEquip">
+                                <column name="catM2M3ItogEquip" precision="10"/>
+                        </basic>
+                        <basic name="catLargeStateEquip">
+                                <column name="catLargeStateEquip" precision="10"/>
+                        </basic>
+                        <basic name="catLargeMunicEquip">
+                                <column name="catLargeMunicEquip" precision="10"/>
+                        </basic>
+                        <basic name="catLargeCommercEquip">
+                                <column name="catLargeCommercEquip" precision="10"/>
+                        </basic>
+                        <basic name="catLargeItogEquip">
+                                <column name="catLargeItogEquip" precision="10"/>
+                        </basic>
+                        <basic name="catDangerStateEquip">
+                                <column name="catDangerStateEquip" precision="10"/>
+                        </basic>
+                        <basic name="catDangerMunicEquip">
+                                <column name="catDangerMunicEquip" precision="10"/>
+                        </basic>
+                        <basic name="catDangerCommercEquip">
+                                <column name="catDangerCommercEquip" precision="10"/>
+                        </basic>
+                        <basic name="catDangerItogEquip">
+                                <column name="catDangerItogEquip" precision="10"/>
+                        </basic>
+                        <basic name="catSchoolStateEquip">
+                                <column name="catSchoolStateEquip" precision="10"/>
+                        </basic>
+                        <basic name="catSchoolMunicEquip">
+                                <column name="catSchoolMunicEquip" precision="10"/>
+                        </basic>
+                        <basic name="catSchoolCommercEquip">
+                                <column name="catSchoolCommercEquip" precision="10"/>
+                        </basic>
+                        <basic name="catSchoolItogEquip">
+                                <column name="catSchoolItogEquip" precision="10"/>
+                        </basic>
+                        <basic name="catGkhStateEquip">
+                                <column name="catGKHStateEquip" precision="10"/>
+                        </basic>
+                        <basic name="catGkhMunicEquip">
+                                <column name="catGKHMunicEquip" precision="10"/>
+                        </basic>
+                        <basic name="catGkhCommercEquip">
+                                <column name="catGKHCommercEquip" precision="10"/>
+                        </basic>
+                        <basic name="catGkhItogEquip">
+                                <column name="catGKHItogEquip" precision="10"/>
+                        </basic>
+                        <basic name="catDepartStateEquip">
+                                <column name="catDepartStateEquip" precision="10"/>
+                        </basic>
+                        <basic name="catDepartMunicEquip">
+                                <column name="catDepartMunicEquip" precision="10"/>
+                        </basic>
+                        <basic name="catDepartCommercEquip">
+                                <column name="catDepartCommercEquip" precision="10"/>
+                        </basic>
+                        <basic name="catDepartItogEquip">
+                                <column name="catDepartItogEquip" precision="10"/>
+                        </basic>
+                        <basic name="catM1StateRnis">
+                                <column name="catM1StateRNIS" precision="10"/>
+                        </basic>
+                        <basic name="catM1MunicRnis">
+                                <column name="catM1MunicRNIS" precision="10"/>
+                        </basic>
+                        <basic name="catM1CommercRnis">
+                                <column name="catM1CommercRNIS" precision="10"/>
+                        </basic>
+                        <basic name="catM1ItogRnis">
+                                <column name="catM1ItogRNIS" precision="10"/>
+                        </basic>
+                        <basic name="catM2M3StateRnis">
+                                <column name="catM2M3StateRNIS" precision="10"/>
+                        </basic>
+                        <basic name="catM2M3MunicRnis">
+                                <column name="catM2M3MunicRNIS" precision="10"/>
+                        </basic>
+                        <basic name="catM2M3CommercRnis">
+                                <column name="catM2M3CommercRNIS" precision="10"/>
+                        </basic>
+                        <basic name="catM2M3ItogRnis">
+                                <column name="catM2M3ItogRNIS" precision="10"/>
+                        </basic>
+                        <basic name="catLargeStateRnis">
+                                <column name="catLargeStateRNIS" precision="10"/>
+                        </basic>
+                        <basic name="catLargeMunicRnis">
+                                <column name="catLargeMunicRNIS" precision="10"/>
+                        </basic>
+                        <basic name="catLargeCommercRnis">
+                                <column name="catLargeCommercRNIS" precision="10"/>
+                        </basic>
+                        <basic name="catLargeItogRnis">
+                                <column name="catLargeItogRNIS" precision="10"/>
+                        </basic>
+                        <basic name="catDangerStateRnis">
+                                <column name="catDangerStateRNIS" precision="10"/>
+                        </basic>
+                        <basic name="catDangerMunicRnis">
+                                <column name="catDangerMunicRNIS" precision="10"/>
+                        </basic>
+                        <basic name="catDangerCommercRnis">
+                                <column name="catDangerCommercRNIS" precision="10"/>
+                        </basic>
+                        <basic name="catDangerItogRnis">
+                                <column name="catDangerItogRNIS" precision="10"/>
+                        </basic>
+                        <basic name="catSchoolStateRnis">
+                                <column name="catSchoolStateRNIS" precision="10"/>
+                        </basic>
+                        <basic name="catSchoolMunicRnis">
+                                <column name="catSchoolMunicRNIS" precision="10"/>
+                        </basic>
+                        <basic name="catSchoolCommercRnis">
+                                <column name="catSchoolCommercRNIS" precision="10"/>
+                        </basic>
+                        <basic name="catSchoolItogRnis">
+                                <column name="catSchoolItogRNIS" precision="10"/>
+                        </basic>
+                        <basic name="catGkhStateRnis">
+                                <column name="catGKHStateRNIS" precision="10"/>
+                        </basic>
+                        <basic name="catGkhMunicRnis">
+                                <column name="catGKHMunicRNIS" precision="10"/>
+                        </basic>
+                        <basic name="catGkhCommercRnis">
+                                <column name="catGKHCommercRNIS" precision="10"/>
+                        </basic>
+                        <basic name="catGkhItogRnis">
+                                <column name="catGKHItogRNIS" precision="10"/>
+                        </basic>
+                        <basic name="catDepartStateRnis">
+                                <column name="catDepartStateRNIS" precision="10"/>
+                        </basic>
+                        <basic name="catDepartMunicRnis">
+                                <column name="catDepartMunicRNIS" precision="10"/>
+                        </basic>
+                        <basic name="catDepartCommercRnis">
+                                <column name="catDepartCommercRNIS" precision="10"/>
+                        </basic>
+                        <basic name="catDepartItogRnis">
+                                <column name="catDepartItogRNIS" precision="10"/>
+                        </basic>
+                        <basic name="catM1StateOther">
+                                <column name="catM1StateOther" precision="10"/>
+                        </basic>
+                        <basic name="catM1MunicOther">
+                                <column name="catM1MunicOther" precision="10"/>
+                        </basic>
+                        <basic name="catM1CommercOther">
+                                <column name="catM1CommercOther" precision="10"/>
+                        </basic>
+                        <basic name="catM1ItogOther">
+                                <column name="catM1ItogOther" precision="10"/>
+                        </basic>
+                        <basic name="catM2M3StateOther">
+                                <column name="catM2M3StateOther" precision="10"/>
+                        </basic>
+                        <basic name="catM2M3MunicOther">
+                                <column name="catM2M3MunicOther" precision="10"/>
+                        </basic>
+                        <basic name="catM2M3CommercOther">
+                                <column name="catM2M3CommercOther" precision="10"/>
+                        </basic>
+                        <basic name="catM2M3ItogOther">
+                                <column name="catM2M3ItogOther" precision="10"/>
+                        </basic>
+                        <basic name="catLargeStateOther">
+                                <column name="catLargeStateOther" precision="10"/>
+                        </basic>
+                        <basic name="catLargeMunicOther">
+                                <column name="catLargeMunicOther" precision="10"/>
+                        </basic>
+                        <basic name="catLargeCommercOther">
+                                <column name="catLargeCommercOther" precision="10"/>
+                        </basic>
+                        <basic name="catLargeItogOther">
+                                <column name="catLargeItogOther" precision="10"/>
+                        </basic>
+                        <basic name="catDangerStateOther">
+                                <column name="catDangerStateOther" precision="10"/>
+                        </basic>
+                        <basic name="catDangerMunicOther">
+                                <column name="catDangerMunicOther" precision="10"/>
+                        </basic>
+                        <basic name="catDangerCommercOther">
+                                <column name="catDangerCommercOther" precision="10"/>
+                        </basic>
+                        <basic name="catDangerItogOther">
+                                <column name="catDangerItogOther" precision="10"/>
+                        </basic>
+                        <basic name="catSchoolStateOther">
+                                <column name="catSchoolStateOther" precision="10"/>
+                        </basic>
+                        <basic name="catSchoolMunicOther">
+                                <column name="catSchoolMunicOther" precision="10"/>
+                        </basic>
+                        <basic name="catSchoolCommercOther">
+                                <column name="catSchoolCommercOther" precision="10"/>
+                        </basic>
+                        <basic name="catSchoolItogOther">
+                                <column name="catSchoolItogOther" precision="10"/>
+                        </basic>
+                        <basic name="catGkhStateOther">
+                                <column name="catGKHStateOther" precision="10"/>
+                        </basic>
+                        <basic name="catGkhMunicOther">
+                                <column name="catGKHMunicOther" precision="10"/>
+                        </basic>
+                        <basic name="catGkhCommercOther">
+                                <column name="catGKHCommercOther" precision="10"/>
+                        </basic>
+                        <basic name="catGkhItogOther">
+                                <column name="catGKHItogOther" precision="10"/>
+                        </basic>
+                        <basic name="catDepartStateOther">
+                                <column name="catDepartStateOther" precision="10"/>
+                        </basic>
+                        <basic name="catDepartMunicOther">
+                                <column name="catDepartMunicOther" precision="10"/>
+                        </basic>
+                        <basic name="catDepartCommercOther">
+                                <column name="catDepartCommercOther" precision="10"/>
+                        </basic>
+                        <basic name="catDepartItogOther">
+                                <column name="catDepartItogOther" precision="10"/>
+                        </basic>
+                </attributes>
+        </entity>
+</entity-mappings>

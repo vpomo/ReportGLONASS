@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entity-mappings xmlns="http://java.sun.com/xml/ns/persistence/orm"
+        version="2.0">
+
+        <entity class="com.vpomo.reportglonass.model.LogUsers">
+                <table name="log_users" schema="" catalog="reportglonass"/>
+                <attributes>
+                        <id name="idLogUser">
+                                <column name="id_log_user" nullable="false" precision="10"/>
+                        </id>
+                        <basic name="dateLogin">
+                                <column name="date_login" nullable="false" precision="19"/>
+                        </basic>
+                        <basic name="actionLog">
+                                <column name="action_log" nullable="false" length="50"/>
+                        </basic>
+                </attributes>
+        </entity>
+</entity-mappings>

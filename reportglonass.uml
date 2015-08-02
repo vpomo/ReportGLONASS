@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>DATABASE</ID>
+  <OriginalElement>c2b55375-dd04-465d-aeb9-33e6f2922918</OriginalElement>
+  <nodes>
+    <node x="2451.0" y="1434.0">c2b55375-dd04-465d-aeb9-33e6f2922918.table:reportglonass.log_users</node>
+    <node x="2425.5" y="0.0">c2b55375-dd04-465d-aeb9-33e6f2922918.table:reportglonass.users</node>
+    <node x="2664.0" y="213.0">c2b55375-dd04-465d-aeb9-33e6f2922918.table:reportglonass.report</node>
+    <node x="0.0" y="213.0">c2b55375-dd04-465d-aeb9-33e6f2922918.table:reportglonass.draftreport</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="c2b55375-dd04-465d-aeb9-33e6f2922918.table:reportglonass.report" target="c2b55375-dd04-465d-aeb9-33e6f2922918.table:reportglonass.users">
+      <point x="0.0" y="-1280.5" />
+      <point x="3865.5" y="188.0" />
+      <point x="2628.8333333333335" y="188.0" />
+      <point x="81.33333333333348" y="81.5" />
+    </edge>
+    <edge source="c2b55375-dd04-465d-aeb9-33e6f2922918.table:reportglonass.log_users" target="c2b55375-dd04-465d-aeb9-33e6f2922918.table:reportglonass.users">
+      <point x="0.0" y="-59.5" />
+      <point x="0.0" y="81.5" />
+    </edge>
+    <edge source="c2b55375-dd04-465d-aeb9-33e6f2922918.table:reportglonass.draftreport" target="c2b55375-dd04-465d-aeb9-33e6f2922918.table:reportglonass.users">
+      <point x="0.0" y="-1280.5" />
+      <point x="1215.5" y="188.0" />
+      <point x="2466.1666666666665" y="188.0" />
+      <point x="-81.33333333333348" y="81.5" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="1.0" x="2533.5" y="116.0" />
+  <SelectedNodes>
+    <node>c2b55375-dd04-465d-aeb9-33e6f2922918.table:reportglonass.users</node>
+  </SelectedNodes>
+  <Categories>
+    <Category>Key columns</Category>
+    <Category>Columns</Category>
+  </Categories>
+</Diagram>
+

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entity-mappings xmlns="http://java.sun.com/xml/ns/persistence/orm"
+        version="2.0">
+
+        <entity class="com.vpomo.reportglonass.model.Users">
+                <table name="users" schema="" catalog="reportglonass"/>
+                <attributes>
+                        <id name="login">
+                                <column name="login" nullable="false" length="10"/>
+                        </id>
+                        <basic name="password">
+                                <column name="password" nullable="false" length="20"/>
+                        </basic>
+                        <basic name="nameUser">
+                                <column name="name_user" nullable="false" length="60"/>
+                        </basic>
+                        <basic name="dateLastReport">
+                                <column name="date_last_report" nullable="false" precision="19"/>
+                        </basic>
+                        <basic name="groupUser">
+                                <column name="group_user" nullable="false" length="9"/>
+                        </basic>
+                        <basic name="enabled">
+                                <column name="enabled" length="2"/>
+                        </basic>
+                </attributes>
+        </entity>
+</entity-mappings>
