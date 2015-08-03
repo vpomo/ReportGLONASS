@@ -2,81 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="56325c6b-5f5e-4961-9e80-c87e36780ebc" name="Default" comment="">
-      <change type="DELETED" beforePath="D:\Java\WorkSpace\ReportGLONASS\build.xml" afterPath="" />
-      <change type="DELETED" beforePath="D:\Java\WorkSpace\ReportGLONASS\lib\CopyLibs\org-netbeans-modules-java-j2seproject-copylibstask.jar" afterPath="" />
-      <change type="DELETED" beforePath="D:\Java\WorkSpace\ReportGLONASS\lib\eclipselink\eclipselink.jar" afterPath="" />
-      <change type="DELETED" beforePath="D:\Java\WorkSpace\ReportGLONASS\lib\eclipselink\javax.persistence-2.1.0-doc.zip" afterPath="" />
-      <change type="DELETED" beforePath="D:\Java\WorkSpace\ReportGLONASS\lib\eclipselink\javax.persistence_2.1.0.v201304241213.jar" afterPath="" />
-      <change type="DELETED" beforePath="D:\Java\WorkSpace\ReportGLONASS\lib\eclipselink\org.eclipse.persistence.jpa.jpql_2.5.2.v20140319-9ad6abd.jar" afterPath="" />
-      <change type="DELETED" beforePath="D:\Java\WorkSpace\ReportGLONASS\lib\eclipselinkmodelgen\org.eclipse.persistence.jpa.modelgen_2.5.2.v20140319-9ad6abd.jar" afterPath="" />
-      <change type="DELETED" beforePath="D:\Java\WorkSpace\ReportGLONASS\lib\javaee-endorsed-api-6.0\javaee-doc-api.jar" afterPath="" />
-      <change type="DELETED" beforePath="D:\Java\WorkSpace\ReportGLONASS\lib\javaee-endorsed-api-6.0\javax.annotation.jar" afterPath="" />
-      <change type="DELETED" beforePath="D:\Java\WorkSpace\ReportGLONASS\lib\javaee-endorsed-api-6.0\jaxb-api-osgi.jar" afterPath="" />
-      <change type="DELETED" beforePath="D:\Java\WorkSpace\ReportGLONASS\lib\javaee-endorsed-api-6.0\webservices-api-osgi.jar" afterPath="" />
-      <change type="DELETED" beforePath="D:\Java\WorkSpace\ReportGLONASS\lib\jstl\javaee-doc-api.jar" afterPath="" />
-      <change type="DELETED" beforePath="D:\Java\WorkSpace\ReportGLONASS\lib\jstl\jstl-api.jar" afterPath="" />
-      <change type="DELETED" beforePath="D:\Java\WorkSpace\ReportGLONASS\lib\jstl\jstl-impl.jar" afterPath="" />
-      <change type="DELETED" beforePath="D:\Java\WorkSpace\ReportGLONASS\lib\mysql-connector-java-5.1.33-bin.jar" afterPath="" />
-      <change type="DELETED" beforePath="D:\Java\WorkSpace\ReportGLONASS\lib\nblibraries.properties" afterPath="" />
-      <change type="DELETED" beforePath="D:\Java\WorkSpace\ReportGLONASS\mysql\reportglonass.sql" afterPath="" />
-      <change type="DELETED" beforePath="D:\Java\WorkSpace\ReportGLONASS\nbproject\ant-deploy.xml" afterPath="" />
-      <change type="DELETED" beforePath="D:\Java\WorkSpace\ReportGLONASS\nbproject\build-impl.xml" afterPath="" />
-      <change type="DELETED" beforePath="D:\Java\WorkSpace\ReportGLONASS\nbproject\genfiles.properties" afterPath="" />
-      <change type="DELETED" beforePath="D:\Java\WorkSpace\ReportGLONASS\nbproject\private\private.properties" afterPath="" />
-      <change type="DELETED" beforePath="D:\Java\WorkSpace\ReportGLONASS\nbproject\private\private.xml" afterPath="" />
-      <change type="DELETED" beforePath="D:\Java\WorkSpace\ReportGLONASS\nbproject\private\profiler\configurations.xml" afterPath="" />
-      <change type="DELETED" beforePath="D:\Java\WorkSpace\ReportGLONASS\nbproject\project.properties" afterPath="" />
-      <change type="DELETED" beforePath="D:\Java\WorkSpace\ReportGLONASS\nbproject\project.xml" afterPath="" />
-      <change type="DELETED" beforePath="D:\Java\WorkSpace\ReportGLONASS\setup\glassfish-resources.xml" afterPath="" />
-      <change type="DELETED" beforePath="D:\Java\WorkSpace\ReportGLONASS\src\conf\MANIFEST.MF" afterPath="" />
-      <change type="DELETED" beforePath="D:\Java\WorkSpace\ReportGLONASS\src\conf\persistence.xml" afterPath="" />
-      <change type="DELETED" beforePath="D:\Java\WorkSpace\ReportGLONASS\src\java\Controller\addReportServlet.java" afterPath="" />
-      <change type="DELETED" beforePath="D:\Java\WorkSpace\ReportGLONASS\src\java\Controller\addUserServlet.java" afterPath="" />
-      <change type="DELETED" beforePath="D:\Java\WorkSpace\ReportGLONASS\src\java\Controller\commonPhormServlet.java" afterPath="" />
-      <change type="DELETED" beforePath="D:\Java\WorkSpace\ReportGLONASS\src\java\Controller\private_controller.java" afterPath="" />
-      <change type="DELETED" beforePath="D:\Java\WorkSpace\ReportGLONASS\src\java\Controller\reportPhormServlet.java" afterPath="" />
-      <change type="DELETED" beforePath="D:\Java\WorkSpace\ReportGLONASS\src\java\Controller\web_controller.java" afterPath="" />
-      <change type="DELETED" beforePath="D:\Java\WorkSpace\ReportGLONASS\src\java\Entity\Draftreport.java" afterPath="" />
-      <change type="DELETED" beforePath="D:\Java\WorkSpace\ReportGLONASS\src\java\Entity\LogUsers.java" afterPath="" />
-      <change type="DELETED" beforePath="D:\Java\WorkSpace\ReportGLONASS\src\java\Entity\Report.java" afterPath="" />
-      <change type="DELETED" beforePath="D:\Java\WorkSpace\ReportGLONASS\src\java\Entity\Users.java" afterPath="" />
-      <change type="DELETED" beforePath="D:\Java\WorkSpace\ReportGLONASS\src\java\Session\AbstractFacade.java" afterPath="" />
-      <change type="DELETED" beforePath="D:\Java\WorkSpace\ReportGLONASS\src\java\Session\DraftReportsManager.java" afterPath="" />
-      <change type="DELETED" beforePath="D:\Java\WorkSpace\ReportGLONASS\src\java\Session\LogUsersFacade.java" afterPath="" />
-      <change type="DELETED" beforePath="D:\Java\WorkSpace\ReportGLONASS\src\java\Session\LogsManager.java" afterPath="" />
-      <change type="DELETED" beforePath="D:\Java\WorkSpace\ReportGLONASS\src\java\Session\ReportFacade.java" afterPath="" />
-      <change type="DELETED" beforePath="D:\Java\WorkSpace\ReportGLONASS\src\java\Session\ReportsManager.java" afterPath="" />
-      <change type="DELETED" beforePath="D:\Java\WorkSpace\ReportGLONASS\src\java\Session\UsersFacade.java" afterPath="" />
-      <change type="DELETED" beforePath="D:\Java\WorkSpace\ReportGLONASS\src\java\Session\UsersManager.java" afterPath="" />
-      <change type="DELETED" beforePath="D:\Java\WorkSpace\ReportGLONASS\src\java\filter\web_filter.java" afterPath="" />
-      <change type="DELETED" beforePath="D:\Java\WorkSpace\ReportGLONASS\web\WEB-INF\administration\registration.jsp" afterPath="" />
-      <change type="DELETED" beforePath="D:\Java\WorkSpace\ReportGLONASS\web\WEB-INF\glassfish-web.xml" afterPath="" />
-      <change type="DELETED" beforePath="D:\Java\WorkSpace\ReportGLONASS\web\WEB-INF\jspf\footer.jspf" afterPath="" />
-      <change type="DELETED" beforePath="D:\Java\WorkSpace\ReportGLONASS\web\WEB-INF\jspf\header.jspf" afterPath="" />
-      <change type="DELETED" beforePath="D:\Java\WorkSpace\ReportGLONASS\web\WEB-INF\private\create_draft_report.jsp" afterPath="" />
-      <change type="DELETED" beforePath="D:\Java\WorkSpace\ReportGLONASS\web\WEB-INF\private\create_report.jsp" afterPath="" />
-      <change type="DELETED" beforePath="D:\Java\WorkSpace\ReportGLONASS\web\WEB-INF\private\error.jsp" afterPath="" />
-      <change type="DELETED" beforePath="D:\Java\WorkSpace\ReportGLONASS\web\WEB-INF\private\login.jsp" afterPath="" />
-      <change type="DELETED" beforePath="D:\Java\WorkSpace\ReportGLONASS\web\WEB-INF\views\common_phorm.jsp" afterPath="" />
-      <change type="DELETED" beforePath="D:\Java\WorkSpace\ReportGLONASS\web\WEB-INF\views\end_create_draftreport.jsp" afterPath="" />
-      <change type="DELETED" beforePath="D:\Java\WorkSpace\ReportGLONASS\web\WEB-INF\views\end_create_report.jsp" afterPath="" />
-      <change type="DELETED" beforePath="D:\Java\WorkSpace\ReportGLONASS\web\WEB-INF\views\error_user_login_first_report.jsp" afterPath="" />
-      <change type="DELETED" beforePath="D:\Java\WorkSpace\ReportGLONASS\web\WEB-INF\views\error_user_login_report.jsp" afterPath="" />
-      <change type="DELETED" beforePath="D:\Java\WorkSpace\ReportGLONASS\web\WEB-INF\views\logout_user.jsp" afterPath="" />
-      <change type="DELETED" beforePath="D:\Java\WorkSpace\ReportGLONASS\web\WEB-INF\views\report_phorm.jsp" afterPath="" />
-      <change type="DELETED" beforePath="D:\Java\WorkSpace\ReportGLONASS\web\WEB-INF\web.xml" afterPath="" />
-      <change type="DELETED" beforePath="D:\Java\WorkSpace\ReportGLONASS\web\css\jquery.datepick.css" afterPath="" />
-      <change type="DELETED" beforePath="D:\Java\WorkSpace\ReportGLONASS\web\css\style.css" afterPath="" />
-      <change type="DELETED" beforePath="D:\Java\WorkSpace\ReportGLONASS\web\image\3.jpg" afterPath="" />
-      <change type="DELETED" beforePath="D:\Java\WorkSpace\ReportGLONASS\web\image\fon.jpg" afterPath="" />
-      <change type="DELETED" beforePath="D:\Java\WorkSpace\ReportGLONASS\web\image\fon_big.jpg" afterPath="" />
-      <change type="DELETED" beforePath="D:\Java\WorkSpace\ReportGLONASS\web\image\glonass.png" afterPath="" />
-      <change type="DELETED" beforePath="D:\Java\WorkSpace\ReportGLONASS\web\index.jsp" afterPath="" />
-      <change type="DELETED" beforePath="D:\Java\WorkSpace\ReportGLONASS\web\js\jquery-2.1.1.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\Java\WorkSpace\ReportGLONASS\web\js\jquery.datepick-ru.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\Java\WorkSpace\ReportGLONASS\web\js\jquery.datepick.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\Java\WorkSpace\ReportGLONASS\web\js\jquery.plugin.js" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
+      <change type="DELETED" beforePath="D:\Java\workspace\ReportGLONASS\.idea\artifacts\ReportGLONASS_war_exploded.xml" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources.ids" afterPath="$PROJECT_DIR$/.idea/dataSources.ids" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/ReportGLONASS.iml" afterPath="$PROJECT_DIR$/.idea/ReportGLONASS.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources.xml" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="ReportGLONASS.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -120,87 +50,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="Users.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Users.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/vpomo/reportglonass/model/Users.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="71" column="30" selection-start-line="71" selection-start-column="30" selection-end-line="71" selection-end-column="30" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#589#590#0" expanded="true" />
-                <element signature="e#623#624#0" expanded="true" />
-                <element signature="e#1827#1828#0" expanded="true" />
-                <element signature="e#1864#1865#0" expanded="true" />
-                <element signature="e#1922#1923#0" expanded="true" />
-                <element signature="e#1974#1975#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="JpaUsersRepositoryImpl.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/vpomo/reportglonass/repository/jpa/JpaUsersRepositoryImpl.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.6936937">
-              <caret line="34" column="26" selection-start-line="34" selection-start-column="26" selection-end-line="34" selection-end-column="26" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="AbstractUsersServiceTests.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/java/com/vpomo/reportglonass/service/AbstractUsersServiceTests.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-1.8275862">
-              <caret line="106" column="9" selection-start-line="106" selection-start-column="9" selection-end-line="106" selection-end-column="9" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ReportRepository.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/vpomo/reportglonass/repository/ReportRepository.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="51" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="52" selection-end-column="0" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="JpaReportRepositoryImpl.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/vpomo/reportglonass/repository/jpa/JpaReportRepositoryImpl.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="19" column="7" selection-start-line="19" selection-start-column="7" selection-end-line="19" selection-end-column="7" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="UsersServiceImpl.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/vpomo/reportglonass/service/UsersServiceImpl.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="71" column="0" selection-start-line="71" selection-start-column="0" selection-end-line="71" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="UsersRepository.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/vpomo/reportglonass/repository/UsersRepository.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="15" column="59" selection-start-line="15" selection-start-column="31" selection-end-line="15" selection-end-column="59" />
+              <caret line="34" column="45" selection-start-line="34" selection-start-column="45" selection-end-line="34" selection-end-column="45" />
               <folding />
             </state>
           </provider>
@@ -219,6 +73,11 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GradleLocalSettings">
+    <option name="externalProjectsViewState">
+      <projects_view />
+    </option>
+  </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
@@ -234,11 +93,11 @@
         <option value="$PROJECT_DIR$/src/main/java/com/vpomo/reportglonass/repository/UsersRepository.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/vpomo/reportglonass/service/UsersService.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/vpomo/reportglonass/service/UsersServiceImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/vpomo/reportglonass/model/Users.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/vpomo/reportglonass/repository/jpa/JpaReportRepositoryImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/vpomo/reportglonass/repository/ReportRepository.java" />
         <option value="$PROJECT_DIR$/src/test/java/com/vpomo/reportglonass/service/AbstractUsersServiceTests.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/vpomo/reportglonass/repository/jpa/JpaUsersRepositoryImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/vpomo/reportglonass/model/Users.java" />
       </list>
     </option>
   </component>
@@ -322,10 +181,10 @@
     <order />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="10" />
+    <option name="x" value="260" />
     <option name="y" value="20" />
-    <option name="width" value="1260" />
-    <option name="height" value="944" />
+    <option name="width" value="1400" />
+    <option name="height" value="1000" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -371,10 +230,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scratches" />
-      <pane id="Scope">
-        <subPane subId="Problems" />
-      </pane>
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -406,18 +261,6 @@
               <option name="myItemId" value="src" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="test" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="service" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -460,100 +303,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="reportglonass" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ReportGLONASS" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ReportGLONASS" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="reportglonass" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="service" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ReportGLONASS" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ReportGLONASS" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="reportglonass" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="repository" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ReportGLONASS" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ReportGLONASS" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="reportglonass" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="repository" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="jpa" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -589,6 +338,10 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope">
+        <subPane subId="Problems" />
+      </pane>
+      <pane id="Scratches" />
       <pane id="PackagesPane" />
     </panes>
   </component>
@@ -621,6 +374,7 @@
   </component>
   <component name="RunManager" selected="JUnit.UsersServiceJpaTests">
     <configuration default="false" name="UsersServiceJpaTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <module name="ReportGLONASS" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
@@ -640,75 +394,6 @@
       <patterns />
       <method />
     </configuration>
-    <configuration default="true" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" ALTERNATIVE_JRE_ENABLED="false">
-      <deployment />
-      <server-settings>
-        <option name="BASE_DIRECTORY_NAME" value="_ReportGLONASS" />
-      </server-settings>
-      <predefined_log_file id="Tomcat" enabled="true" />
-      <predefined_log_file id="Tomcat Catalina" enabled="true" />
-      <predefined_log_file id="Tomcat Manager" enabled="false" />
-      <predefined_log_file id="Tomcat Host Manager" enabled="false" />
-      <predefined_log_file id="Tomcat Localhost Access" enabled="false" />
-      <RunnerSettings RunnerId="Debug">
-        <option name="DEBUG_PORT" value="57292" />
-        <option name="TRANSPORT" value="0" />
-        <option name="LOCAL" value="true" />
-      </RunnerSettings>
-      <RunnerSettings RunnerId="Run" />
-      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Debug">
-        <option name="USE_ENV_VARIABLES" value="true" />
-        <STARTUP>
-          <option name="USE_DEFAULT" value="true" />
-          <option name="SCRIPT" value="" />
-          <option name="VM_PARAMETERS" value="" />
-          <option name="PROGRAM_PARAMETERS" value="" />
-        </STARTUP>
-        <SHUTDOWN>
-          <option name="USE_DEFAULT" value="true" />
-          <option name="SCRIPT" value="" />
-          <option name="VM_PARAMETERS" value="" />
-          <option name="PROGRAM_PARAMETERS" value="" />
-        </SHUTDOWN>
-      </ConfigurationWrapper>
-      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Run">
-        <option name="USE_ENV_VARIABLES" value="true" />
-        <STARTUP>
-          <option name="USE_DEFAULT" value="true" />
-          <option name="SCRIPT" value="" />
-          <option name="VM_PARAMETERS" value="" />
-          <option name="PROGRAM_PARAMETERS" value="" />
-        </STARTUP>
-        <SHUTDOWN>
-          <option name="USE_DEFAULT" value="true" />
-          <option name="SCRIPT" value="" />
-          <option name="VM_PARAMETERS" value="" />
-          <option name="PROGRAM_PARAMETERS" value="" />
-        </SHUTDOWN>
-      </ConfigurationWrapper>
-      <method />
-    </configuration>
-    <configuration default="true" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Remote" ALTERNATIVE_JRE_ENABLED="false">
-      <option name="LOCAL" value="false" />
-      <deployment />
-      <server-settings>
-        <data>
-          <option name="transportHostId" />
-          <host-id />
-        </data>
-      </server-settings>
-      <predefined_log_file id="Tomcat" enabled="true" />
-      <predefined_log_file id="TOMCAT_LOCALHOST_LOG_ID" enabled="true" />
-      <RunnerSettings RunnerId="Debug">
-        <option name="DEBUG_PORT" value="57295" />
-        <option name="TRANSPORT" value="0" />
-        <option name="LOCAL" value="false" />
-      </RunnerSettings>
-      <RunnerSettings RunnerId="Run" />
-      <ConfigurationWrapper RunnerId="Debug" />
-      <ConfigurationWrapper RunnerId="Run" />
-      <method />
-    </configuration>
     <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" factoryName="Plugin">
       <module name="" />
       <option name="VM_PARAMETERS" value="-Xmx512m -Xms256m -XX:MaxPermSize=250m -ea" />
@@ -725,6 +410,7 @@
       <method />
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <option name="MAIN_CLASS_NAME" />
       <option name="VM_PARAMETERS" />
       <option name="PROGRAM_PARAMETERS" />
@@ -787,15 +473,6 @@
       <option name="trusted" value="true" />
       <method />
     </configuration>
-    <configuration default="true" type="GrailsRunConfigurationType" factoryName="Grails">
-      <module name="" />
-      <setting name="vmparams" value="" />
-      <setting name="cmdLine" value="run-app" />
-      <setting name="depsClasspath" value="false" />
-      <setting name="passParentEnv" value="true" />
-      <setting name="launchBrowser" value="false" />
-      <method />
-    </configuration>
     <configuration default="true" type="GroovyScriptRunConfiguration" factoryName="Groovy">
       <module name="" />
       <setting name="path" value="" />
@@ -806,6 +483,7 @@
       <method />
     </configuration>
     <configuration default="true" type="JUnit" factoryName="JUnit">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <module name="" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
@@ -826,6 +504,7 @@
       <method />
     </configuration>
     <configuration default="true" type="JarApplication" factoryName="JAR Application">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <envs />
       <method />
     </configuration>
@@ -863,8 +542,37 @@
       <method />
     </configuration>
     <configuration default="true" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <module name="" />
       <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="TestNG" factoryName="TestNG">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <module name="" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="SUITE_NAME" />
+      <option name="PACKAGE_NAME" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="GROUP_NAME" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="OUTPUT_DIRECTORY" />
+      <option name="ANNOTATION_TYPE" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <option name="USE_DEFAULT_REPORTERS" value="false" />
+      <option name="PROPERTIES_FILE" />
+      <envs />
+      <properties />
+      <listeners />
       <method />
     </configuration>
     <configuration default="true" type="XSLT" factoryName="XSLT">
@@ -906,14 +614,11 @@
         <item index="0" class="java.lang.String" itemvalue="JUnit.UsersServiceJpaTests" />
       </list>
     </recent_temporary>
-    <configuration name="&lt;template&gt;" type="TestNG" default="true" selected="false">
-      <option name="MAIN_CLASS_NAME" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-    </configuration>
   </component>
   <component name="ShelveChangesManager" show_recycled="false" />
+  <component name="SvnConfiguration">
+    <configuration>C:\Users\Pomogalov\AppData\Roaming\Subversion</configuration>
+  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="56325c6b-5f5e-4961-9e80-c87e36780ebc" name="Default" comment="" />
@@ -926,11 +631,14 @@
       <workItem from="1438353359468" duration="204000" />
       <workItem from="1438485280982" duration="5148000" />
       <workItem from="1438492948436" duration="18011000" />
+      <workItem from="1438559500145" duration="601000" />
+      <workItem from="1438560259505" duration="968000" />
+      <workItem from="1438583348457" duration="585000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="34171000" />
+    <option name="totallyTimeSpent" value="36325000" />
   </component>
   <component name="TodoView" selected-index="0">
     <todo-panel id="selected-file">
@@ -953,42 +661,42 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="10" y="20" width="1260" height="944" extended-state="1" />
-    <editor active="true" />
+    <frame x="260" y="20" width="1400" height="1000" extended-state="0" />
+    <editor active="false" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32881773" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="simpleUML" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32824427" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32824427" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32881773" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32824427" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32951653" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32716763" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32824427" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32881773" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Persistence" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24959083" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Bean Validation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3994911" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3994911" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32824427" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="simpleUML" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32824427" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32951653" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Bean Validation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -1001,6 +709,10 @@
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="test IntelliJ Idea" />
+    <option name="LAST_COMMIT_MESSAGE" value="test IntelliJ Idea" />
   </component>
   <component name="VssConfiguration">
     <option name="CLIENT_PATH" value="" />
@@ -1046,56 +758,32 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/com/vpomo/reportglonass/model/Users.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="52" column="21" selection-start-line="52" selection-start-column="21" selection-end-line="52" selection-end-column="21" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#589#590#0" expanded="true" />
-            <element signature="e#623#624#0" expanded="true" />
-            <element signature="e#1827#1828#0" expanded="true" />
-            <element signature="e#1864#1865#0" expanded="true" />
-            <element signature="e#1922#1923#0" expanded="true" />
-            <element signature="e#1974#1975#0" expanded="true" />
-          </folding>
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/vpomo/reportglonass/repository/jpa/JpaUsersRepositoryImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="25" column="95" selection-start-line="25" selection-start-column="95" selection-end-line="25" selection-end-column="95" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/vpomo/reportglonass/service/UsersService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="14" column="31" selection-start-line="14" selection-start-column="10" selection-end-line="14" selection-end-column="31" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/vpomo/reportglonass/service/UsersServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="33" column="15" selection-start-line="33" selection-start-column="15" selection-end-line="33" selection-end-column="15" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/vpomo/reportglonass/repository/UsersRepository.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/vpomo/reportglonass/model/Users.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/vpomo/reportglonass/model/Users.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/vpomo/reportglonass/model/Users.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="52" column="21" selection-start-line="52" selection-start-column="21" selection-end-line="52" selection-end-column="21" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1103,7 +791,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="318" column="8" selection-start-line="318" selection-start-column="8" selection-end-line="318" selection-end-column="8" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1135,7 +822,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1149,17 +835,14 @@
     <entry file="uml://DATABASE/24bac7da-84d6-40c0-8df6-ce3140083889.schema:reportglonass">
       <provider selected="true" editor-type-id="UmlEditorProvider">
         <state>
-          <ID>DATABASE</ID>
+          <ID />
           <OriginalElement>24bac7da-84d6-40c0-8df6-ce3140083889.schema:reportglonass</OriginalElement>
           <nodes />
           <notes />
           <edges />
           <settings layout="Hierarchic Group" zoom="1.0" x="252.0" y="245.0" />
           <SelectedNodes />
-          <Categories>
-            <Category>Columns</Category>
-            <Category>Key columns</Category>
-          </Categories>
+          <Categories />
           <SCOPE>All</SCOPE>
         </state>
       </provider>
@@ -1175,23 +858,20 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.275154">
           <caret line="334" column="8" selection-start-line="334" selection-start-column="8" selection-end-line="334" selection-end-column="8" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="uml://DATABASE/24bac7da-84d6-40c0-8df6-ce3140083889">
       <provider selected="true" editor-type-id="UmlEditorProvider">
         <state>
-          <ID>DATABASE</ID>
+          <ID />
           <OriginalElement>24bac7da-84d6-40c0-8df6-ce3140083889</OriginalElement>
           <nodes />
           <notes />
           <edges />
           <settings layout="Hierarchic Group" zoom="1.0" x="252.0" y="237.0" />
           <SelectedNodes />
-          <Categories>
-            <Category>Columns</Category>
-          </Categories>
+          <Categories />
           <SCOPE>All</SCOPE>
         </state>
       </provider>
@@ -1199,7 +879,7 @@
     <entry file="uml://Persistence/JavaeeElement:/3d0a254e/springjpa/ReportGLONASS/jpa/JPA/PersistenceModel">
       <provider selected="true" editor-type-id="UmlEditorProvider">
         <state>
-          <ID>Persistence</ID>
+          <ID />
           <OriginalElement>JavaeeElement:/3d0a254e/springjpa/ReportGLONASS/jpa/JPA/PersistenceModel</OriginalElement>
           <nodes>
             <node x="242.0" y="100.0">DraftReport#file://D:/Java/WorkSpace/ReportGLONASS/src/main/java/com/vpomo/reportglonass/model/DraftReport.java</node>
@@ -1239,11 +919,7 @@
           <SelectedNodes>
             <node>null#null</node>
           </SelectedNodes>
-          <Categories>
-            <Category>Embeddables</Category>
-            <Category>Properties</Category>
-            <Category>Superclasses</Category>
-          </Categories>
+          <Categories />
           <SCOPE>All</SCOPE>
         </state>
       </provider>
@@ -1256,122 +932,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/vpomo/reportglonass/model/Draftreport.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/vpomo/reportglonass/model/Draftreport.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/com/vpomo/reportglonass/service/UsersServiceJpaTests.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5743243">
-          <caret line="15" column="101" selection-start-line="15" selection-start-column="101" selection-end-line="15" selection-end-column="101" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/vpomo/reportglonass/service/UsersService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6126126">
-          <caret line="20" column="23" selection-start-line="19" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="dbDummy://dbtable:/3d0a254e/45ff096f-14c3-477d-b480-441585b25f37/reportglonass..users">
-      <provider editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/vpomo/reportglonass/model/Users.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="71" column="30" selection-start-line="71" selection-start-column="30" selection-end-line="71" selection-end-column="30" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#589#590#0" expanded="true" />
-            <element signature="e#623#624#0" expanded="true" />
-            <element signature="e#1827#1828#0" expanded="true" />
-            <element signature="e#1864#1865#0" expanded="true" />
-            <element signature="e#1922#1923#0" expanded="true" />
-            <element signature="e#1974#1975#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/vpomo/reportglonass/service/UsersServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="71" column="0" selection-start-line="71" selection-start-column="0" selection-end-line="71" selection-end-column="0" />
+          <caret line="34" column="45" selection-start-line="34" selection-start-column="45" selection-end-line="34" selection-end-column="45" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/vpomo/reportglonass/repository/UsersRepository.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="15" column="59" selection-start-line="15" selection-start-column="31" selection-end-line="15" selection-end-column="59" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/vpomo/reportglonass/repository/ReportRepository.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="51" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="52" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/vpomo/reportglonass/repository/jpa/JpaReportRepositoryImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="19" column="7" selection-start-line="19" selection-start-column="7" selection-end-line="19" selection-end-column="7" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/com/vpomo/reportglonass/service/AbstractUsersServiceTests.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-1.8275862">
-          <caret line="106" column="9" selection-start-line="106" selection-start-column="9" selection-end-line="106" selection-end-column="9" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/vpomo/reportglonass/repository/jpa/JpaUsersRepositoryImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6936937">
-          <caret line="34" column="26" selection-start-line="34" selection-start-column="26" selection-end-line="34" selection-end-column="26" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
