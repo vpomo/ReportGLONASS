@@ -4,6 +4,7 @@ import com.vpomo.reportglonass.model.Users;
 
 import java.util.Date;
 import java.util.List;
+
 import org.springframework.dao.DataAccessException;
 
 /**
@@ -13,12 +14,18 @@ import org.springframework.dao.DataAccessException;
  */
 
 public interface UsersRepository {
-    public List<Users> getAll()  throws DataAccessException;
-    public Users getUserLogin(String login) throws DataAccessException;
-    public Integer addUser(String login, String password, String passwordTwo, String names, String groupUser) throws DataAccessException;
-    public Users newUser(String login, String password, String names, Date dateLastReport, String groupUser) throws DataAccessException;
-    public void newDateUser(Users user, Date dateLastReport) throws DataAccessException;
-    public List<Users> getUsersGroup(String grUser) throws DataAccessException;
-    public void remove(String login) throws DataAccessException;
+    List<Users> getAll() throws DataAccessException;
+
+    Users getUserLogin(String login) throws DataAccessException;
+
+    Integer addUser(String login, String password, String passwordTwo, String names, String groupUser) throws DataAccessException;
+
+    Users newUser(String login, String password, String names, Date dateLastReport, String groupUser) throws DataAccessException;
+
+    void newDateUser(Users user, Date dateLastReport) throws DataAccessException;
+
+    List<Users> getUsersGroup(String grUser) throws DataAccessException;
+
+    void remove(String login) throws DataAccessException;
 
 }

@@ -1,25 +1,71 @@
 package com.vpomo.reportglonass.model;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-//import java.sql.Timestamp;
+import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import javax.persistence.Basic;
+import javax.persistence.Cacheable;
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
- * Created by Помогалов on 02.08.2015.
+ * Simple model users
+ *
+ * @author Pomogalov Vladimir
  */
+
 @Entity
-public class Users {
+@Cacheable(false)
+@Table(name = "users")
+@XmlRootElement
+public class Users implements Serializable {
+    private static final long serialVersionUID = 1L;
+    @Id
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 10)
+    @Column(name = "login")
     private String login;
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 20)
+    @Column(name = "password")
     private String password;
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 60)
+    @Column(name = "name_user")
     private String nameUser;
+    @Basic(optional = false)
+    @NotNull
+    @Column(name = "date_last_report")
+    @Temporal(TemporalType.TIMESTAMP)
     private Date dateLastReport;
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 9)
+    @Column(name = "group_user")
     private String groupUser;
-    private String enabled;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "userReport")
+    private List<Report> reportList;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "userLogin")
+    private List<LogUsers> logUsersList;
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "userDraftreport")
+    private List<DraftReport> draftreportList;
 
     public Users() {
     }
@@ -36,8 +82,6 @@ public class Users {
         this.groupUser = groupUser;
     }
 
-    @Id
-    @Column(name = "login", nullable = false, insertable = true, updatable = true, length = 10)
     public String getLogin() {
         return login;
     }
@@ -46,8 +90,6 @@ public class Users {
         this.login = login;
     }
 
-    @Basic
-    @Column(name = "password", nullable = false, insertable = true, updatable = true, length = 20)
     public String getPassword() {
         return password;
     }
@@ -56,8 +98,6 @@ public class Users {
         this.password = password;
     }
 
-    @Basic
-    @Column(name = "name_user", nullable = false, insertable = true, updatable = true, length = 60)
     public String getNameUser() {
         return nameUser;
     }
@@ -66,18 +106,18 @@ public class Users {
         this.nameUser = nameUser;
     }
 
-    @Basic
-    @Column(name = "date_last_report", nullable = false, insertable = true, updatable = true)
-    public Date getDateLastReport() {
-        return dateLastReport;
+    public String getDateLastReport() {
+        try {
+            return new SimpleDateFormat("dd.MM.yyyy").format(this.dateLastReport);
+        } catch (NullPointerException e) {
+            return "Дата не определена";
+        }
     }
 
     public void setDateLastReport(Date dateLastReport) {
         this.dateLastReport = dateLastReport;
     }
 
-    @Basic
-    @Column(name = "group_user", nullable = false, insertable = true, updatable = true, length = 9)
     public String getGroupUser() {
         return groupUser;
     }
@@ -86,42 +126,57 @@ public class Users {
         this.groupUser = groupUser;
     }
 
-    @Basic
-    @Column(name = "enabled", nullable = true, insertable = true, updatable = true, length = 2)
-    public String getEnabled() {
-        return enabled;
+    @XmlTransient
+    public List<DraftReport> getDraftreportList() {
+        return draftreportList;
     }
 
-    public void setEnabled(String enabled) {
-        this.enabled = enabled;
+    public void setDraftreportList(List<DraftReport> draftreportList) {
+        this.draftreportList = draftreportList;
+    }
+
+    @XmlTransient
+    public List<Report> getReportList() {
+        return reportList;
+    }
+
+    public void setReportList(List<Report> reportList) {
+        this.reportList = reportList;
+    }
+
+    @XmlTransient
+    public List<LogUsers> getLogUsersList() {
+        return logUsersList;
+    }
+
+    public void setLogUsersList(List<LogUsers> logUsersList) {
+        this.logUsersList = logUsersList;
+    }
+
+    
+    @Override
+    public int hashCode() {
+        int hash = 0;
+        hash += (login != null ? login.hashCode() : 0);
+        return hash;
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        Users users = (Users) o;
-
-        if (dateLastReport != null ? !dateLastReport.equals(users.dateLastReport) : users.dateLastReport != null)
+    public boolean equals(Object object) {
+        // TODO: Warning - this method won't work in the case the id fields are not set
+        if (!(object instanceof Users)) {
             return false;
-        if (enabled != null ? !enabled.equals(users.enabled) : users.enabled != null) return false;
-        if (groupUser != null ? !groupUser.equals(users.groupUser) : users.groupUser != null) return false;
-        if (login != null ? !login.equals(users.login) : users.login != null) return false;
-        if (nameUser != null ? !nameUser.equals(users.nameUser) : users.nameUser != null) return false;
-        if (password != null ? !password.equals(users.password) : users.password != null) return false;
-
+        }
+        Users other = (Users) object;
+        if ((this.login == null && other.login != null) || (this.login != null && !this.login.equals(other.login))) {
+            return false;
+        }
         return true;
     }
 
     @Override
-    public int hashCode() {
-        int result = login != null ? login.hashCode() : 0;
-        result = 31 * result + (password != null ? password.hashCode() : 0);
-        result = 31 * result + (nameUser != null ? nameUser.hashCode() : 0);
-        result = 31 * result + (dateLastReport != null ? dateLastReport.hashCode() : 0);
-        result = 31 * result + (groupUser != null ? groupUser.hashCode() : 0);
-        result = 31 * result + (enabled != null ? enabled.hashCode() : 0);
-        return result;
+    public String toString() {
+        return "Entity.Users[ login=" + login + " ]";
     }
+    
 }

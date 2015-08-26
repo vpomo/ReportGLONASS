@@ -39,7 +39,7 @@
 <section>
 <form id="draft_report" method="POST" action="addReportServlet">
 
-<c:forEach var="report" items="${draftreportToForm}">        
+<c:forEach var="report" items="${draftReportsToForm}">        
 
 <p style='font-style:bold; color:#191970; text-align:center'>Пожалуйста, выберите отчетную дату:  <input required size="6" value=${report.dateReport} type="text" name="dateReport" id="popupDatepicker"> </p>
 

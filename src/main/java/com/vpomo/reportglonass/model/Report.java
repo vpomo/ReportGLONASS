@@ -1,43 +1,460 @@
 package com.vpomo.reportglonass.model;
 
+import org.hibernate.annotations.Cache;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
+
+import java.io.Serializable;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import javax.persistence.Basic;
+import javax.persistence.Cacheable;
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import java.sql.Timestamp;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import javax.xml.bind.annotation.XmlRootElement;
 
 /**
- * Created by Помогалов on 02.08.2015.
+ * Simple model report
+ *
+ * @author Pomogalov Vladimir
  */
-@Entity
-public class Report {
-    private int idReport;
 
+@Entity
+@Cacheable(false)
+@Table(name = "report")
+@XmlRootElement
+public class Report implements Serializable {
+    private static final long serialVersionUID = 1L;
     @Id
-    @javax.persistence.Column(name = "id_report", nullable = false, insertable = true, updatable = true)
-    public int getIdReport() {
-        return idReport;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Basic(optional = false)
+    @Column(name = "id_report")
+    public Integer idReport;
+    @Column(name = "date_report")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date dateReport;
+    @Column(name = "catM1StateAll")
+    private Integer catM1StateAll;
+    @Column(name = "catM1MunicAll")
+    private Integer catM1MunicAll;
+    @Column(name = "catM1CommercAll")
+    private Integer catM1CommercAll;
+    @Column(name = "catM1ItogAll")
+    private Integer catM1ItogAll;
+    @Column(name = "catM2M3StateAll")
+    private Integer catM2M3StateAll;
+    @Column(name = "catM2M3MunicAll")
+    private Integer catM2M3MunicAll;
+    @Column(name = "catM2M3CommercAll")
+    private Integer catM2M3CommercAll;
+    @Column(name = "catM2M3ItogAll")
+    private Integer catM2M3ItogAll;
+    @Column(name = "catLargeStateAll")
+    private Integer catLargeStateAll;
+    @Column(name = "catLargeMunicAll")
+    private Integer catLargeMunicAll;
+    @Column(name = "catLargeCommercAll")
+    private Integer catLargeCommercAll;
+    @Column(name = "catLargeItogAll")
+    private Integer catLargeItogAll;
+    @Column(name = "catDangerStateAll")
+    private Integer catDangerStateAll;
+    @Column(name = "catDangerMunicAll")
+    private Integer catDangerMunicAll;
+    @Column(name = "catDangerCommercAll")
+    private Integer catDangerCommercAll;
+    @Column(name = "catDangerItogAll")
+    private Integer catDangerItogAll;
+    @Column(name = "catSchoolStateAll")
+    private Integer catSchoolStateAll;
+    @Column(name = "catSchoolMunicAll")
+    private Integer catSchoolMunicAll;
+    @Column(name = "catSchoolCommercAll")
+    private Integer catSchoolCommercAll;
+    @Column(name = "catSchoolItogAll")
+    private Integer catSchoolItogAll;
+    @Column(name = "catGKHStateAll")
+    private Integer catGKHStateAll;
+    @Column(name = "catGKHMunicAll")
+    private Integer catGKHMunicAll;
+    @Column(name = "catGKHCommercAll")
+    private Integer catGKHCommercAll;
+    @Column(name = "catGKHItogAll")
+    private Integer catGKHItogAll;
+    @Column(name = "catDepartStateAll")
+    private Integer catDepartStateAll;
+    @Column(name = "catDepartMunicAll")
+    private Integer catDepartMunicAll;
+    @Column(name = "catDepartCommercAll")
+    private Integer catDepartCommercAll;
+    @Column(name = "catDepartItogAll")
+    private Integer catDepartItogAll;
+    @Column(name = "catM1StateEquip")
+    private Integer catM1StateEquip;
+    @Column(name = "catM1MunicEquip")
+    private Integer catM1MunicEquip;
+    @Column(name = "catM1CommercEquip")
+    private Integer catM1CommercEquip;
+    @Column(name = "catM1ItogEquip")
+    private Integer catM1ItogEquip;
+    @Column(name = "catM2M3StateEquip")
+    private Integer catM2M3StateEquip;
+    @Column(name = "catM2M3MunicEquip")
+    private Integer catM2M3MunicEquip;
+    @Column(name = "catM2M3CommercEquip")
+    private Integer catM2M3CommercEquip;
+    @Column(name = "catM2M3ItogEquip")
+    private Integer catM2M3ItogEquip;
+    @Column(name = "catLargeStateEquip")
+    private Integer catLargeStateEquip;
+    @Column(name = "catLargeMunicEquip")
+    private Integer catLargeMunicEquip;
+    @Column(name = "catLargeCommercEquip")
+    private Integer catLargeCommercEquip;
+    @Column(name = "catLargeItogEquip")
+    private Integer catLargeItogEquip;
+    @Column(name = "catDangerStateEquip")
+    private Integer catDangerStateEquip;
+    @Column(name = "catDangerMunicEquip")
+    private Integer catDangerMunicEquip;
+    @Column(name = "catDangerCommercEquip")
+    private Integer catDangerCommercEquip;
+    @Column(name = "catDangerItogEquip")
+    private Integer catDangerItogEquip;
+    @Column(name = "catSchoolStateEquip")
+    private Integer catSchoolStateEquip;
+    @Column(name = "catSchoolMunicEquip")
+    private Integer catSchoolMunicEquip;
+    @Column(name = "catSchoolCommercEquip")
+    private Integer catSchoolCommercEquip;
+    @Column(name = "catSchoolItogEquip")
+    private Integer catSchoolItogEquip;
+    @Column(name = "catGKHStateEquip")
+    private Integer catGKHStateEquip;
+    @Column(name = "catGKHMunicEquip")
+    private Integer catGKHMunicEquip;
+    @Column(name = "catGKHCommercEquip")
+    private Integer catGKHCommercEquip;
+    @Column(name = "catGKHItogEquip")
+    private Integer catGKHItogEquip;
+    @Column(name = "catDepartStateEquip")
+    private Integer catDepartStateEquip;
+    @Column(name = "catDepartMunicEquip")
+    private Integer catDepartMunicEquip;
+    @Column(name = "catDepartCommercEquip")
+    private Integer catDepartCommercEquip;
+    @Column(name = "catDepartItogEquip")
+    private Integer catDepartItogEquip;
+    @Column(name = "catM1StateRNIS")
+    private Integer catM1StateRNIS;
+    @Column(name = "catM1MunicRNIS")
+    private Integer catM1MunicRNIS;
+    @Column(name = "catM1CommercRNIS")
+    private Integer catM1CommercRNIS;
+    @Column(name = "catM1ItogRNIS")
+    private Integer catM1ItogRNIS;
+    @Column(name = "catM2M3StateRNIS")
+    private Integer catM2M3StateRNIS;
+    @Column(name = "catM2M3MunicRNIS")
+    private Integer catM2M3MunicRNIS;
+    @Column(name = "catM2M3CommercRNIS")
+    private Integer catM2M3CommercRNIS;
+    @Column(name = "catM2M3ItogRNIS")
+    private Integer catM2M3ItogRNIS;
+    @Column(name = "catLargeStateRNIS")
+    private Integer catLargeStateRNIS;
+    @Column(name = "catLargeMunicRNIS")
+    private Integer catLargeMunicRNIS;
+    @Column(name = "catLargeCommercRNIS")
+    private Integer catLargeCommercRNIS;
+    @Column(name = "catLargeItogRNIS")
+    private Integer catLargeItogRNIS;
+    @Column(name = "catDangerStateRNIS")
+    private Integer catDangerStateRNIS;
+    @Column(name = "catDangerMunicRNIS")
+    private Integer catDangerMunicRNIS;
+    @Column(name = "catDangerCommercRNIS")
+    private Integer catDangerCommercRNIS;
+    @Column(name = "catDangerItogRNIS")
+    private Integer catDangerItogRNIS;
+    @Column(name = "catSchoolStateRNIS")
+    private Integer catSchoolStateRNIS;
+    @Column(name = "catSchoolMunicRNIS")
+    private Integer catSchoolMunicRNIS;
+    @Column(name = "catSchoolCommercRNIS")
+    private Integer catSchoolCommercRNIS;
+    @Column(name = "catSchoolItogRNIS")
+    private Integer catSchoolItogRNIS;
+    @Column(name = "catGKHStateRNIS")
+    private Integer catGKHStateRNIS;
+    @Column(name = "catGKHMunicRNIS")
+    private Integer catGKHMunicRNIS;
+    @Column(name = "catGKHCommercRNIS")
+    private Integer catGKHCommercRNIS;
+    @Column(name = "catGKHItogRNIS")
+    private Integer catGKHItogRNIS;
+    @Column(name = "catDepartStateRNIS")
+    private Integer catDepartStateRNIS;
+    @Column(name = "catDepartMunicRNIS")
+    private Integer catDepartMunicRNIS;
+    @Column(name = "catDepartCommercRNIS")
+    private Integer catDepartCommercRNIS;
+    @Column(name = "catDepartItogRNIS")
+    private Integer catDepartItogRNIS;
+    @Column(name = "catM1StateOther")
+    private Integer catM1StateOther;
+    @Column(name = "catM1MunicOther")
+    private Integer catM1MunicOther;
+    @Column(name = "catM1CommercOther")
+    private Integer catM1CommercOther;
+    @Column(name = "catM1ItogOther")
+    private Integer catM1ItogOther;
+    @Column(name = "catM2M3StateOther")
+    private Integer catM2M3StateOther;
+    @Column(name = "catM2M3MunicOther")
+    private Integer catM2M3MunicOther;
+    @Column(name = "catM2M3CommercOther")
+    private Integer catM2M3CommercOther;
+    @Column(name = "catM2M3ItogOther")
+    private Integer catM2M3ItogOther;
+    @Column(name = "catLargeStateOther")
+    private Integer catLargeStateOther;
+    @Column(name = "catLargeMunicOther")
+    private Integer catLargeMunicOther;
+    @Column(name = "catLargeCommercOther")
+    private Integer catLargeCommercOther;
+    @Column(name = "catLargeItogOther")
+    private Integer catLargeItogOther;
+    @Column(name = "catDangerStateOther")
+    private Integer catDangerStateOther;
+    @Column(name = "catDangerMunicOther")
+    private Integer catDangerMunicOther;
+    @Column(name = "catDangerCommercOther")
+    private Integer catDangerCommercOther;
+    @Column(name = "catDangerItogOther")
+    private Integer catDangerItogOther;
+    @Column(name = "catSchoolStateOther")
+    private Integer catSchoolStateOther;
+    @Column(name = "catSchoolMunicOther")
+    private Integer catSchoolMunicOther;
+    @Column(name = "catSchoolCommercOther")
+    private Integer catSchoolCommercOther;
+    @Column(name = "catSchoolItogOther")
+    private Integer catSchoolItogOther;
+    @Column(name = "catGKHStateOther")
+    private Integer catGKHStateOther;
+    @Column(name = "catGKHMunicOther")
+    private Integer catGKHMunicOther;
+    @Column(name = "catGKHCommercOther")
+    private Integer catGKHCommercOther;
+    @Column(name = "catGKHItogOther")
+    private Integer catGKHItogOther;
+    @Column(name = "catDepartStateOther")
+    private Integer catDepartStateOther;
+    @Column(name = "catDepartMunicOther")
+    private Integer catDepartMunicOther;
+    @Column(name = "catDepartCommercOther")
+    private Integer catDepartCommercOther;
+    @Column(name = "catDepartItogOther")
+    private Integer catDepartItogOther;
+    @JoinColumn(name = "user_report", referencedColumnName = "login")
+    @ManyToOne(optional = false)
+    private Users userReport;
+
+    public Report() {
     }
 
-    public void setIdReport(int idReport) {
+    public Report(Integer idReport) {
         this.idReport = idReport;
     }
 
-    private Timestamp dateReport;
+    public Report(Users userReport, Date dateReport,
+                  Integer icatM1StateAll, Integer icatM1StateEquip, Integer icatM1StateRNIS, Integer icatM1StateOther,
+                  Integer icatM1MunicAll, Integer icatM1MunicEquip, Integer icatM1MunicRNIS, Integer icatM1MunicOther,
+                  Integer icatM1CommercAll, Integer icatM1CommercEquip, Integer icatM1CommercRNIS, Integer icatM1CommercOther,
 
-    @Basic
-    @javax.persistence.Column(name = "date_report", nullable = true, insertable = true, updatable = true)
-    public Timestamp getDateReport() {
-        return dateReport;
+                  Integer icatM2M3StateAll, Integer icatM2M3StateEquip, Integer icatM2M3StateRNIS, Integer icatM2M3StateOther,
+                  Integer icatM2M3MunicAll, Integer icatM2M3MunicEquip, Integer icatM2M3MunicRNIS, Integer icatM2M3MunicOther,
+                  Integer icatM2M3CommercAll, Integer icatM2M3CommercEquip, Integer icatM2M3CommercRNIS, Integer icatM2M3CommercOther,
+
+                  Integer icatLargeStateAll, Integer icatLargeStateEquip, Integer icatLargeStateRNIS, Integer icatLargeStateOther,
+                  Integer icatLargeMunicAll, Integer icatLargeMunicEquip, Integer icatLargeMunicRNIS, Integer icatLargeMunicOther,
+                  Integer icatLargeCommercAll, Integer icatLargeCommercEquip, Integer icatLargeCommercRNIS, Integer icatLargeCommercOther,
+
+                  Integer icatDangerStateAll, Integer icatDangerStateEquip, Integer icatDangerStateRNIS, Integer icatDangerStateOther,
+                  Integer icatDangerMunicAll, Integer icatDangerMunicEquip, Integer icatDangerMunicRNIS, Integer icatDangerMunicOther,
+                  Integer icatDangerCommercAll, Integer icatDangerCommercEquip, Integer icatDangerCommercRNIS, Integer icatDangerCommercOther,
+
+                  Integer icatSchoolStateAll, Integer icatSchoolStateEquip, Integer icatSchoolStateRNIS, Integer icatSchoolStateOther,
+                  Integer icatSchoolMunicAll, Integer icatSchoolMunicEquip, Integer icatSchoolMunicRNIS, Integer icatSchoolMunicOther,
+                  Integer icatSchoolCommercAll, Integer icatSchoolCommercEquip, Integer icatSchoolCommercRNIS, Integer icatSchoolCommercOther,
+
+                  Integer icatGKHStateAll, Integer icatGKHStateEquip, Integer icatGKHStateRNIS, Integer icatGKHStateOther,
+                  Integer icatGKHMunicAll, Integer icatGKHMunicEquip, Integer icatGKHMunicRNIS, Integer icatGKHMunicOther,
+                  Integer icatGKHCommercAll, Integer icatGKHCommercEquip, Integer icatGKHCommercRNIS, Integer icatGKHCommercOther,
+
+                  Integer icatDepartStateAll, Integer icatDepartStateEquip, Integer icatDepartStateRNIS, Integer icatDepartStateOther,
+                  Integer icatDepartMunicAll, Integer icatDepartMunicEquip, Integer icatDepartMunicRNIS, Integer icatDepartMunicOther,
+                  Integer icatDepartCommercAll, Integer icatDepartCommercEquip, Integer icatDepartCommercRNIS, Integer icatDepartCommercOther
+
+    ) {
+        this.userReport = userReport;
+        this.dateReport = dateReport;
+
+        this.catM1StateAll = icatM1StateAll;
+        this.catM1StateEquip = icatM1StateEquip;
+        this.catM1StateRNIS = icatM1StateRNIS;
+        this.catM1StateOther = icatM1StateOther;
+        this.catM1MunicAll = icatM1MunicAll;
+        this.catM1MunicEquip = icatM1MunicEquip;
+        this.catM1MunicRNIS = icatM1MunicRNIS;
+        this.catM1MunicOther = icatM1MunicOther;
+        this.catM1CommercAll = icatM1CommercAll;
+        this.catM1CommercEquip = icatM1CommercEquip;
+        this.catM1CommercRNIS = icatM1CommercRNIS;
+        this.catM1CommercOther = icatM1CommercOther;
+
+        this.catM2M3StateAll = icatM2M3StateAll;
+        this.catM2M3StateEquip = icatM2M3StateEquip;
+        this.catM2M3StateRNIS = icatM2M3StateRNIS;
+        this.catM2M3StateOther = icatM2M3StateOther;
+        this.catM2M3MunicAll = icatM2M3MunicAll;
+        this.catM2M3MunicEquip = icatM2M3MunicEquip;
+        this.catM2M3MunicRNIS = icatM2M3MunicRNIS;
+        this.catM2M3MunicOther = icatM2M3MunicOther;
+        this.catM2M3CommercAll = icatM2M3CommercAll;
+        this.catM2M3CommercEquip = icatM2M3CommercEquip;
+        this.catM2M3CommercRNIS = icatM2M3CommercRNIS;
+        this.catM2M3CommercOther = icatM2M3CommercOther;
+
+        this.catLargeStateAll = icatLargeStateAll;
+        this.catLargeStateEquip = icatLargeStateEquip;
+        this.catLargeStateRNIS = icatLargeStateRNIS;
+        this.catLargeStateOther = icatLargeStateOther;
+        this.catLargeMunicAll = icatLargeMunicAll;
+        this.catLargeMunicEquip = icatLargeMunicEquip;
+        this.catLargeMunicRNIS = icatLargeMunicRNIS;
+        this.catLargeMunicOther = icatLargeMunicOther;
+        this.catLargeCommercAll = icatLargeCommercAll;
+        this.catLargeCommercEquip = icatLargeCommercEquip;
+        this.catLargeCommercRNIS = icatLargeCommercRNIS;
+        this.catLargeCommercOther = icatLargeCommercOther;
+
+        this.catDangerStateAll = icatDangerStateAll;
+        this.catDangerStateEquip = icatDangerStateEquip;
+        this.catDangerStateRNIS = icatDangerStateRNIS;
+        this.catDangerStateOther = icatDangerStateOther;
+        this.catDangerMunicAll = icatDangerMunicAll;
+        this.catDangerMunicEquip = icatDangerMunicEquip;
+        this.catDangerMunicRNIS = icatDangerMunicRNIS;
+        this.catDangerMunicOther = icatDangerMunicOther;
+        this.catDangerCommercAll = icatDangerCommercAll;
+        this.catDangerCommercEquip = icatDangerCommercEquip;
+        this.catDangerCommercRNIS = icatDangerCommercRNIS;
+        this.catDangerCommercOther = icatDangerCommercOther;
+
+        this.catSchoolStateAll = icatSchoolStateAll;
+        this.catSchoolStateEquip = icatSchoolStateEquip;
+        this.catSchoolStateRNIS = icatSchoolStateRNIS;
+        this.catSchoolStateOther = icatSchoolStateOther;
+        this.catSchoolMunicAll = icatSchoolMunicAll;
+        this.catSchoolMunicEquip = icatSchoolMunicEquip;
+        this.catSchoolMunicRNIS = icatSchoolMunicRNIS;
+        this.catSchoolMunicOther = icatSchoolMunicOther;
+        this.catSchoolCommercAll = icatSchoolCommercAll;
+        this.catSchoolCommercEquip = icatSchoolCommercEquip;
+        this.catSchoolCommercRNIS = icatSchoolCommercRNIS;
+        this.catSchoolCommercOther = icatSchoolCommercOther;
+
+        this.catGKHStateAll = icatGKHStateAll;
+        this.catGKHStateEquip = icatGKHStateEquip;
+        this.catGKHStateRNIS = icatGKHStateRNIS;
+        this.catGKHStateOther = icatGKHStateOther;
+        this.catGKHMunicAll = icatGKHMunicAll;
+        this.catGKHMunicEquip = icatGKHMunicEquip;
+        this.catGKHMunicRNIS = icatGKHMunicRNIS;
+        this.catGKHMunicOther = icatGKHMunicOther;
+        this.catGKHCommercAll = icatGKHCommercAll;
+        this.catGKHCommercEquip = icatGKHCommercEquip;
+        this.catGKHCommercRNIS = icatGKHCommercRNIS;
+        this.catGKHCommercOther = icatGKHCommercOther;
+
+        this.catDepartStateAll = icatDepartStateAll;
+        this.catDepartStateEquip = icatDepartStateEquip;
+        this.catDepartStateRNIS = icatDepartStateRNIS;
+        this.catDepartStateOther = icatDepartStateOther;
+        this.catDepartMunicAll = icatDepartMunicAll;
+        this.catDepartMunicEquip = icatDepartMunicEquip;
+        this.catDepartMunicRNIS = icatDepartMunicRNIS;
+        this.catDepartMunicOther = icatDepartMunicOther;
+        this.catDepartCommercAll = icatDepartCommercAll;
+        this.catDepartCommercEquip = icatDepartCommercEquip;
+        this.catDepartCommercRNIS = icatDepartCommercRNIS;
+        this.catDepartCommercOther = icatDepartCommercOther;
+
+        this.catM1ItogAll = icatM1StateAll + icatM1MunicAll + icatM1CommercAll;
+        this.catM2M3ItogAll = icatM2M3StateAll + icatM2M3MunicAll + icatM2M3CommercAll;
+        this.catLargeItogAll = icatLargeStateAll + icatLargeMunicAll + icatLargeCommercAll;
+        this.catDangerItogAll = icatDangerStateAll + icatDangerMunicAll + icatDangerCommercAll;
+        this.catSchoolItogAll = icatSchoolStateAll + icatSchoolMunicAll + icatSchoolCommercAll;
+        this.catGKHItogAll = icatGKHStateAll + icatGKHMunicAll + icatGKHCommercAll;
+        this.catDepartItogAll = icatDepartStateAll + icatDepartMunicAll + icatDepartCommercAll;
+
+        this.catM1ItogEquip = icatM1StateEquip + icatM1MunicEquip + icatM1CommercEquip;
+        this.catM2M3ItogEquip = icatM2M3StateEquip + icatM2M3MunicEquip + icatM2M3CommercEquip;
+        this.catLargeItogEquip = icatLargeStateEquip + icatLargeMunicEquip + icatLargeCommercEquip;
+        this.catDangerItogEquip = icatDangerStateEquip + icatDangerMunicEquip + icatDangerCommercEquip;
+        this.catSchoolItogEquip = icatSchoolStateEquip + icatSchoolMunicEquip + icatSchoolCommercEquip;
+        this.catGKHItogEquip = icatGKHStateEquip + icatGKHMunicEquip + icatGKHCommercEquip;
+        this.catDepartItogEquip = icatDepartStateEquip + icatDepartMunicEquip + icatDepartCommercEquip;
+
+        this.catM1ItogRNIS = icatM1StateRNIS + icatM1MunicRNIS + icatM1CommercRNIS;
+        this.catM2M3ItogRNIS = icatM2M3StateRNIS + icatM2M3MunicRNIS + icatM2M3CommercRNIS;
+        this.catLargeItogRNIS = icatLargeStateRNIS + icatLargeMunicRNIS + icatLargeCommercRNIS;
+        this.catDangerItogRNIS = icatDangerStateRNIS + icatDangerMunicRNIS + icatDangerCommercRNIS;
+        this.catSchoolItogRNIS = icatSchoolStateRNIS + icatSchoolMunicRNIS + icatSchoolCommercRNIS;
+        this.catGKHItogRNIS = icatGKHStateRNIS + icatGKHMunicRNIS + icatGKHCommercRNIS;
+        this.catDepartItogRNIS = icatDepartStateRNIS + icatDepartMunicRNIS + icatDepartCommercRNIS;
+
+        this.catM1ItogOther = icatM1StateOther + icatM1MunicOther + icatM1CommercOther;
+        this.catM2M3ItogOther = icatM2M3StateOther + icatM2M3MunicOther + icatM2M3CommercOther;
+        this.catLargeItogOther = icatLargeStateOther + icatLargeMunicOther + icatLargeCommercOther;
+        this.catDangerItogOther = icatDangerStateOther + icatDangerMunicOther + icatDangerCommercOther;
+        this.catSchoolItogOther = icatSchoolStateOther + icatSchoolMunicOther + icatSchoolCommercOther;
+        this.catGKHItogOther = icatGKHStateOther + icatGKHMunicOther + icatGKHCommercOther;
+        this.catDepartItogOther = icatDepartStateOther + icatDepartMunicOther + icatDepartCommercOther;
+
     }
 
-    public void setDateReport(Timestamp dateReport) {
+    public Integer getIdReport() {
+        return idReport;
+    }
+
+    public void setIdReport(Integer idReport) {
+        this.idReport = idReport;
+    }
+
+    public String getDateReport() {
+        try {
+            return new SimpleDateFormat("dd.MM.yyyy").format(this.dateReport);
+        } catch (NullPointerException e) {
+            return "Дата не определена";
+        }
+    }
+
+    public void setDateReport(Date dateReport) {
         this.dateReport = dateReport;
     }
 
-    private Integer catM1StateAll;
-
-    @Basic
-    @javax.persistence.Column(name = "catM1StateAll", nullable = true, insertable = true, updatable = true)
     public Integer getCatM1StateAll() {
         return catM1StateAll;
     }
@@ -46,10 +463,6 @@ public class Report {
         this.catM1StateAll = catM1StateAll;
     }
 
-    private Integer catM1MunicAll;
-
-    @Basic
-    @javax.persistence.Column(name = "catM1MunicAll", nullable = true, insertable = true, updatable = true)
     public Integer getCatM1MunicAll() {
         return catM1MunicAll;
     }
@@ -58,10 +471,6 @@ public class Report {
         this.catM1MunicAll = catM1MunicAll;
     }
 
-    private Integer catM1CommercAll;
-
-    @Basic
-    @javax.persistence.Column(name = "catM1CommercAll", nullable = true, insertable = true, updatable = true)
     public Integer getCatM1CommercAll() {
         return catM1CommercAll;
     }
@@ -70,10 +479,6 @@ public class Report {
         this.catM1CommercAll = catM1CommercAll;
     }
 
-    private Integer catM1ItogAll;
-
-    @Basic
-    @javax.persistence.Column(name = "catM1ItogAll", nullable = true, insertable = true, updatable = true)
     public Integer getCatM1ItogAll() {
         return catM1ItogAll;
     }
@@ -82,10 +487,6 @@ public class Report {
         this.catM1ItogAll = catM1ItogAll;
     }
 
-    private Integer catM2M3StateAll;
-
-    @Basic
-    @javax.persistence.Column(name = "catM2M3StateAll", nullable = true, insertable = true, updatable = true)
     public Integer getCatM2M3StateAll() {
         return catM2M3StateAll;
     }
@@ -94,10 +495,6 @@ public class Report {
         this.catM2M3StateAll = catM2M3StateAll;
     }
 
-    private Integer catM2M3MunicAll;
-
-    @Basic
-    @javax.persistence.Column(name = "catM2M3MunicAll", nullable = true, insertable = true, updatable = true)
     public Integer getCatM2M3MunicAll() {
         return catM2M3MunicAll;
     }
@@ -106,10 +503,6 @@ public class Report {
         this.catM2M3MunicAll = catM2M3MunicAll;
     }
 
-    private Integer catM2M3CommercAll;
-
-    @Basic
-    @javax.persistence.Column(name = "catM2M3CommercAll", nullable = true, insertable = true, updatable = true)
     public Integer getCatM2M3CommercAll() {
         return catM2M3CommercAll;
     }
@@ -118,10 +511,6 @@ public class Report {
         this.catM2M3CommercAll = catM2M3CommercAll;
     }
 
-    private Integer catM2M3ItogAll;
-
-    @Basic
-    @javax.persistence.Column(name = "catM2M3ItogAll", nullable = true, insertable = true, updatable = true)
     public Integer getCatM2M3ItogAll() {
         return catM2M3ItogAll;
     }
@@ -130,10 +519,6 @@ public class Report {
         this.catM2M3ItogAll = catM2M3ItogAll;
     }
 
-    private Integer catLargeStateAll;
-
-    @Basic
-    @javax.persistence.Column(name = "catLargeStateAll", nullable = true, insertable = true, updatable = true)
     public Integer getCatLargeStateAll() {
         return catLargeStateAll;
     }
@@ -142,10 +527,6 @@ public class Report {
         this.catLargeStateAll = catLargeStateAll;
     }
 
-    private Integer catLargeMunicAll;
-
-    @Basic
-    @javax.persistence.Column(name = "catLargeMunicAll", nullable = true, insertable = true, updatable = true)
     public Integer getCatLargeMunicAll() {
         return catLargeMunicAll;
     }
@@ -154,10 +535,6 @@ public class Report {
         this.catLargeMunicAll = catLargeMunicAll;
     }
 
-    private Integer catLargeCommercAll;
-
-    @Basic
-    @javax.persistence.Column(name = "catLargeCommercAll", nullable = true, insertable = true, updatable = true)
     public Integer getCatLargeCommercAll() {
         return catLargeCommercAll;
     }
@@ -166,10 +543,6 @@ public class Report {
         this.catLargeCommercAll = catLargeCommercAll;
     }
 
-    private Integer catLargeItogAll;
-
-    @Basic
-    @javax.persistence.Column(name = "catLargeItogAll", nullable = true, insertable = true, updatable = true)
     public Integer getCatLargeItogAll() {
         return catLargeItogAll;
     }
@@ -178,10 +551,6 @@ public class Report {
         this.catLargeItogAll = catLargeItogAll;
     }
 
-    private Integer catDangerStateAll;
-
-    @Basic
-    @javax.persistence.Column(name = "catDangerStateAll", nullable = true, insertable = true, updatable = true)
     public Integer getCatDangerStateAll() {
         return catDangerStateAll;
     }
@@ -190,10 +559,6 @@ public class Report {
         this.catDangerStateAll = catDangerStateAll;
     }
 
-    private Integer catDangerMunicAll;
-
-    @Basic
-    @javax.persistence.Column(name = "catDangerMunicAll", nullable = true, insertable = true, updatable = true)
     public Integer getCatDangerMunicAll() {
         return catDangerMunicAll;
     }
@@ -202,10 +567,6 @@ public class Report {
         this.catDangerMunicAll = catDangerMunicAll;
     }
 
-    private Integer catDangerCommercAll;
-
-    @Basic
-    @javax.persistence.Column(name = "catDangerCommercAll", nullable = true, insertable = true, updatable = true)
     public Integer getCatDangerCommercAll() {
         return catDangerCommercAll;
     }
@@ -214,10 +575,6 @@ public class Report {
         this.catDangerCommercAll = catDangerCommercAll;
     }
 
-    private Integer catDangerItogAll;
-
-    @Basic
-    @javax.persistence.Column(name = "catDangerItogAll", nullable = true, insertable = true, updatable = true)
     public Integer getCatDangerItogAll() {
         return catDangerItogAll;
     }
@@ -226,10 +583,6 @@ public class Report {
         this.catDangerItogAll = catDangerItogAll;
     }
 
-    private Integer catSchoolStateAll;
-
-    @Basic
-    @javax.persistence.Column(name = "catSchoolStateAll", nullable = true, insertable = true, updatable = true)
     public Integer getCatSchoolStateAll() {
         return catSchoolStateAll;
     }
@@ -238,10 +591,6 @@ public class Report {
         this.catSchoolStateAll = catSchoolStateAll;
     }
 
-    private Integer catSchoolMunicAll;
-
-    @Basic
-    @javax.persistence.Column(name = "catSchoolMunicAll", nullable = true, insertable = true, updatable = true)
     public Integer getCatSchoolMunicAll() {
         return catSchoolMunicAll;
     }
@@ -250,10 +599,6 @@ public class Report {
         this.catSchoolMunicAll = catSchoolMunicAll;
     }
 
-    private Integer catSchoolCommercAll;
-
-    @Basic
-    @javax.persistence.Column(name = "catSchoolCommercAll", nullable = true, insertable = true, updatable = true)
     public Integer getCatSchoolCommercAll() {
         return catSchoolCommercAll;
     }
@@ -262,10 +607,6 @@ public class Report {
         this.catSchoolCommercAll = catSchoolCommercAll;
     }
 
-    private Integer catSchoolItogAll;
-
-    @Basic
-    @javax.persistence.Column(name = "catSchoolItogAll", nullable = true, insertable = true, updatable = true)
     public Integer getCatSchoolItogAll() {
         return catSchoolItogAll;
     }
@@ -274,58 +615,38 @@ public class Report {
         this.catSchoolItogAll = catSchoolItogAll;
     }
 
-    private Integer catGkhStateAll;
-
-    @Basic
-    @javax.persistence.Column(name = "catGKHStateAll", nullable = true, insertable = true, updatable = true)
-    public Integer getCatGkhStateAll() {
-        return catGkhStateAll;
+    public Integer getCatGKHStateAll() {
+        return catGKHStateAll;
     }
 
-    public void setCatGkhStateAll(Integer catGkhStateAll) {
-        this.catGkhStateAll = catGkhStateAll;
+    public void setCatGKHStateAll(Integer catGKHStateAll) {
+        this.catGKHStateAll = catGKHStateAll;
     }
 
-    private Integer catGkhMunicAll;
-
-    @Basic
-    @javax.persistence.Column(name = "catGKHMunicAll", nullable = true, insertable = true, updatable = true)
-    public Integer getCatGkhMunicAll() {
-        return catGkhMunicAll;
+    public Integer getCatGKHMunicAll() {
+        return catGKHMunicAll;
     }
 
-    public void setCatGkhMunicAll(Integer catGkhMunicAll) {
-        this.catGkhMunicAll = catGkhMunicAll;
+    public void setCatGKHMunicAll(Integer catGKHMunicAll) {
+        this.catGKHMunicAll = catGKHMunicAll;
     }
 
-    private Integer catGkhCommercAll;
-
-    @Basic
-    @javax.persistence.Column(name = "catGKHCommercAll", nullable = true, insertable = true, updatable = true)
-    public Integer getCatGkhCommercAll() {
-        return catGkhCommercAll;
+    public Integer getCatGKHCommercAll() {
+        return catGKHCommercAll;
     }
 
-    public void setCatGkhCommercAll(Integer catGkhCommercAll) {
-        this.catGkhCommercAll = catGkhCommercAll;
+    public void setCatGKHCommercAll(Integer catGKHCommercAll) {
+        this.catGKHCommercAll = catGKHCommercAll;
     }
 
-    private Integer catGkhItogAll;
-
-    @Basic
-    @javax.persistence.Column(name = "catGKHItogAll", nullable = true, insertable = true, updatable = true)
-    public Integer getCatGkhItogAll() {
-        return catGkhItogAll;
+    public Integer getCatGKHItogAll() {
+        return catGKHItogAll;
     }
 
-    public void setCatGkhItogAll(Integer catGkhItogAll) {
-        this.catGkhItogAll = catGkhItogAll;
+    public void setCatGKHItogAll(Integer catGKHItogAll) {
+        this.catGKHItogAll = catGKHItogAll;
     }
 
-    private Integer catDepartStateAll;
-
-    @Basic
-    @javax.persistence.Column(name = "catDepartStateAll", nullable = true, insertable = true, updatable = true)
     public Integer getCatDepartStateAll() {
         return catDepartStateAll;
     }
@@ -334,10 +655,6 @@ public class Report {
         this.catDepartStateAll = catDepartStateAll;
     }
 
-    private Integer catDepartMunicAll;
-
-    @Basic
-    @javax.persistence.Column(name = "catDepartMunicAll", nullable = true, insertable = true, updatable = true)
     public Integer getCatDepartMunicAll() {
         return catDepartMunicAll;
     }
@@ -346,10 +663,6 @@ public class Report {
         this.catDepartMunicAll = catDepartMunicAll;
     }
 
-    private Integer catDepartCommercAll;
-
-    @Basic
-    @javax.persistence.Column(name = "catDepartCommercAll", nullable = true, insertable = true, updatable = true)
     public Integer getCatDepartCommercAll() {
         return catDepartCommercAll;
     }
@@ -358,10 +671,6 @@ public class Report {
         this.catDepartCommercAll = catDepartCommercAll;
     }
 
-    private Integer catDepartItogAll;
-
-    @Basic
-    @javax.persistence.Column(name = "catDepartItogAll", nullable = true, insertable = true, updatable = true)
     public Integer getCatDepartItogAll() {
         return catDepartItogAll;
     }
@@ -370,10 +679,6 @@ public class Report {
         this.catDepartItogAll = catDepartItogAll;
     }
 
-    private Integer catM1StateEquip;
-
-    @Basic
-    @javax.persistence.Column(name = "catM1StateEquip", nullable = true, insertable = true, updatable = true)
     public Integer getCatM1StateEquip() {
         return catM1StateEquip;
     }
@@ -382,10 +687,6 @@ public class Report {
         this.catM1StateEquip = catM1StateEquip;
     }
 
-    private Integer catM1MunicEquip;
-
-    @Basic
-    @javax.persistence.Column(name = "catM1MunicEquip", nullable = true, insertable = true, updatable = true)
     public Integer getCatM1MunicEquip() {
         return catM1MunicEquip;
     }
@@ -394,10 +695,6 @@ public class Report {
         this.catM1MunicEquip = catM1MunicEquip;
     }
 
-    private Integer catM1CommercEquip;
-
-    @Basic
-    @javax.persistence.Column(name = "catM1CommercEquip", nullable = true, insertable = true, updatable = true)
     public Integer getCatM1CommercEquip() {
         return catM1CommercEquip;
     }
@@ -406,10 +703,6 @@ public class Report {
         this.catM1CommercEquip = catM1CommercEquip;
     }
 
-    private Integer catM1ItogEquip;
-
-    @Basic
-    @javax.persistence.Column(name = "catM1ItogEquip", nullable = true, insertable = true, updatable = true)
     public Integer getCatM1ItogEquip() {
         return catM1ItogEquip;
     }
@@ -418,10 +711,6 @@ public class Report {
         this.catM1ItogEquip = catM1ItogEquip;
     }
 
-    private Integer catM2M3StateEquip;
-
-    @Basic
-    @javax.persistence.Column(name = "catM2M3StateEquip", nullable = true, insertable = true, updatable = true)
     public Integer getCatM2M3StateEquip() {
         return catM2M3StateEquip;
     }
@@ -430,10 +719,6 @@ public class Report {
         this.catM2M3StateEquip = catM2M3StateEquip;
     }
 
-    private Integer catM2M3MunicEquip;
-
-    @Basic
-    @javax.persistence.Column(name = "catM2M3MunicEquip", nullable = true, insertable = true, updatable = true)
     public Integer getCatM2M3MunicEquip() {
         return catM2M3MunicEquip;
     }
@@ -442,10 +727,6 @@ public class Report {
         this.catM2M3MunicEquip = catM2M3MunicEquip;
     }
 
-    private Integer catM2M3CommercEquip;
-
-    @Basic
-    @javax.persistence.Column(name = "catM2M3CommercEquip", nullable = true, insertable = true, updatable = true)
     public Integer getCatM2M3CommercEquip() {
         return catM2M3CommercEquip;
     }
@@ -454,10 +735,6 @@ public class Report {
         this.catM2M3CommercEquip = catM2M3CommercEquip;
     }
 
-    private Integer catM2M3ItogEquip;
-
-    @Basic
-    @javax.persistence.Column(name = "catM2M3ItogEquip", nullable = true, insertable = true, updatable = true)
     public Integer getCatM2M3ItogEquip() {
         return catM2M3ItogEquip;
     }
@@ -466,10 +743,6 @@ public class Report {
         this.catM2M3ItogEquip = catM2M3ItogEquip;
     }
 
-    private Integer catLargeStateEquip;
-
-    @Basic
-    @javax.persistence.Column(name = "catLargeStateEquip", nullable = true, insertable = true, updatable = true)
     public Integer getCatLargeStateEquip() {
         return catLargeStateEquip;
     }
@@ -478,10 +751,6 @@ public class Report {
         this.catLargeStateEquip = catLargeStateEquip;
     }
 
-    private Integer catLargeMunicEquip;
-
-    @Basic
-    @javax.persistence.Column(name = "catLargeMunicEquip", nullable = true, insertable = true, updatable = true)
     public Integer getCatLargeMunicEquip() {
         return catLargeMunicEquip;
     }
@@ -490,10 +759,6 @@ public class Report {
         this.catLargeMunicEquip = catLargeMunicEquip;
     }
 
-    private Integer catLargeCommercEquip;
-
-    @Basic
-    @javax.persistence.Column(name = "catLargeCommercEquip", nullable = true, insertable = true, updatable = true)
     public Integer getCatLargeCommercEquip() {
         return catLargeCommercEquip;
     }
@@ -502,10 +767,6 @@ public class Report {
         this.catLargeCommercEquip = catLargeCommercEquip;
     }
 
-    private Integer catLargeItogEquip;
-
-    @Basic
-    @javax.persistence.Column(name = "catLargeItogEquip", nullable = true, insertable = true, updatable = true)
     public Integer getCatLargeItogEquip() {
         return catLargeItogEquip;
     }
@@ -514,10 +775,6 @@ public class Report {
         this.catLargeItogEquip = catLargeItogEquip;
     }
 
-    private Integer catDangerStateEquip;
-
-    @Basic
-    @javax.persistence.Column(name = "catDangerStateEquip", nullable = true, insertable = true, updatable = true)
     public Integer getCatDangerStateEquip() {
         return catDangerStateEquip;
     }
@@ -526,10 +783,6 @@ public class Report {
         this.catDangerStateEquip = catDangerStateEquip;
     }
 
-    private Integer catDangerMunicEquip;
-
-    @Basic
-    @javax.persistence.Column(name = "catDangerMunicEquip", nullable = true, insertable = true, updatable = true)
     public Integer getCatDangerMunicEquip() {
         return catDangerMunicEquip;
     }
@@ -538,10 +791,6 @@ public class Report {
         this.catDangerMunicEquip = catDangerMunicEquip;
     }
 
-    private Integer catDangerCommercEquip;
-
-    @Basic
-    @javax.persistence.Column(name = "catDangerCommercEquip", nullable = true, insertable = true, updatable = true)
     public Integer getCatDangerCommercEquip() {
         return catDangerCommercEquip;
     }
@@ -550,10 +799,6 @@ public class Report {
         this.catDangerCommercEquip = catDangerCommercEquip;
     }
 
-    private Integer catDangerItogEquip;
-
-    @Basic
-    @javax.persistence.Column(name = "catDangerItogEquip", nullable = true, insertable = true, updatable = true)
     public Integer getCatDangerItogEquip() {
         return catDangerItogEquip;
     }
@@ -562,10 +807,6 @@ public class Report {
         this.catDangerItogEquip = catDangerItogEquip;
     }
 
-    private Integer catSchoolStateEquip;
-
-    @Basic
-    @javax.persistence.Column(name = "catSchoolStateEquip", nullable = true, insertable = true, updatable = true)
     public Integer getCatSchoolStateEquip() {
         return catSchoolStateEquip;
     }
@@ -574,10 +815,6 @@ public class Report {
         this.catSchoolStateEquip = catSchoolStateEquip;
     }
 
-    private Integer catSchoolMunicEquip;
-
-    @Basic
-    @javax.persistence.Column(name = "catSchoolMunicEquip", nullable = true, insertable = true, updatable = true)
     public Integer getCatSchoolMunicEquip() {
         return catSchoolMunicEquip;
     }
@@ -586,10 +823,6 @@ public class Report {
         this.catSchoolMunicEquip = catSchoolMunicEquip;
     }
 
-    private Integer catSchoolCommercEquip;
-
-    @Basic
-    @javax.persistence.Column(name = "catSchoolCommercEquip", nullable = true, insertable = true, updatable = true)
     public Integer getCatSchoolCommercEquip() {
         return catSchoolCommercEquip;
     }
@@ -598,10 +831,6 @@ public class Report {
         this.catSchoolCommercEquip = catSchoolCommercEquip;
     }
 
-    private Integer catSchoolItogEquip;
-
-    @Basic
-    @javax.persistence.Column(name = "catSchoolItogEquip", nullable = true, insertable = true, updatable = true)
     public Integer getCatSchoolItogEquip() {
         return catSchoolItogEquip;
     }
@@ -610,58 +839,38 @@ public class Report {
         this.catSchoolItogEquip = catSchoolItogEquip;
     }
 
-    private Integer catGkhStateEquip;
-
-    @Basic
-    @javax.persistence.Column(name = "catGKHStateEquip", nullable = true, insertable = true, updatable = true)
-    public Integer getCatGkhStateEquip() {
-        return catGkhStateEquip;
+    public Integer getCatGKHStateEquip() {
+        return catGKHStateEquip;
     }
 
-    public void setCatGkhStateEquip(Integer catGkhStateEquip) {
-        this.catGkhStateEquip = catGkhStateEquip;
+    public void setCatGKHStateEquip(Integer catGKHStateEquip) {
+        this.catGKHStateEquip = catGKHStateEquip;
     }
 
-    private Integer catGkhMunicEquip;
-
-    @Basic
-    @javax.persistence.Column(name = "catGKHMunicEquip", nullable = true, insertable = true, updatable = true)
-    public Integer getCatGkhMunicEquip() {
-        return catGkhMunicEquip;
+    public Integer getCatGKHMunicEquip() {
+        return catGKHMunicEquip;
     }
 
-    public void setCatGkhMunicEquip(Integer catGkhMunicEquip) {
-        this.catGkhMunicEquip = catGkhMunicEquip;
+    public void setCatGKHMunicEquip(Integer catGKHMunicEquip) {
+        this.catGKHMunicEquip = catGKHMunicEquip;
     }
 
-    private Integer catGkhCommercEquip;
-
-    @Basic
-    @javax.persistence.Column(name = "catGKHCommercEquip", nullable = true, insertable = true, updatable = true)
-    public Integer getCatGkhCommercEquip() {
-        return catGkhCommercEquip;
+    public Integer getCatGKHCommercEquip() {
+        return catGKHCommercEquip;
     }
 
-    public void setCatGkhCommercEquip(Integer catGkhCommercEquip) {
-        this.catGkhCommercEquip = catGkhCommercEquip;
+    public void setCatGKHCommercEquip(Integer catGKHCommercEquip) {
+        this.catGKHCommercEquip = catGKHCommercEquip;
     }
 
-    private Integer catGkhItogEquip;
-
-    @Basic
-    @javax.persistence.Column(name = "catGKHItogEquip", nullable = true, insertable = true, updatable = true)
-    public Integer getCatGkhItogEquip() {
-        return catGkhItogEquip;
+    public Integer getCatGKHItogEquip() {
+        return catGKHItogEquip;
     }
 
-    public void setCatGkhItogEquip(Integer catGkhItogEquip) {
-        this.catGkhItogEquip = catGkhItogEquip;
+    public void setCatGKHItogEquip(Integer catGKHItogEquip) {
+        this.catGKHItogEquip = catGKHItogEquip;
     }
 
-    private Integer catDepartStateEquip;
-
-    @Basic
-    @javax.persistence.Column(name = "catDepartStateEquip", nullable = true, insertable = true, updatable = true)
     public Integer getCatDepartStateEquip() {
         return catDepartStateEquip;
     }
@@ -670,10 +879,6 @@ public class Report {
         this.catDepartStateEquip = catDepartStateEquip;
     }
 
-    private Integer catDepartMunicEquip;
-
-    @Basic
-    @javax.persistence.Column(name = "catDepartMunicEquip", nullable = true, insertable = true, updatable = true)
     public Integer getCatDepartMunicEquip() {
         return catDepartMunicEquip;
     }
@@ -682,10 +887,6 @@ public class Report {
         this.catDepartMunicEquip = catDepartMunicEquip;
     }
 
-    private Integer catDepartCommercEquip;
-
-    @Basic
-    @javax.persistence.Column(name = "catDepartCommercEquip", nullable = true, insertable = true, updatable = true)
     public Integer getCatDepartCommercEquip() {
         return catDepartCommercEquip;
     }
@@ -694,10 +895,6 @@ public class Report {
         this.catDepartCommercEquip = catDepartCommercEquip;
     }
 
-    private Integer catDepartItogEquip;
-
-    @Basic
-    @javax.persistence.Column(name = "catDepartItogEquip", nullable = true, insertable = true, updatable = true)
     public Integer getCatDepartItogEquip() {
         return catDepartItogEquip;
     }
@@ -706,346 +903,230 @@ public class Report {
         this.catDepartItogEquip = catDepartItogEquip;
     }
 
-    private Integer catM1StateRnis;
-
-    @Basic
-    @javax.persistence.Column(name = "catM1StateRNIS", nullable = true, insertable = true, updatable = true)
-    public Integer getCatM1StateRnis() {
-        return catM1StateRnis;
+    public Integer getCatM1StateRNIS() {
+        return catM1StateRNIS;
     }
 
-    public void setCatM1StateRnis(Integer catM1StateRnis) {
-        this.catM1StateRnis = catM1StateRnis;
+    public void setCatM1StateRNIS(Integer catM1StateRNIS) {
+        this.catM1StateRNIS = catM1StateRNIS;
     }
 
-    private Integer catM1MunicRnis;
-
-    @Basic
-    @javax.persistence.Column(name = "catM1MunicRNIS", nullable = true, insertable = true, updatable = true)
-    public Integer getCatM1MunicRnis() {
-        return catM1MunicRnis;
+    public Integer getCatM1MunicRNIS() {
+        return catM1MunicRNIS;
     }
 
-    public void setCatM1MunicRnis(Integer catM1MunicRnis) {
-        this.catM1MunicRnis = catM1MunicRnis;
+    public void setCatM1MunicRNIS(Integer catM1MunicRNIS) {
+        this.catM1MunicRNIS = catM1MunicRNIS;
     }
 
-    private Integer catM1CommercRnis;
-
-    @Basic
-    @javax.persistence.Column(name = "catM1CommercRNIS", nullable = true, insertable = true, updatable = true)
-    public Integer getCatM1CommercRnis() {
-        return catM1CommercRnis;
+    public Integer getCatM1CommercRNIS() {
+        return catM1CommercRNIS;
     }
 
-    public void setCatM1CommercRnis(Integer catM1CommercRnis) {
-        this.catM1CommercRnis = catM1CommercRnis;
+    public void setCatM1CommercRNIS(Integer catM1CommercRNIS) {
+        this.catM1CommercRNIS = catM1CommercRNIS;
     }
 
-    private Integer catM1ItogRnis;
-
-    @Basic
-    @javax.persistence.Column(name = "catM1ItogRNIS", nullable = true, insertable = true, updatable = true)
-    public Integer getCatM1ItogRnis() {
-        return catM1ItogRnis;
+    public Integer getCatM1ItogRNIS() {
+        return catM1ItogRNIS;
     }
 
-    public void setCatM1ItogRnis(Integer catM1ItogRnis) {
-        this.catM1ItogRnis = catM1ItogRnis;
+    public void setCatM1ItogRNIS(Integer catM1ItogRNIS) {
+        this.catM1ItogRNIS = catM1ItogRNIS;
     }
 
-    private Integer catM2M3StateRnis;
-
-    @Basic
-    @javax.persistence.Column(name = "catM2M3StateRNIS", nullable = true, insertable = true, updatable = true)
-    public Integer getCatM2M3StateRnis() {
-        return catM2M3StateRnis;
+    public Integer getCatM2M3StateRNIS() {
+        return catM2M3StateRNIS;
     }
 
-    public void setCatM2M3StateRnis(Integer catM2M3StateRnis) {
-        this.catM2M3StateRnis = catM2M3StateRnis;
+    public void setCatM2M3StateRNIS(Integer catM2M3StateRNIS) {
+        this.catM2M3StateRNIS = catM2M3StateRNIS;
     }
 
-    private Integer catM2M3MunicRnis;
-
-    @Basic
-    @javax.persistence.Column(name = "catM2M3MunicRNIS", nullable = true, insertable = true, updatable = true)
-    public Integer getCatM2M3MunicRnis() {
-        return catM2M3MunicRnis;
+    public Integer getCatM2M3MunicRNIS() {
+        return catM2M3MunicRNIS;
     }
 
-    public void setCatM2M3MunicRnis(Integer catM2M3MunicRnis) {
-        this.catM2M3MunicRnis = catM2M3MunicRnis;
+    public void setCatM2M3MunicRNIS(Integer catM2M3MunicRNIS) {
+        this.catM2M3MunicRNIS = catM2M3MunicRNIS;
     }
 
-    private Integer catM2M3CommercRnis;
-
-    @Basic
-    @javax.persistence.Column(name = "catM2M3CommercRNIS", nullable = true, insertable = true, updatable = true)
-    public Integer getCatM2M3CommercRnis() {
-        return catM2M3CommercRnis;
+    public Integer getCatM2M3CommercRNIS() {
+        return catM2M3CommercRNIS;
     }
 
-    public void setCatM2M3CommercRnis(Integer catM2M3CommercRnis) {
-        this.catM2M3CommercRnis = catM2M3CommercRnis;
+    public void setCatM2M3CommercRNIS(Integer catM2M3CommercRNIS) {
+        this.catM2M3CommercRNIS = catM2M3CommercRNIS;
     }
 
-    private Integer catM2M3ItogRnis;
-
-    @Basic
-    @javax.persistence.Column(name = "catM2M3ItogRNIS", nullable = true, insertable = true, updatable = true)
-    public Integer getCatM2M3ItogRnis() {
-        return catM2M3ItogRnis;
+    public Integer getCatM2M3ItogRNIS() {
+        return catM2M3ItogRNIS;
     }
 
-    public void setCatM2M3ItogRnis(Integer catM2M3ItogRnis) {
-        this.catM2M3ItogRnis = catM2M3ItogRnis;
+    public void setCatM2M3ItogRNIS(Integer catM2M3ItogRNIS) {
+        this.catM2M3ItogRNIS = catM2M3ItogRNIS;
     }
 
-    private Integer catLargeStateRnis;
-
-    @Basic
-    @javax.persistence.Column(name = "catLargeStateRNIS", nullable = true, insertable = true, updatable = true)
-    public Integer getCatLargeStateRnis() {
-        return catLargeStateRnis;
+    public Integer getCatLargeStateRNIS() {
+        return catLargeStateRNIS;
     }
 
-    public void setCatLargeStateRnis(Integer catLargeStateRnis) {
-        this.catLargeStateRnis = catLargeStateRnis;
+    public void setCatLargeStateRNIS(Integer catLargeStateRNIS) {
+        this.catLargeStateRNIS = catLargeStateRNIS;
     }
 
-    private Integer catLargeMunicRnis;
-
-    @Basic
-    @javax.persistence.Column(name = "catLargeMunicRNIS", nullable = true, insertable = true, updatable = true)
-    public Integer getCatLargeMunicRnis() {
-        return catLargeMunicRnis;
+    public Integer getCatLargeMunicRNIS() {
+        return catLargeMunicRNIS;
     }
 
-    public void setCatLargeMunicRnis(Integer catLargeMunicRnis) {
-        this.catLargeMunicRnis = catLargeMunicRnis;
+    public void setCatLargeMunicRNIS(Integer catLargeMunicRNIS) {
+        this.catLargeMunicRNIS = catLargeMunicRNIS;
     }
 
-    private Integer catLargeCommercRnis;
-
-    @Basic
-    @javax.persistence.Column(name = "catLargeCommercRNIS", nullable = true, insertable = true, updatable = true)
-    public Integer getCatLargeCommercRnis() {
-        return catLargeCommercRnis;
+    public Integer getCatLargeCommercRNIS() {
+        return catLargeCommercRNIS;
     }
 
-    public void setCatLargeCommercRnis(Integer catLargeCommercRnis) {
-        this.catLargeCommercRnis = catLargeCommercRnis;
+    public void setCatLargeCommercRNIS(Integer catLargeCommercRNIS) {
+        this.catLargeCommercRNIS = catLargeCommercRNIS;
     }
 
-    private Integer catLargeItogRnis;
-
-    @Basic
-    @javax.persistence.Column(name = "catLargeItogRNIS", nullable = true, insertable = true, updatable = true)
-    public Integer getCatLargeItogRnis() {
-        return catLargeItogRnis;
+    public Integer getCatLargeItogRNIS() {
+        return catLargeItogRNIS;
     }
 
-    public void setCatLargeItogRnis(Integer catLargeItogRnis) {
-        this.catLargeItogRnis = catLargeItogRnis;
+    public void setCatLargeItogRNIS(Integer catLargeItogRNIS) {
+        this.catLargeItogRNIS = catLargeItogRNIS;
     }
 
-    private Integer catDangerStateRnis;
-
-    @Basic
-    @javax.persistence.Column(name = "catDangerStateRNIS", nullable = true, insertable = true, updatable = true)
-    public Integer getCatDangerStateRnis() {
-        return catDangerStateRnis;
+    public Integer getCatDangerStateRNIS() {
+        return catDangerStateRNIS;
     }
 
-    public void setCatDangerStateRnis(Integer catDangerStateRnis) {
-        this.catDangerStateRnis = catDangerStateRnis;
+    public void setCatDangerStateRNIS(Integer catDangerStateRNIS) {
+        this.catDangerStateRNIS = catDangerStateRNIS;
     }
 
-    private Integer catDangerMunicRnis;
-
-    @Basic
-    @javax.persistence.Column(name = "catDangerMunicRNIS", nullable = true, insertable = true, updatable = true)
-    public Integer getCatDangerMunicRnis() {
-        return catDangerMunicRnis;
+    public Integer getCatDangerMunicRNIS() {
+        return catDangerMunicRNIS;
     }
 
-    public void setCatDangerMunicRnis(Integer catDangerMunicRnis) {
-        this.catDangerMunicRnis = catDangerMunicRnis;
+    public void setCatDangerMunicRNIS(Integer catDangerMunicRNIS) {
+        this.catDangerMunicRNIS = catDangerMunicRNIS;
     }
 
-    private Integer catDangerCommercRnis;
-
-    @Basic
-    @javax.persistence.Column(name = "catDangerCommercRNIS", nullable = true, insertable = true, updatable = true)
-    public Integer getCatDangerCommercRnis() {
-        return catDangerCommercRnis;
+    public Integer getCatDangerCommercRNIS() {
+        return catDangerCommercRNIS;
     }
 
-    public void setCatDangerCommercRnis(Integer catDangerCommercRnis) {
-        this.catDangerCommercRnis = catDangerCommercRnis;
+    public void setCatDangerCommercRNIS(Integer catDangerCommercRNIS) {
+        this.catDangerCommercRNIS = catDangerCommercRNIS;
     }
 
-    private Integer catDangerItogRnis;
-
-    @Basic
-    @javax.persistence.Column(name = "catDangerItogRNIS", nullable = true, insertable = true, updatable = true)
-    public Integer getCatDangerItogRnis() {
-        return catDangerItogRnis;
+    public Integer getCatDangerItogRNIS() {
+        return catDangerItogRNIS;
     }
 
-    public void setCatDangerItogRnis(Integer catDangerItogRnis) {
-        this.catDangerItogRnis = catDangerItogRnis;
+    public void setCatDangerItogRNIS(Integer catDangerItogRNIS) {
+        this.catDangerItogRNIS = catDangerItogRNIS;
     }
 
-    private Integer catSchoolStateRnis;
-
-    @Basic
-    @javax.persistence.Column(name = "catSchoolStateRNIS", nullable = true, insertable = true, updatable = true)
-    public Integer getCatSchoolStateRnis() {
-        return catSchoolStateRnis;
+    public Integer getCatSchoolStateRNIS() {
+        return catSchoolStateRNIS;
     }
 
-    public void setCatSchoolStateRnis(Integer catSchoolStateRnis) {
-        this.catSchoolStateRnis = catSchoolStateRnis;
+    public void setCatSchoolStateRNIS(Integer catSchoolStateRNIS) {
+        this.catSchoolStateRNIS = catSchoolStateRNIS;
     }
 
-    private Integer catSchoolMunicRnis;
-
-    @Basic
-    @javax.persistence.Column(name = "catSchoolMunicRNIS", nullable = true, insertable = true, updatable = true)
-    public Integer getCatSchoolMunicRnis() {
-        return catSchoolMunicRnis;
+    public Integer getCatSchoolMunicRNIS() {
+        return catSchoolMunicRNIS;
     }
 
-    public void setCatSchoolMunicRnis(Integer catSchoolMunicRnis) {
-        this.catSchoolMunicRnis = catSchoolMunicRnis;
+    public void setCatSchoolMunicRNIS(Integer catSchoolMunicRNIS) {
+        this.catSchoolMunicRNIS = catSchoolMunicRNIS;
     }
 
-    private Integer catSchoolCommercRnis;
-
-    @Basic
-    @javax.persistence.Column(name = "catSchoolCommercRNIS", nullable = true, insertable = true, updatable = true)
-    public Integer getCatSchoolCommercRnis() {
-        return catSchoolCommercRnis;
+    public Integer getCatSchoolCommercRNIS() {
+        return catSchoolCommercRNIS;
     }
 
-    public void setCatSchoolCommercRnis(Integer catSchoolCommercRnis) {
-        this.catSchoolCommercRnis = catSchoolCommercRnis;
+    public void setCatSchoolCommercRNIS(Integer catSchoolCommercRNIS) {
+        this.catSchoolCommercRNIS = catSchoolCommercRNIS;
     }
 
-    private Integer catSchoolItogRnis;
-
-    @Basic
-    @javax.persistence.Column(name = "catSchoolItogRNIS", nullable = true, insertable = true, updatable = true)
-    public Integer getCatSchoolItogRnis() {
-        return catSchoolItogRnis;
+    public Integer getCatSchoolItogRNIS() {
+        return catSchoolItogRNIS;
     }
 
-    public void setCatSchoolItogRnis(Integer catSchoolItogRnis) {
-        this.catSchoolItogRnis = catSchoolItogRnis;
+    public void setCatSchoolItogRNIS(Integer catSchoolItogRNIS) {
+        this.catSchoolItogRNIS = catSchoolItogRNIS;
     }
 
-    private Integer catGkhStateRnis;
-
-    @Basic
-    @javax.persistence.Column(name = "catGKHStateRNIS", nullable = true, insertable = true, updatable = true)
-    public Integer getCatGkhStateRnis() {
-        return catGkhStateRnis;
+    public Integer getCatGKHStateRNIS() {
+        return catGKHStateRNIS;
     }
 
-    public void setCatGkhStateRnis(Integer catGkhStateRnis) {
-        this.catGkhStateRnis = catGkhStateRnis;
+    public void setCatGKHStateRNIS(Integer catGKHStateRNIS) {
+        this.catGKHStateRNIS = catGKHStateRNIS;
     }
 
-    private Integer catGkhMunicRnis;
-
-    @Basic
-    @javax.persistence.Column(name = "catGKHMunicRNIS", nullable = true, insertable = true, updatable = true)
-    public Integer getCatGkhMunicRnis() {
-        return catGkhMunicRnis;
+    public Integer getCatGKHMunicRNIS() {
+        return catGKHMunicRNIS;
     }
 
-    public void setCatGkhMunicRnis(Integer catGkhMunicRnis) {
-        this.catGkhMunicRnis = catGkhMunicRnis;
+    public void setCatGKHMunicRNIS(Integer catGKHMunicRNIS) {
+        this.catGKHMunicRNIS = catGKHMunicRNIS;
     }
 
-    private Integer catGkhCommercRnis;
-
-    @Basic
-    @javax.persistence.Column(name = "catGKHCommercRNIS", nullable = true, insertable = true, updatable = true)
-    public Integer getCatGkhCommercRnis() {
-        return catGkhCommercRnis;
+    public Integer getCatGKHCommercRNIS() {
+        return catGKHCommercRNIS;
     }
 
-    public void setCatGkhCommercRnis(Integer catGkhCommercRnis) {
-        this.catGkhCommercRnis = catGkhCommercRnis;
+    public void setCatGKHCommercRNIS(Integer catGKHCommercRNIS) {
+        this.catGKHCommercRNIS = catGKHCommercRNIS;
     }
 
-    private Integer catGkhItogRnis;
-
-    @Basic
-    @javax.persistence.Column(name = "catGKHItogRNIS", nullable = true, insertable = true, updatable = true)
-    public Integer getCatGkhItogRnis() {
-        return catGkhItogRnis;
+    public Integer getCatGKHItogRNIS() {
+        return catGKHItogRNIS;
     }
 
-    public void setCatGkhItogRnis(Integer catGkhItogRnis) {
-        this.catGkhItogRnis = catGkhItogRnis;
+    public void setCatGKHItogRNIS(Integer catGKHItogRNIS) {
+        this.catGKHItogRNIS = catGKHItogRNIS;
     }
 
-    private Integer catDepartStateRnis;
-
-    @Basic
-    @javax.persistence.Column(name = "catDepartStateRNIS", nullable = true, insertable = true, updatable = true)
-    public Integer getCatDepartStateRnis() {
-        return catDepartStateRnis;
+    public Integer getCatDepartStateRNIS() {
+        return catDepartStateRNIS;
     }
 
-    public void setCatDepartStateRnis(Integer catDepartStateRnis) {
-        this.catDepartStateRnis = catDepartStateRnis;
+    public void setCatDepartStateRNIS(Integer catDepartStateRNIS) {
+        this.catDepartStateRNIS = catDepartStateRNIS;
     }
 
-    private Integer catDepartMunicRnis;
-
-    @Basic
-    @javax.persistence.Column(name = "catDepartMunicRNIS", nullable = true, insertable = true, updatable = true)
-    public Integer getCatDepartMunicRnis() {
-        return catDepartMunicRnis;
+    public Integer getCatDepartMunicRNIS() {
+        return catDepartMunicRNIS;
     }
 
-    public void setCatDepartMunicRnis(Integer catDepartMunicRnis) {
-        this.catDepartMunicRnis = catDepartMunicRnis;
+    public void setCatDepartMunicRNIS(Integer catDepartMunicRNIS) {
+        this.catDepartMunicRNIS = catDepartMunicRNIS;
     }
 
-    private Integer catDepartCommercRnis;
-
-    @Basic
-    @javax.persistence.Column(name = "catDepartCommercRNIS", nullable = true, insertable = true, updatable = true)
-    public Integer getCatDepartCommercRnis() {
-        return catDepartCommercRnis;
+    public Integer getCatDepartCommercRNIS() {
+        return catDepartCommercRNIS;
     }
 
-    public void setCatDepartCommercRnis(Integer catDepartCommercRnis) {
-        this.catDepartCommercRnis = catDepartCommercRnis;
+    public void setCatDepartCommercRNIS(Integer catDepartCommercRNIS) {
+        this.catDepartCommercRNIS = catDepartCommercRNIS;
     }
 
-    private Integer catDepartItogRnis;
-
-    @Basic
-    @javax.persistence.Column(name = "catDepartItogRNIS", nullable = true, insertable = true, updatable = true)
-    public Integer getCatDepartItogRnis() {
-        return catDepartItogRnis;
+    public Integer getCatDepartItogRNIS() {
+        return catDepartItogRNIS;
     }
 
-    public void setCatDepartItogRnis(Integer catDepartItogRnis) {
-        this.catDepartItogRnis = catDepartItogRnis;
+    public void setCatDepartItogRNIS(Integer catDepartItogRNIS) {
+        this.catDepartItogRNIS = catDepartItogRNIS;
     }
 
-    private Integer catM1StateOther;
-
-    @Basic
-    @javax.persistence.Column(name = "catM1StateOther", nullable = true, insertable = true, updatable = true)
     public Integer getCatM1StateOther() {
         return catM1StateOther;
     }
@@ -1054,10 +1135,6 @@ public class Report {
         this.catM1StateOther = catM1StateOther;
     }
 
-    private Integer catM1MunicOther;
-
-    @Basic
-    @javax.persistence.Column(name = "catM1MunicOther", nullable = true, insertable = true, updatable = true)
     public Integer getCatM1MunicOther() {
         return catM1MunicOther;
     }
@@ -1066,10 +1143,6 @@ public class Report {
         this.catM1MunicOther = catM1MunicOther;
     }
 
-    private Integer catM1CommercOther;
-
-    @Basic
-    @javax.persistence.Column(name = "catM1CommercOther", nullable = true, insertable = true, updatable = true)
     public Integer getCatM1CommercOther() {
         return catM1CommercOther;
     }
@@ -1078,10 +1151,6 @@ public class Report {
         this.catM1CommercOther = catM1CommercOther;
     }
 
-    private Integer catM1ItogOther;
-
-    @Basic
-    @javax.persistence.Column(name = "catM1ItogOther", nullable = true, insertable = true, updatable = true)
     public Integer getCatM1ItogOther() {
         return catM1ItogOther;
     }
@@ -1090,10 +1159,6 @@ public class Report {
         this.catM1ItogOther = catM1ItogOther;
     }
 
-    private Integer catM2M3StateOther;
-
-    @Basic
-    @javax.persistence.Column(name = "catM2M3StateOther", nullable = true, insertable = true, updatable = true)
     public Integer getCatM2M3StateOther() {
         return catM2M3StateOther;
     }
@@ -1102,10 +1167,6 @@ public class Report {
         this.catM2M3StateOther = catM2M3StateOther;
     }
 
-    private Integer catM2M3MunicOther;
-
-    @Basic
-    @javax.persistence.Column(name = "catM2M3MunicOther", nullable = true, insertable = true, updatable = true)
     public Integer getCatM2M3MunicOther() {
         return catM2M3MunicOther;
     }
@@ -1114,10 +1175,6 @@ public class Report {
         this.catM2M3MunicOther = catM2M3MunicOther;
     }
 
-    private Integer catM2M3CommercOther;
-
-    @Basic
-    @javax.persistence.Column(name = "catM2M3CommercOther", nullable = true, insertable = true, updatable = true)
     public Integer getCatM2M3CommercOther() {
         return catM2M3CommercOther;
     }
@@ -1126,10 +1183,6 @@ public class Report {
         this.catM2M3CommercOther = catM2M3CommercOther;
     }
 
-    private Integer catM2M3ItogOther;
-
-    @Basic
-    @javax.persistence.Column(name = "catM2M3ItogOther", nullable = true, insertable = true, updatable = true)
     public Integer getCatM2M3ItogOther() {
         return catM2M3ItogOther;
     }
@@ -1138,10 +1191,6 @@ public class Report {
         this.catM2M3ItogOther = catM2M3ItogOther;
     }
 
-    private Integer catLargeStateOther;
-
-    @Basic
-    @javax.persistence.Column(name = "catLargeStateOther", nullable = true, insertable = true, updatable = true)
     public Integer getCatLargeStateOther() {
         return catLargeStateOther;
     }
@@ -1150,10 +1199,6 @@ public class Report {
         this.catLargeStateOther = catLargeStateOther;
     }
 
-    private Integer catLargeMunicOther;
-
-    @Basic
-    @javax.persistence.Column(name = "catLargeMunicOther", nullable = true, insertable = true, updatable = true)
     public Integer getCatLargeMunicOther() {
         return catLargeMunicOther;
     }
@@ -1162,10 +1207,6 @@ public class Report {
         this.catLargeMunicOther = catLargeMunicOther;
     }
 
-    private Integer catLargeCommercOther;
-
-    @Basic
-    @javax.persistence.Column(name = "catLargeCommercOther", nullable = true, insertable = true, updatable = true)
     public Integer getCatLargeCommercOther() {
         return catLargeCommercOther;
     }
@@ -1174,10 +1215,6 @@ public class Report {
         this.catLargeCommercOther = catLargeCommercOther;
     }
 
-    private Integer catLargeItogOther;
-
-    @Basic
-    @javax.persistence.Column(name = "catLargeItogOther", nullable = true, insertable = true, updatable = true)
     public Integer getCatLargeItogOther() {
         return catLargeItogOther;
     }
@@ -1186,10 +1223,6 @@ public class Report {
         this.catLargeItogOther = catLargeItogOther;
     }
 
-    private Integer catDangerStateOther;
-
-    @Basic
-    @javax.persistence.Column(name = "catDangerStateOther", nullable = true, insertable = true, updatable = true)
     public Integer getCatDangerStateOther() {
         return catDangerStateOther;
     }
@@ -1198,10 +1231,6 @@ public class Report {
         this.catDangerStateOther = catDangerStateOther;
     }
 
-    private Integer catDangerMunicOther;
-
-    @Basic
-    @javax.persistence.Column(name = "catDangerMunicOther", nullable = true, insertable = true, updatable = true)
     public Integer getCatDangerMunicOther() {
         return catDangerMunicOther;
     }
@@ -1210,10 +1239,6 @@ public class Report {
         this.catDangerMunicOther = catDangerMunicOther;
     }
 
-    private Integer catDangerCommercOther;
-
-    @Basic
-    @javax.persistence.Column(name = "catDangerCommercOther", nullable = true, insertable = true, updatable = true)
     public Integer getCatDangerCommercOther() {
         return catDangerCommercOther;
     }
@@ -1222,10 +1247,6 @@ public class Report {
         this.catDangerCommercOther = catDangerCommercOther;
     }
 
-    private Integer catDangerItogOther;
-
-    @Basic
-    @javax.persistence.Column(name = "catDangerItogOther", nullable = true, insertable = true, updatable = true)
     public Integer getCatDangerItogOther() {
         return catDangerItogOther;
     }
@@ -1234,10 +1255,6 @@ public class Report {
         this.catDangerItogOther = catDangerItogOther;
     }
 
-    private Integer catSchoolStateOther;
-
-    @Basic
-    @javax.persistence.Column(name = "catSchoolStateOther", nullable = true, insertable = true, updatable = true)
     public Integer getCatSchoolStateOther() {
         return catSchoolStateOther;
     }
@@ -1246,10 +1263,6 @@ public class Report {
         this.catSchoolStateOther = catSchoolStateOther;
     }
 
-    private Integer catSchoolMunicOther;
-
-    @Basic
-    @javax.persistence.Column(name = "catSchoolMunicOther", nullable = true, insertable = true, updatable = true)
     public Integer getCatSchoolMunicOther() {
         return catSchoolMunicOther;
     }
@@ -1258,10 +1271,6 @@ public class Report {
         this.catSchoolMunicOther = catSchoolMunicOther;
     }
 
-    private Integer catSchoolCommercOther;
-
-    @Basic
-    @javax.persistence.Column(name = "catSchoolCommercOther", nullable = true, insertable = true, updatable = true)
     public Integer getCatSchoolCommercOther() {
         return catSchoolCommercOther;
     }
@@ -1270,10 +1279,6 @@ public class Report {
         this.catSchoolCommercOther = catSchoolCommercOther;
     }
 
-    private Integer catSchoolItogOther;
-
-    @Basic
-    @javax.persistence.Column(name = "catSchoolItogOther", nullable = true, insertable = true, updatable = true)
     public Integer getCatSchoolItogOther() {
         return catSchoolItogOther;
     }
@@ -1282,58 +1287,38 @@ public class Report {
         this.catSchoolItogOther = catSchoolItogOther;
     }
 
-    private Integer catGkhStateOther;
-
-    @Basic
-    @javax.persistence.Column(name = "catGKHStateOther", nullable = true, insertable = true, updatable = true)
-    public Integer getCatGkhStateOther() {
-        return catGkhStateOther;
+    public Integer getCatGKHStateOther() {
+        return catGKHStateOther;
     }
 
-    public void setCatGkhStateOther(Integer catGkhStateOther) {
-        this.catGkhStateOther = catGkhStateOther;
+    public void setCatGKHStateOther(Integer catGKHStateOther) {
+        this.catGKHStateOther = catGKHStateOther;
     }
 
-    private Integer catGkhMunicOther;
-
-    @Basic
-    @javax.persistence.Column(name = "catGKHMunicOther", nullable = true, insertable = true, updatable = true)
-    public Integer getCatGkhMunicOther() {
-        return catGkhMunicOther;
+    public Integer getCatGKHMunicOther() {
+        return catGKHMunicOther;
     }
 
-    public void setCatGkhMunicOther(Integer catGkhMunicOther) {
-        this.catGkhMunicOther = catGkhMunicOther;
+    public void setCatGKHMunicOther(Integer catGKHMunicOther) {
+        this.catGKHMunicOther = catGKHMunicOther;
     }
 
-    private Integer catGkhCommercOther;
-
-    @Basic
-    @javax.persistence.Column(name = "catGKHCommercOther", nullable = true, insertable = true, updatable = true)
-    public Integer getCatGkhCommercOther() {
-        return catGkhCommercOther;
+    public Integer getCatGKHCommercOther() {
+        return catGKHCommercOther;
     }
 
-    public void setCatGkhCommercOther(Integer catGkhCommercOther) {
-        this.catGkhCommercOther = catGkhCommercOther;
+    public void setCatGKHCommercOther(Integer catGKHCommercOther) {
+        this.catGKHCommercOther = catGKHCommercOther;
     }
 
-    private Integer catGkhItogOther;
-
-    @Basic
-    @javax.persistence.Column(name = "catGKHItogOther", nullable = true, insertable = true, updatable = true)
-    public Integer getCatGkhItogOther() {
-        return catGkhItogOther;
+    public Integer getCatGKHItogOther() {
+        return catGKHItogOther;
     }
 
-    public void setCatGkhItogOther(Integer catGkhItogOther) {
-        this.catGkhItogOther = catGkhItogOther;
+    public void setCatGKHItogOther(Integer catGKHItogOther) {
+        this.catGKHItogOther = catGKHItogOther;
     }
 
-    private Integer catDepartStateOther;
-
-    @Basic
-    @javax.persistence.Column(name = "catDepartStateOther", nullable = true, insertable = true, updatable = true)
     public Integer getCatDepartStateOther() {
         return catDepartStateOther;
     }
@@ -1342,10 +1327,6 @@ public class Report {
         this.catDepartStateOther = catDepartStateOther;
     }
 
-    private Integer catDepartMunicOther;
-
-    @Basic
-    @javax.persistence.Column(name = "catDepartMunicOther", nullable = true, insertable = true, updatable = true)
     public Integer getCatDepartMunicOther() {
         return catDepartMunicOther;
     }
@@ -1354,10 +1335,6 @@ public class Report {
         this.catDepartMunicOther = catDepartMunicOther;
     }
 
-    private Integer catDepartCommercOther;
-
-    @Basic
-    @javax.persistence.Column(name = "catDepartCommercOther", nullable = true, insertable = true, updatable = true)
     public Integer getCatDepartCommercOther() {
         return catDepartCommercOther;
     }
@@ -1366,10 +1343,6 @@ public class Report {
         this.catDepartCommercOther = catDepartCommercOther;
     }
 
-    private Integer catDepartItogOther;
-
-    @Basic
-    @javax.persistence.Column(name = "catDepartItogOther", nullable = true, insertable = true, updatable = true)
     public Integer getCatDepartItogOther() {
         return catDepartItogOther;
     }
@@ -1378,359 +1351,37 @@ public class Report {
         this.catDepartItogOther = catDepartItogOther;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+    public Users getUserReport() {
+        return userReport;
+    }
 
-        Report report = (Report) o;
-
-        if (idReport != report.idReport) return false;
-        if (catDangerCommercAll != null ? !catDangerCommercAll.equals(report.catDangerCommercAll) : report.catDangerCommercAll != null)
-            return false;
-        if (catDangerCommercEquip != null ? !catDangerCommercEquip.equals(report.catDangerCommercEquip) : report.catDangerCommercEquip != null)
-            return false;
-        if (catDangerCommercOther != null ? !catDangerCommercOther.equals(report.catDangerCommercOther) : report.catDangerCommercOther != null)
-            return false;
-        if (catDangerCommercRnis != null ? !catDangerCommercRnis.equals(report.catDangerCommercRnis) : report.catDangerCommercRnis != null)
-            return false;
-        if (catDangerItogAll != null ? !catDangerItogAll.equals(report.catDangerItogAll) : report.catDangerItogAll != null)
-            return false;
-        if (catDangerItogEquip != null ? !catDangerItogEquip.equals(report.catDangerItogEquip) : report.catDangerItogEquip != null)
-            return false;
-        if (catDangerItogOther != null ? !catDangerItogOther.equals(report.catDangerItogOther) : report.catDangerItogOther != null)
-            return false;
-        if (catDangerItogRnis != null ? !catDangerItogRnis.equals(report.catDangerItogRnis) : report.catDangerItogRnis != null)
-            return false;
-        if (catDangerMunicAll != null ? !catDangerMunicAll.equals(report.catDangerMunicAll) : report.catDangerMunicAll != null)
-            return false;
-        if (catDangerMunicEquip != null ? !catDangerMunicEquip.equals(report.catDangerMunicEquip) : report.catDangerMunicEquip != null)
-            return false;
-        if (catDangerMunicOther != null ? !catDangerMunicOther.equals(report.catDangerMunicOther) : report.catDangerMunicOther != null)
-            return false;
-        if (catDangerMunicRnis != null ? !catDangerMunicRnis.equals(report.catDangerMunicRnis) : report.catDangerMunicRnis != null)
-            return false;
-        if (catDangerStateAll != null ? !catDangerStateAll.equals(report.catDangerStateAll) : report.catDangerStateAll != null)
-            return false;
-        if (catDangerStateEquip != null ? !catDangerStateEquip.equals(report.catDangerStateEquip) : report.catDangerStateEquip != null)
-            return false;
-        if (catDangerStateOther != null ? !catDangerStateOther.equals(report.catDangerStateOther) : report.catDangerStateOther != null)
-            return false;
-        if (catDangerStateRnis != null ? !catDangerStateRnis.equals(report.catDangerStateRnis) : report.catDangerStateRnis != null)
-            return false;
-        if (catDepartCommercAll != null ? !catDepartCommercAll.equals(report.catDepartCommercAll) : report.catDepartCommercAll != null)
-            return false;
-        if (catDepartCommercEquip != null ? !catDepartCommercEquip.equals(report.catDepartCommercEquip) : report.catDepartCommercEquip != null)
-            return false;
-        if (catDepartCommercOther != null ? !catDepartCommercOther.equals(report.catDepartCommercOther) : report.catDepartCommercOther != null)
-            return false;
-        if (catDepartCommercRnis != null ? !catDepartCommercRnis.equals(report.catDepartCommercRnis) : report.catDepartCommercRnis != null)
-            return false;
-        if (catDepartItogAll != null ? !catDepartItogAll.equals(report.catDepartItogAll) : report.catDepartItogAll != null)
-            return false;
-        if (catDepartItogEquip != null ? !catDepartItogEquip.equals(report.catDepartItogEquip) : report.catDepartItogEquip != null)
-            return false;
-        if (catDepartItogOther != null ? !catDepartItogOther.equals(report.catDepartItogOther) : report.catDepartItogOther != null)
-            return false;
-        if (catDepartItogRnis != null ? !catDepartItogRnis.equals(report.catDepartItogRnis) : report.catDepartItogRnis != null)
-            return false;
-        if (catDepartMunicAll != null ? !catDepartMunicAll.equals(report.catDepartMunicAll) : report.catDepartMunicAll != null)
-            return false;
-        if (catDepartMunicEquip != null ? !catDepartMunicEquip.equals(report.catDepartMunicEquip) : report.catDepartMunicEquip != null)
-            return false;
-        if (catDepartMunicOther != null ? !catDepartMunicOther.equals(report.catDepartMunicOther) : report.catDepartMunicOther != null)
-            return false;
-        if (catDepartMunicRnis != null ? !catDepartMunicRnis.equals(report.catDepartMunicRnis) : report.catDepartMunicRnis != null)
-            return false;
-        if (catDepartStateAll != null ? !catDepartStateAll.equals(report.catDepartStateAll) : report.catDepartStateAll != null)
-            return false;
-        if (catDepartStateEquip != null ? !catDepartStateEquip.equals(report.catDepartStateEquip) : report.catDepartStateEquip != null)
-            return false;
-        if (catDepartStateOther != null ? !catDepartStateOther.equals(report.catDepartStateOther) : report.catDepartStateOther != null)
-            return false;
-        if (catDepartStateRnis != null ? !catDepartStateRnis.equals(report.catDepartStateRnis) : report.catDepartStateRnis != null)
-            return false;
-        if (catGkhCommercAll != null ? !catGkhCommercAll.equals(report.catGkhCommercAll) : report.catGkhCommercAll != null)
-            return false;
-        if (catGkhCommercEquip != null ? !catGkhCommercEquip.equals(report.catGkhCommercEquip) : report.catGkhCommercEquip != null)
-            return false;
-        if (catGkhCommercOther != null ? !catGkhCommercOther.equals(report.catGkhCommercOther) : report.catGkhCommercOther != null)
-            return false;
-        if (catGkhCommercRnis != null ? !catGkhCommercRnis.equals(report.catGkhCommercRnis) : report.catGkhCommercRnis != null)
-            return false;
-        if (catGkhItogAll != null ? !catGkhItogAll.equals(report.catGkhItogAll) : report.catGkhItogAll != null)
-            return false;
-        if (catGkhItogEquip != null ? !catGkhItogEquip.equals(report.catGkhItogEquip) : report.catGkhItogEquip != null)
-            return false;
-        if (catGkhItogOther != null ? !catGkhItogOther.equals(report.catGkhItogOther) : report.catGkhItogOther != null)
-            return false;
-        if (catGkhItogRnis != null ? !catGkhItogRnis.equals(report.catGkhItogRnis) : report.catGkhItogRnis != null)
-            return false;
-        if (catGkhMunicAll != null ? !catGkhMunicAll.equals(report.catGkhMunicAll) : report.catGkhMunicAll != null)
-            return false;
-        if (catGkhMunicEquip != null ? !catGkhMunicEquip.equals(report.catGkhMunicEquip) : report.catGkhMunicEquip != null)
-            return false;
-        if (catGkhMunicOther != null ? !catGkhMunicOther.equals(report.catGkhMunicOther) : report.catGkhMunicOther != null)
-            return false;
-        if (catGkhMunicRnis != null ? !catGkhMunicRnis.equals(report.catGkhMunicRnis) : report.catGkhMunicRnis != null)
-            return false;
-        if (catGkhStateAll != null ? !catGkhStateAll.equals(report.catGkhStateAll) : report.catGkhStateAll != null)
-            return false;
-        if (catGkhStateEquip != null ? !catGkhStateEquip.equals(report.catGkhStateEquip) : report.catGkhStateEquip != null)
-            return false;
-        if (catGkhStateOther != null ? !catGkhStateOther.equals(report.catGkhStateOther) : report.catGkhStateOther != null)
-            return false;
-        if (catGkhStateRnis != null ? !catGkhStateRnis.equals(report.catGkhStateRnis) : report.catGkhStateRnis != null)
-            return false;
-        if (catLargeCommercAll != null ? !catLargeCommercAll.equals(report.catLargeCommercAll) : report.catLargeCommercAll != null)
-            return false;
-        if (catLargeCommercEquip != null ? !catLargeCommercEquip.equals(report.catLargeCommercEquip) : report.catLargeCommercEquip != null)
-            return false;
-        if (catLargeCommercOther != null ? !catLargeCommercOther.equals(report.catLargeCommercOther) : report.catLargeCommercOther != null)
-            return false;
-        if (catLargeCommercRnis != null ? !catLargeCommercRnis.equals(report.catLargeCommercRnis) : report.catLargeCommercRnis != null)
-            return false;
-        if (catLargeItogAll != null ? !catLargeItogAll.equals(report.catLargeItogAll) : report.catLargeItogAll != null)
-            return false;
-        if (catLargeItogEquip != null ? !catLargeItogEquip.equals(report.catLargeItogEquip) : report.catLargeItogEquip != null)
-            return false;
-        if (catLargeItogOther != null ? !catLargeItogOther.equals(report.catLargeItogOther) : report.catLargeItogOther != null)
-            return false;
-        if (catLargeItogRnis != null ? !catLargeItogRnis.equals(report.catLargeItogRnis) : report.catLargeItogRnis != null)
-            return false;
-        if (catLargeMunicAll != null ? !catLargeMunicAll.equals(report.catLargeMunicAll) : report.catLargeMunicAll != null)
-            return false;
-        if (catLargeMunicEquip != null ? !catLargeMunicEquip.equals(report.catLargeMunicEquip) : report.catLargeMunicEquip != null)
-            return false;
-        if (catLargeMunicOther != null ? !catLargeMunicOther.equals(report.catLargeMunicOther) : report.catLargeMunicOther != null)
-            return false;
-        if (catLargeMunicRnis != null ? !catLargeMunicRnis.equals(report.catLargeMunicRnis) : report.catLargeMunicRnis != null)
-            return false;
-        if (catLargeStateAll != null ? !catLargeStateAll.equals(report.catLargeStateAll) : report.catLargeStateAll != null)
-            return false;
-        if (catLargeStateEquip != null ? !catLargeStateEquip.equals(report.catLargeStateEquip) : report.catLargeStateEquip != null)
-            return false;
-        if (catLargeStateOther != null ? !catLargeStateOther.equals(report.catLargeStateOther) : report.catLargeStateOther != null)
-            return false;
-        if (catLargeStateRnis != null ? !catLargeStateRnis.equals(report.catLargeStateRnis) : report.catLargeStateRnis != null)
-            return false;
-        if (catM1CommercAll != null ? !catM1CommercAll.equals(report.catM1CommercAll) : report.catM1CommercAll != null)
-            return false;
-        if (catM1CommercEquip != null ? !catM1CommercEquip.equals(report.catM1CommercEquip) : report.catM1CommercEquip != null)
-            return false;
-        if (catM1CommercOther != null ? !catM1CommercOther.equals(report.catM1CommercOther) : report.catM1CommercOther != null)
-            return false;
-        if (catM1CommercRnis != null ? !catM1CommercRnis.equals(report.catM1CommercRnis) : report.catM1CommercRnis != null)
-            return false;
-        if (catM1ItogAll != null ? !catM1ItogAll.equals(report.catM1ItogAll) : report.catM1ItogAll != null)
-            return false;
-        if (catM1ItogEquip != null ? !catM1ItogEquip.equals(report.catM1ItogEquip) : report.catM1ItogEquip != null)
-            return false;
-        if (catM1ItogOther != null ? !catM1ItogOther.equals(report.catM1ItogOther) : report.catM1ItogOther != null)
-            return false;
-        if (catM1ItogRnis != null ? !catM1ItogRnis.equals(report.catM1ItogRnis) : report.catM1ItogRnis != null)
-            return false;
-        if (catM1MunicAll != null ? !catM1MunicAll.equals(report.catM1MunicAll) : report.catM1MunicAll != null)
-            return false;
-        if (catM1MunicEquip != null ? !catM1MunicEquip.equals(report.catM1MunicEquip) : report.catM1MunicEquip != null)
-            return false;
-        if (catM1MunicOther != null ? !catM1MunicOther.equals(report.catM1MunicOther) : report.catM1MunicOther != null)
-            return false;
-        if (catM1MunicRnis != null ? !catM1MunicRnis.equals(report.catM1MunicRnis) : report.catM1MunicRnis != null)
-            return false;
-        if (catM1StateAll != null ? !catM1StateAll.equals(report.catM1StateAll) : report.catM1StateAll != null)
-            return false;
-        if (catM1StateEquip != null ? !catM1StateEquip.equals(report.catM1StateEquip) : report.catM1StateEquip != null)
-            return false;
-        if (catM1StateOther != null ? !catM1StateOther.equals(report.catM1StateOther) : report.catM1StateOther != null)
-            return false;
-        if (catM1StateRnis != null ? !catM1StateRnis.equals(report.catM1StateRnis) : report.catM1StateRnis != null)
-            return false;
-        if (catM2M3CommercAll != null ? !catM2M3CommercAll.equals(report.catM2M3CommercAll) : report.catM2M3CommercAll != null)
-            return false;
-        if (catM2M3CommercEquip != null ? !catM2M3CommercEquip.equals(report.catM2M3CommercEquip) : report.catM2M3CommercEquip != null)
-            return false;
-        if (catM2M3CommercOther != null ? !catM2M3CommercOther.equals(report.catM2M3CommercOther) : report.catM2M3CommercOther != null)
-            return false;
-        if (catM2M3CommercRnis != null ? !catM2M3CommercRnis.equals(report.catM2M3CommercRnis) : report.catM2M3CommercRnis != null)
-            return false;
-        if (catM2M3ItogAll != null ? !catM2M3ItogAll.equals(report.catM2M3ItogAll) : report.catM2M3ItogAll != null)
-            return false;
-        if (catM2M3ItogEquip != null ? !catM2M3ItogEquip.equals(report.catM2M3ItogEquip) : report.catM2M3ItogEquip != null)
-            return false;
-        if (catM2M3ItogOther != null ? !catM2M3ItogOther.equals(report.catM2M3ItogOther) : report.catM2M3ItogOther != null)
-            return false;
-        if (catM2M3ItogRnis != null ? !catM2M3ItogRnis.equals(report.catM2M3ItogRnis) : report.catM2M3ItogRnis != null)
-            return false;
-        if (catM2M3MunicAll != null ? !catM2M3MunicAll.equals(report.catM2M3MunicAll) : report.catM2M3MunicAll != null)
-            return false;
-        if (catM2M3MunicEquip != null ? !catM2M3MunicEquip.equals(report.catM2M3MunicEquip) : report.catM2M3MunicEquip != null)
-            return false;
-        if (catM2M3MunicOther != null ? !catM2M3MunicOther.equals(report.catM2M3MunicOther) : report.catM2M3MunicOther != null)
-            return false;
-        if (catM2M3MunicRnis != null ? !catM2M3MunicRnis.equals(report.catM2M3MunicRnis) : report.catM2M3MunicRnis != null)
-            return false;
-        if (catM2M3StateAll != null ? !catM2M3StateAll.equals(report.catM2M3StateAll) : report.catM2M3StateAll != null)
-            return false;
-        if (catM2M3StateEquip != null ? !catM2M3StateEquip.equals(report.catM2M3StateEquip) : report.catM2M3StateEquip != null)
-            return false;
-        if (catM2M3StateOther != null ? !catM2M3StateOther.equals(report.catM2M3StateOther) : report.catM2M3StateOther != null)
-            return false;
-        if (catM2M3StateRnis != null ? !catM2M3StateRnis.equals(report.catM2M3StateRnis) : report.catM2M3StateRnis != null)
-            return false;
-        if (catSchoolCommercAll != null ? !catSchoolCommercAll.equals(report.catSchoolCommercAll) : report.catSchoolCommercAll != null)
-            return false;
-        if (catSchoolCommercEquip != null ? !catSchoolCommercEquip.equals(report.catSchoolCommercEquip) : report.catSchoolCommercEquip != null)
-            return false;
-        if (catSchoolCommercOther != null ? !catSchoolCommercOther.equals(report.catSchoolCommercOther) : report.catSchoolCommercOther != null)
-            return false;
-        if (catSchoolCommercRnis != null ? !catSchoolCommercRnis.equals(report.catSchoolCommercRnis) : report.catSchoolCommercRnis != null)
-            return false;
-        if (catSchoolItogAll != null ? !catSchoolItogAll.equals(report.catSchoolItogAll) : report.catSchoolItogAll != null)
-            return false;
-        if (catSchoolItogEquip != null ? !catSchoolItogEquip.equals(report.catSchoolItogEquip) : report.catSchoolItogEquip != null)
-            return false;
-        if (catSchoolItogOther != null ? !catSchoolItogOther.equals(report.catSchoolItogOther) : report.catSchoolItogOther != null)
-            return false;
-        if (catSchoolItogRnis != null ? !catSchoolItogRnis.equals(report.catSchoolItogRnis) : report.catSchoolItogRnis != null)
-            return false;
-        if (catSchoolMunicAll != null ? !catSchoolMunicAll.equals(report.catSchoolMunicAll) : report.catSchoolMunicAll != null)
-            return false;
-        if (catSchoolMunicEquip != null ? !catSchoolMunicEquip.equals(report.catSchoolMunicEquip) : report.catSchoolMunicEquip != null)
-            return false;
-        if (catSchoolMunicOther != null ? !catSchoolMunicOther.equals(report.catSchoolMunicOther) : report.catSchoolMunicOther != null)
-            return false;
-        if (catSchoolMunicRnis != null ? !catSchoolMunicRnis.equals(report.catSchoolMunicRnis) : report.catSchoolMunicRnis != null)
-            return false;
-        if (catSchoolStateAll != null ? !catSchoolStateAll.equals(report.catSchoolStateAll) : report.catSchoolStateAll != null)
-            return false;
-        if (catSchoolStateEquip != null ? !catSchoolStateEquip.equals(report.catSchoolStateEquip) : report.catSchoolStateEquip != null)
-            return false;
-        if (catSchoolStateOther != null ? !catSchoolStateOther.equals(report.catSchoolStateOther) : report.catSchoolStateOther != null)
-            return false;
-        if (catSchoolStateRnis != null ? !catSchoolStateRnis.equals(report.catSchoolStateRnis) : report.catSchoolStateRnis != null)
-            return false;
-        if (dateReport != null ? !dateReport.equals(report.dateReport) : report.dateReport != null) return false;
-
-        return true;
+    public void setUserReport(Users userReport) {
+        this.userReport = userReport;
     }
 
     @Override
     public int hashCode() {
-        int result = idReport;
-        result = 31 * result + (dateReport != null ? dateReport.hashCode() : 0);
-        result = 31 * result + (catM1StateAll != null ? catM1StateAll.hashCode() : 0);
-        result = 31 * result + (catM1MunicAll != null ? catM1MunicAll.hashCode() : 0);
-        result = 31 * result + (catM1CommercAll != null ? catM1CommercAll.hashCode() : 0);
-        result = 31 * result + (catM1ItogAll != null ? catM1ItogAll.hashCode() : 0);
-        result = 31 * result + (catM2M3StateAll != null ? catM2M3StateAll.hashCode() : 0);
-        result = 31 * result + (catM2M3MunicAll != null ? catM2M3MunicAll.hashCode() : 0);
-        result = 31 * result + (catM2M3CommercAll != null ? catM2M3CommercAll.hashCode() : 0);
-        result = 31 * result + (catM2M3ItogAll != null ? catM2M3ItogAll.hashCode() : 0);
-        result = 31 * result + (catLargeStateAll != null ? catLargeStateAll.hashCode() : 0);
-        result = 31 * result + (catLargeMunicAll != null ? catLargeMunicAll.hashCode() : 0);
-        result = 31 * result + (catLargeCommercAll != null ? catLargeCommercAll.hashCode() : 0);
-        result = 31 * result + (catLargeItogAll != null ? catLargeItogAll.hashCode() : 0);
-        result = 31 * result + (catDangerStateAll != null ? catDangerStateAll.hashCode() : 0);
-        result = 31 * result + (catDangerMunicAll != null ? catDangerMunicAll.hashCode() : 0);
-        result = 31 * result + (catDangerCommercAll != null ? catDangerCommercAll.hashCode() : 0);
-        result = 31 * result + (catDangerItogAll != null ? catDangerItogAll.hashCode() : 0);
-        result = 31 * result + (catSchoolStateAll != null ? catSchoolStateAll.hashCode() : 0);
-        result = 31 * result + (catSchoolMunicAll != null ? catSchoolMunicAll.hashCode() : 0);
-        result = 31 * result + (catSchoolCommercAll != null ? catSchoolCommercAll.hashCode() : 0);
-        result = 31 * result + (catSchoolItogAll != null ? catSchoolItogAll.hashCode() : 0);
-        result = 31 * result + (catGkhStateAll != null ? catGkhStateAll.hashCode() : 0);
-        result = 31 * result + (catGkhMunicAll != null ? catGkhMunicAll.hashCode() : 0);
-        result = 31 * result + (catGkhCommercAll != null ? catGkhCommercAll.hashCode() : 0);
-        result = 31 * result + (catGkhItogAll != null ? catGkhItogAll.hashCode() : 0);
-        result = 31 * result + (catDepartStateAll != null ? catDepartStateAll.hashCode() : 0);
-        result = 31 * result + (catDepartMunicAll != null ? catDepartMunicAll.hashCode() : 0);
-        result = 31 * result + (catDepartCommercAll != null ? catDepartCommercAll.hashCode() : 0);
-        result = 31 * result + (catDepartItogAll != null ? catDepartItogAll.hashCode() : 0);
-        result = 31 * result + (catM1StateEquip != null ? catM1StateEquip.hashCode() : 0);
-        result = 31 * result + (catM1MunicEquip != null ? catM1MunicEquip.hashCode() : 0);
-        result = 31 * result + (catM1CommercEquip != null ? catM1CommercEquip.hashCode() : 0);
-        result = 31 * result + (catM1ItogEquip != null ? catM1ItogEquip.hashCode() : 0);
-        result = 31 * result + (catM2M3StateEquip != null ? catM2M3StateEquip.hashCode() : 0);
-        result = 31 * result + (catM2M3MunicEquip != null ? catM2M3MunicEquip.hashCode() : 0);
-        result = 31 * result + (catM2M3CommercEquip != null ? catM2M3CommercEquip.hashCode() : 0);
-        result = 31 * result + (catM2M3ItogEquip != null ? catM2M3ItogEquip.hashCode() : 0);
-        result = 31 * result + (catLargeStateEquip != null ? catLargeStateEquip.hashCode() : 0);
-        result = 31 * result + (catLargeMunicEquip != null ? catLargeMunicEquip.hashCode() : 0);
-        result = 31 * result + (catLargeCommercEquip != null ? catLargeCommercEquip.hashCode() : 0);
-        result = 31 * result + (catLargeItogEquip != null ? catLargeItogEquip.hashCode() : 0);
-        result = 31 * result + (catDangerStateEquip != null ? catDangerStateEquip.hashCode() : 0);
-        result = 31 * result + (catDangerMunicEquip != null ? catDangerMunicEquip.hashCode() : 0);
-        result = 31 * result + (catDangerCommercEquip != null ? catDangerCommercEquip.hashCode() : 0);
-        result = 31 * result + (catDangerItogEquip != null ? catDangerItogEquip.hashCode() : 0);
-        result = 31 * result + (catSchoolStateEquip != null ? catSchoolStateEquip.hashCode() : 0);
-        result = 31 * result + (catSchoolMunicEquip != null ? catSchoolMunicEquip.hashCode() : 0);
-        result = 31 * result + (catSchoolCommercEquip != null ? catSchoolCommercEquip.hashCode() : 0);
-        result = 31 * result + (catSchoolItogEquip != null ? catSchoolItogEquip.hashCode() : 0);
-        result = 31 * result + (catGkhStateEquip != null ? catGkhStateEquip.hashCode() : 0);
-        result = 31 * result + (catGkhMunicEquip != null ? catGkhMunicEquip.hashCode() : 0);
-        result = 31 * result + (catGkhCommercEquip != null ? catGkhCommercEquip.hashCode() : 0);
-        result = 31 * result + (catGkhItogEquip != null ? catGkhItogEquip.hashCode() : 0);
-        result = 31 * result + (catDepartStateEquip != null ? catDepartStateEquip.hashCode() : 0);
-        result = 31 * result + (catDepartMunicEquip != null ? catDepartMunicEquip.hashCode() : 0);
-        result = 31 * result + (catDepartCommercEquip != null ? catDepartCommercEquip.hashCode() : 0);
-        result = 31 * result + (catDepartItogEquip != null ? catDepartItogEquip.hashCode() : 0);
-        result = 31 * result + (catM1StateRnis != null ? catM1StateRnis.hashCode() : 0);
-        result = 31 * result + (catM1MunicRnis != null ? catM1MunicRnis.hashCode() : 0);
-        result = 31 * result + (catM1CommercRnis != null ? catM1CommercRnis.hashCode() : 0);
-        result = 31 * result + (catM1ItogRnis != null ? catM1ItogRnis.hashCode() : 0);
-        result = 31 * result + (catM2M3StateRnis != null ? catM2M3StateRnis.hashCode() : 0);
-        result = 31 * result + (catM2M3MunicRnis != null ? catM2M3MunicRnis.hashCode() : 0);
-        result = 31 * result + (catM2M3CommercRnis != null ? catM2M3CommercRnis.hashCode() : 0);
-        result = 31 * result + (catM2M3ItogRnis != null ? catM2M3ItogRnis.hashCode() : 0);
-        result = 31 * result + (catLargeStateRnis != null ? catLargeStateRnis.hashCode() : 0);
-        result = 31 * result + (catLargeMunicRnis != null ? catLargeMunicRnis.hashCode() : 0);
-        result = 31 * result + (catLargeCommercRnis != null ? catLargeCommercRnis.hashCode() : 0);
-        result = 31 * result + (catLargeItogRnis != null ? catLargeItogRnis.hashCode() : 0);
-        result = 31 * result + (catDangerStateRnis != null ? catDangerStateRnis.hashCode() : 0);
-        result = 31 * result + (catDangerMunicRnis != null ? catDangerMunicRnis.hashCode() : 0);
-        result = 31 * result + (catDangerCommercRnis != null ? catDangerCommercRnis.hashCode() : 0);
-        result = 31 * result + (catDangerItogRnis != null ? catDangerItogRnis.hashCode() : 0);
-        result = 31 * result + (catSchoolStateRnis != null ? catSchoolStateRnis.hashCode() : 0);
-        result = 31 * result + (catSchoolMunicRnis != null ? catSchoolMunicRnis.hashCode() : 0);
-        result = 31 * result + (catSchoolCommercRnis != null ? catSchoolCommercRnis.hashCode() : 0);
-        result = 31 * result + (catSchoolItogRnis != null ? catSchoolItogRnis.hashCode() : 0);
-        result = 31 * result + (catGkhStateRnis != null ? catGkhStateRnis.hashCode() : 0);
-        result = 31 * result + (catGkhMunicRnis != null ? catGkhMunicRnis.hashCode() : 0);
-        result = 31 * result + (catGkhCommercRnis != null ? catGkhCommercRnis.hashCode() : 0);
-        result = 31 * result + (catGkhItogRnis != null ? catGkhItogRnis.hashCode() : 0);
-        result = 31 * result + (catDepartStateRnis != null ? catDepartStateRnis.hashCode() : 0);
-        result = 31 * result + (catDepartMunicRnis != null ? catDepartMunicRnis.hashCode() : 0);
-        result = 31 * result + (catDepartCommercRnis != null ? catDepartCommercRnis.hashCode() : 0);
-        result = 31 * result + (catDepartItogRnis != null ? catDepartItogRnis.hashCode() : 0);
-        result = 31 * result + (catM1StateOther != null ? catM1StateOther.hashCode() : 0);
-        result = 31 * result + (catM1MunicOther != null ? catM1MunicOther.hashCode() : 0);
-        result = 31 * result + (catM1CommercOther != null ? catM1CommercOther.hashCode() : 0);
-        result = 31 * result + (catM1ItogOther != null ? catM1ItogOther.hashCode() : 0);
-        result = 31 * result + (catM2M3StateOther != null ? catM2M3StateOther.hashCode() : 0);
-        result = 31 * result + (catM2M3MunicOther != null ? catM2M3MunicOther.hashCode() : 0);
-        result = 31 * result + (catM2M3CommercOther != null ? catM2M3CommercOther.hashCode() : 0);
-        result = 31 * result + (catM2M3ItogOther != null ? catM2M3ItogOther.hashCode() : 0);
-        result = 31 * result + (catLargeStateOther != null ? catLargeStateOther.hashCode() : 0);
-        result = 31 * result + (catLargeMunicOther != null ? catLargeMunicOther.hashCode() : 0);
-        result = 31 * result + (catLargeCommercOther != null ? catLargeCommercOther.hashCode() : 0);
-        result = 31 * result + (catLargeItogOther != null ? catLargeItogOther.hashCode() : 0);
-        result = 31 * result + (catDangerStateOther != null ? catDangerStateOther.hashCode() : 0);
-        result = 31 * result + (catDangerMunicOther != null ? catDangerMunicOther.hashCode() : 0);
-        result = 31 * result + (catDangerCommercOther != null ? catDangerCommercOther.hashCode() : 0);
-        result = 31 * result + (catDangerItogOther != null ? catDangerItogOther.hashCode() : 0);
-        result = 31 * result + (catSchoolStateOther != null ? catSchoolStateOther.hashCode() : 0);
-        result = 31 * result + (catSchoolMunicOther != null ? catSchoolMunicOther.hashCode() : 0);
-        result = 31 * result + (catSchoolCommercOther != null ? catSchoolCommercOther.hashCode() : 0);
-        result = 31 * result + (catSchoolItogOther != null ? catSchoolItogOther.hashCode() : 0);
-        result = 31 * result + (catGkhStateOther != null ? catGkhStateOther.hashCode() : 0);
-        result = 31 * result + (catGkhMunicOther != null ? catGkhMunicOther.hashCode() : 0);
-        result = 31 * result + (catGkhCommercOther != null ? catGkhCommercOther.hashCode() : 0);
-        result = 31 * result + (catGkhItogOther != null ? catGkhItogOther.hashCode() : 0);
-        result = 31 * result + (catDepartStateOther != null ? catDepartStateOther.hashCode() : 0);
-        result = 31 * result + (catDepartMunicOther != null ? catDepartMunicOther.hashCode() : 0);
-        result = 31 * result + (catDepartCommercOther != null ? catDepartCommercOther.hashCode() : 0);
-        result = 31 * result + (catDepartItogOther != null ? catDepartItogOther.hashCode() : 0);
-        return result;
+        int hash = 0;
+        hash += (idReport != null ? idReport.hashCode() : 0);
+        return hash;
     }
+
+    @Override
+    public boolean equals(Object object) {
+        // TODO: Warning - this method won't work in the case the id fields are not set
+        if (!(object instanceof Report)) {
+            return false;
+        }
+        Report other = (Report) object;
+        if ((this.idReport == null && other.idReport != null) || (this.idReport != null && !this.idReport.equals(other.idReport))) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public String toString() {
+        return "Entity.Report[ idReport=" + idReport + " ]";
+    }
+
 }

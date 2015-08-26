@@ -1,4 +1,4 @@
-package com.vpomo.reportglonass.repository;
+package com.vpomo.reportglonass.service;
 
 import com.vpomo.reportglonass.model.Report;
 import com.vpomo.reportglonass.model.Users;
@@ -8,12 +8,12 @@ import java.util.Date;
 import java.util.List;
 
 /**
- * Repository interface for <code>Report</code> domain objects
+ * Mostly used as a facade so all controllers have a single point of entry
  *
  * @author Pomogalov Vladimir
  */
 
-public interface ReportRepository {
+public interface ReportService {
     List<Report> getAll() throws DataAccessException;
 
     Integer addReport(

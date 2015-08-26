@@ -13,7 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.dao.DataAccessException;
 
 /**
- * Mostly used as a facade for all QueueShop controllers
+ * Mostly used as a facade for all ReportGlonass controllers
  * Also a placeholder for @Transactional annotations
  *
  * @author Pomogalov Vladimir
@@ -22,10 +22,10 @@ import org.springframework.dao.DataAccessException;
 @Service
 //@Transactional(propagation = Propagation.REQUIRED, timeout = 60)
 public class UsersServiceImpl implements UsersService {
-private UsersRepository usersRepository;
+    private UsersRepository usersRepository;
 
     @Autowired
-    public UsersServiceImpl(com.vpomo.reportglonass.repository.UsersRepository usersRepository) throws DataAccessException{
+    public UsersServiceImpl(com.vpomo.reportglonass.repository.UsersRepository usersRepository) throws DataAccessException {
         this.usersRepository = usersRepository;
     }
 
@@ -43,7 +43,7 @@ private UsersRepository usersRepository;
     }
 
     @Override
-    @Transactional(readOnly = true)
+    @Transactional
     public Integer addUser(String login, String password, String passwordTwo, String names, String groupUser) throws DataAccessException {
         return usersRepository.addUser(login, password, passwordTwo, names, groupUser);
     }

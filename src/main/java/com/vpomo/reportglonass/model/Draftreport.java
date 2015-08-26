@@ -1,153 +1,453 @@
 package com.vpomo.reportglonass.model;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import java.sql.Timestamp;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
+import org.hibernate.annotations.Proxy;
+
+import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
+import java.io.Serializable;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.List;
 
 /**
- * Created by Помогалов on 02.08.2015.
+ * Simple model draftreport
+ *
+ * @author Pomogalov Vladimir
  */
-@Entity
-public class Draftreport {
-    private int idDraftreport;
-    private Timestamp dateReport;
-    private Integer catM1StateAll;
-    private Integer catM1MunicAll;
-    private Integer catM1CommercAll;
-    private Integer catM1ItogAll;
-    private Integer catM2M3StateAll;
-    private Integer catM2M3MunicAll;
-    private Integer catM2M3CommercAll;
-    private Integer catM2M3ItogAll;
-    private Integer catLargeStateAll;
-    private Integer catLargeMunicAll;
-    private Integer catLargeCommercAll;
-    private Integer catLargeItogAll;
-    private Integer catDangerStateAll;
-    private Integer catDangerMunicAll;
-    private Integer catDangerCommercAll;
-    private Integer catDangerItogAll;
-    private Integer catSchoolStateAll;
-    private Integer catSchoolMunicAll;
-    private Integer catSchoolCommercAll;
-    private Integer catSchoolItogAll;
-    private Integer catGkhStateAll;
-    private Integer catGkhMunicAll;
-    private Integer catGkhCommercAll;
-    private Integer catGkhItogAll;
-    private Integer catDepartStateAll;
-    private Integer catDepartMunicAll;
-    private Integer catDepartCommercAll;
-    private Integer catDepartItogAll;
-    private Integer catM1StateEquip;
-    private Integer catM1MunicEquip;
-    private Integer catM1CommercEquip;
-    private Integer catM1ItogEquip;
-    private Integer catM2M3StateEquip;
-    private Integer catM2M3MunicEquip;
-    private Integer catM2M3CommercEquip;
-    private Integer catM2M3ItogEquip;
-    private Integer catLargeStateEquip;
-    private Integer catLargeMunicEquip;
-    private Integer catLargeCommercEquip;
-    private Integer catLargeItogEquip;
-    private Integer catDangerStateEquip;
-    private Integer catDangerMunicEquip;
-    private Integer catDangerCommercEquip;
-    private Integer catDangerItogEquip;
-    private Integer catSchoolStateEquip;
-    private Integer catSchoolMunicEquip;
-    private Integer catSchoolCommercEquip;
-    private Integer catSchoolItogEquip;
-    private Integer catGkhStateEquip;
-    private Integer catGkhMunicEquip;
-    private Integer catGkhCommercEquip;
-    private Integer catGkhItogEquip;
-    private Integer catDepartStateEquip;
-    private Integer catDepartMunicEquip;
-    private Integer catDepartCommercEquip;
-    private Integer catDepartItogEquip;
-    private Integer catM1StateRnis;
-    private Integer catM1MunicRnis;
-    private Integer catM1CommercRnis;
-    private Integer catM1ItogRnis;
-    private Integer catM2M3StateRnis;
-    private Integer catM2M3MunicRnis;
-    private Integer catM2M3CommercRnis;
-    private Integer catM2M3ItogRnis;
-    private Integer catLargeStateRnis;
-    private Integer catLargeMunicRnis;
-    private Integer catLargeCommercRnis;
-    private Integer catLargeItogRnis;
-    private Integer catDangerStateRnis;
-    private Integer catDangerMunicRnis;
-    private Integer catDangerCommercRnis;
-    private Integer catDangerItogRnis;
-    private Integer catSchoolStateRnis;
-    private Integer catSchoolMunicRnis;
-    private Integer catSchoolCommercRnis;
-    private Integer catSchoolItogRnis;
-    private Integer catGkhStateRnis;
-    private Integer catGkhMunicRnis;
-    private Integer catGkhCommercRnis;
-    private Integer catGkhItogRnis;
-    private Integer catDepartStateRnis;
-    private Integer catDepartMunicRnis;
-    private Integer catDepartCommercRnis;
-    private Integer catDepartItogRnis;
-    private Integer catM1StateOther;
-    private Integer catM1MunicOther;
-    private Integer catM1CommercOther;
-    private Integer catM1ItogOther;
-    private Integer catM2M3StateOther;
-    private Integer catM2M3MunicOther;
-    private Integer catM2M3CommercOther;
-    private Integer catM2M3ItogOther;
-    private Integer catLargeStateOther;
-    private Integer catLargeMunicOther;
-    private Integer catLargeCommercOther;
-    private Integer catLargeItogOther;
-    private Integer catDangerStateOther;
-    private Integer catDangerMunicOther;
-    private Integer catDangerCommercOther;
-    private Integer catDangerItogOther;
-    private Integer catSchoolStateOther;
-    private Integer catSchoolMunicOther;
-    private Integer catSchoolCommercOther;
-    private Integer catSchoolItogOther;
-    private Integer catGkhStateOther;
-    private Integer catGkhMunicOther;
-    private Integer catGkhCommercOther;
-    private Integer catGkhItogOther;
-    private Integer catDepartStateOther;
-    private Integer catDepartMunicOther;
-    private Integer catDepartCommercOther;
-    private Integer catDepartItogOther;
 
+@Entity
+@Cacheable(false)
+@Proxy(lazy = false)
+@Table(name = "draftreport")
+@XmlRootElement
+
+public class DraftReport implements Serializable {
+    private static final long serialVersionUID = 1L;
     @Id
-    @Column(name = "id_draftreport", nullable = false, insertable = true, updatable = true)
-    public int getIdDraftreport() {
-        return idDraftreport;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Basic(optional = false)
+    @Column(name = "id_draftreport")
+    private Integer idDraftreport;
+    @Column(name = "date_report")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date dateReport;
+    @Column(name = "catM1StateAll")
+    private Integer catM1StateAll;
+    @Column(name = "catM1MunicAll")
+    private Integer catM1MunicAll;
+    @Column(name = "catM1CommercAll")
+    private Integer catM1CommercAll;
+    @Column(name = "catM1ItogAll")
+    private Integer catM1ItogAll;
+    @Column(name = "catM2M3StateAll")
+    private Integer catM2M3StateAll;
+    @Column(name = "catM2M3MunicAll")
+    private Integer catM2M3MunicAll;
+    @Column(name = "catM2M3CommercAll")
+    private Integer catM2M3CommercAll;
+    @Column(name = "catM2M3ItogAll")
+    private Integer catM2M3ItogAll;
+    @Column(name = "catLargeStateAll")
+    private Integer catLargeStateAll;
+    @Column(name = "catLargeMunicAll")
+    private Integer catLargeMunicAll;
+    @Column(name = "catLargeCommercAll")
+    private Integer catLargeCommercAll;
+    @Column(name = "catLargeItogAll")
+    private Integer catLargeItogAll;
+    @Column(name = "catDangerStateAll")
+    private Integer catDangerStateAll;
+    @Column(name = "catDangerMunicAll")
+    private Integer catDangerMunicAll;
+    @Column(name = "catDangerCommercAll")
+    private Integer catDangerCommercAll;
+    @Column(name = "catDangerItogAll")
+    private Integer catDangerItogAll;
+    @Column(name = "catSchoolStateAll")
+    private Integer catSchoolStateAll;
+    @Column(name = "catSchoolMunicAll")
+    private Integer catSchoolMunicAll;
+    @Column(name = "catSchoolCommercAll")
+    private Integer catSchoolCommercAll;
+    @Column(name = "catSchoolItogAll")
+    private Integer catSchoolItogAll;
+    @Column(name = "catGKHStateAll")
+    private Integer catGKHStateAll;
+    @Column(name = "catGKHMunicAll")
+    private Integer catGKHMunicAll;
+    @Column(name = "catGKHCommercAll")
+    private Integer catGKHCommercAll;
+    @Column(name = "catGKHItogAll")
+    private Integer catGKHItogAll;
+    @Column(name = "catDepartStateAll")
+    private Integer catDepartStateAll;
+    @Column(name = "catDepartMunicAll")
+    private Integer catDepartMunicAll;
+    @Column(name = "catDepartCommercAll")
+    private Integer catDepartCommercAll;
+    @Column(name = "catDepartItogAll")
+    private Integer catDepartItogAll;
+    @Column(name = "catM1StateEquip")
+    private Integer catM1StateEquip;
+    @Column(name = "catM1MunicEquip")
+    private Integer catM1MunicEquip;
+    @Column(name = "catM1CommercEquip")
+    private Integer catM1CommercEquip;
+    @Column(name = "catM1ItogEquip")
+    private Integer catM1ItogEquip;
+    @Column(name = "catM2M3StateEquip")
+    private Integer catM2M3StateEquip;
+    @Column(name = "catM2M3MunicEquip")
+    private Integer catM2M3MunicEquip;
+    @Column(name = "catM2M3CommercEquip")
+    private Integer catM2M3CommercEquip;
+    @Column(name = "catM2M3ItogEquip")
+    private Integer catM2M3ItogEquip;
+    @Column(name = "catLargeStateEquip")
+    private Integer catLargeStateEquip;
+    @Column(name = "catLargeMunicEquip")
+    private Integer catLargeMunicEquip;
+    @Column(name = "catLargeCommercEquip")
+    private Integer catLargeCommercEquip;
+    @Column(name = "catLargeItogEquip")
+    private Integer catLargeItogEquip;
+    @Column(name = "catDangerStateEquip")
+    private Integer catDangerStateEquip;
+    @Column(name = "catDangerMunicEquip")
+    private Integer catDangerMunicEquip;
+    @Column(name = "catDangerCommercEquip")
+    private Integer catDangerCommercEquip;
+    @Column(name = "catDangerItogEquip")
+    private Integer catDangerItogEquip;
+    @Column(name = "catSchoolStateEquip")
+    private Integer catSchoolStateEquip;
+    @Column(name = "catSchoolMunicEquip")
+    private Integer catSchoolMunicEquip;
+    @Column(name = "catSchoolCommercEquip")
+    private Integer catSchoolCommercEquip;
+    @Column(name = "catSchoolItogEquip")
+    private Integer catSchoolItogEquip;
+    @Column(name = "catGKHStateEquip")
+    private Integer catGKHStateEquip;
+    @Column(name = "catGKHMunicEquip")
+    private Integer catGKHMunicEquip;
+    @Column(name = "catGKHCommercEquip")
+    private Integer catGKHCommercEquip;
+    @Column(name = "catGKHItogEquip")
+    private Integer catGKHItogEquip;
+    @Column(name = "catDepartStateEquip")
+    private Integer catDepartStateEquip;
+    @Column(name = "catDepartMunicEquip")
+    private Integer catDepartMunicEquip;
+    @Column(name = "catDepartCommercEquip")
+    private Integer catDepartCommercEquip;
+    @Column(name = "catDepartItogEquip")
+    private Integer catDepartItogEquip;
+    @Column(name = "catM1StateRNIS")
+    private Integer catM1StateRNIS;
+    @Column(name = "catM1MunicRNIS")
+    private Integer catM1MunicRNIS;
+    @Column(name = "catM1CommercRNIS")
+    private Integer catM1CommercRNIS;
+    @Column(name = "catM1ItogRNIS")
+    private Integer catM1ItogRNIS;
+    @Column(name = "catM2M3StateRNIS")
+    private Integer catM2M3StateRNIS;
+    @Column(name = "catM2M3MunicRNIS")
+    private Integer catM2M3MunicRNIS;
+    @Column(name = "catM2M3CommercRNIS")
+    private Integer catM2M3CommercRNIS;
+    @Column(name = "catM2M3ItogRNIS")
+    private Integer catM2M3ItogRNIS;
+    @Column(name = "catLargeStateRNIS")
+    private Integer catLargeStateRNIS;
+    @Column(name = "catLargeMunicRNIS")
+    private Integer catLargeMunicRNIS;
+    @Column(name = "catLargeCommercRNIS")
+    private Integer catLargeCommercRNIS;
+    @Column(name = "catLargeItogRNIS")
+    private Integer catLargeItogRNIS;
+    @Column(name = "catDangerStateRNIS")
+    private Integer catDangerStateRNIS;
+    @Column(name = "catDangerMunicRNIS")
+    private Integer catDangerMunicRNIS;
+    @Column(name = "catDangerCommercRNIS")
+    private Integer catDangerCommercRNIS;
+    @Column(name = "catDangerItogRNIS")
+    private Integer catDangerItogRNIS;
+    @Column(name = "catSchoolStateRNIS")
+    private Integer catSchoolStateRNIS;
+    @Column(name = "catSchoolMunicRNIS")
+    private Integer catSchoolMunicRNIS;
+    @Column(name = "catSchoolCommercRNIS")
+    private Integer catSchoolCommercRNIS;
+    @Column(name = "catSchoolItogRNIS")
+    private Integer catSchoolItogRNIS;
+    @Column(name = "catGKHStateRNIS")
+    private Integer catGKHStateRNIS;
+    @Column(name = "catGKHMunicRNIS")
+    private Integer catGKHMunicRNIS;
+    @Column(name = "catGKHCommercRNIS")
+    private Integer catGKHCommercRNIS;
+    @Column(name = "catGKHItogRNIS")
+    private Integer catGKHItogRNIS;
+    @Column(name = "catDepartStateRNIS")
+    private Integer catDepartStateRNIS;
+    @Column(name = "catDepartMunicRNIS")
+    private Integer catDepartMunicRNIS;
+    @Column(name = "catDepartCommercRNIS")
+    private Integer catDepartCommercRNIS;
+    @Column(name = "catDepartItogRNIS")
+    private Integer catDepartItogRNIS;
+    @Column(name = "catM1StateOther")
+    private Integer catM1StateOther;
+    @Column(name = "catM1MunicOther")
+    private Integer catM1MunicOther;
+    @Column(name = "catM1CommercOther")
+    private Integer catM1CommercOther;
+    @Column(name = "catM1ItogOther")
+    private Integer catM1ItogOther;
+    @Column(name = "catM2M3StateOther")
+    private Integer catM2M3StateOther;
+    @Column(name = "catM2M3MunicOther")
+    private Integer catM2M3MunicOther;
+    @Column(name = "catM2M3CommercOther")
+    private Integer catM2M3CommercOther;
+    @Column(name = "catM2M3ItogOther")
+    private Integer catM2M3ItogOther;
+    @Column(name = "catLargeStateOther")
+    private Integer catLargeStateOther;
+    @Column(name = "catLargeMunicOther")
+    private Integer catLargeMunicOther;
+    @Column(name = "catLargeCommercOther")
+    private Integer catLargeCommercOther;
+    @Column(name = "catLargeItogOther")
+    private Integer catLargeItogOther;
+    @Column(name = "catDangerStateOther")
+    private Integer catDangerStateOther;
+    @Column(name = "catDangerMunicOther")
+    private Integer catDangerMunicOther;
+    @Column(name = "catDangerCommercOther")
+    private Integer catDangerCommercOther;
+    @Column(name = "catDangerItogOther")
+    private Integer catDangerItogOther;
+    @Column(name = "catSchoolStateOther")
+    private Integer catSchoolStateOther;
+    @Column(name = "catSchoolMunicOther")
+    private Integer catSchoolMunicOther;
+    @Column(name = "catSchoolCommercOther")
+    private Integer catSchoolCommercOther;
+    @Column(name = "catSchoolItogOther")
+    private Integer catSchoolItogOther;
+    @Column(name = "catGKHStateOther")
+    private Integer catGKHStateOther;
+    @Column(name = "catGKHMunicOther")
+    private Integer catGKHMunicOther;
+    @Column(name = "catGKHCommercOther")
+    private Integer catGKHCommercOther;
+    @Column(name = "catGKHItogOther")
+    private Integer catGKHItogOther;
+    @Column(name = "catDepartStateOther")
+    private Integer catDepartStateOther;
+    @Column(name = "catDepartMunicOther")
+    private Integer catDepartMunicOther;
+    @Column(name = "catDepartCommercOther")
+    private Integer catDepartCommercOther;
+    @Column(name = "catDepartItogOther")
+    private Integer catDepartItogOther;
+    @JoinColumn(name = "user_draftreport", referencedColumnName = "login")
+    @ManyToOne(optional = false)
+    private Users userDraftreport;
+
+    public DraftReport() {
     }
 
-    public void setIdDraftreport(int idDraftreport) {
+    public DraftReport(Integer idDraftreport) {
         this.idDraftreport = idDraftreport;
     }
 
-    @Basic
-    @Column(name = "date_report", nullable = true, insertable = true, updatable = true)
-    public Timestamp getDateReport() {
-        return dateReport;
+    public DraftReport(Users userReport, Date dateReport,
+                       Integer icatM1StateAll, Integer icatM1StateEquip, Integer icatM1StateRNIS, Integer icatM1StateOther,
+                       Integer icatM1MunicAll, Integer icatM1MunicEquip, Integer icatM1MunicRNIS, Integer icatM1MunicOther,
+                       Integer icatM1CommercAll, Integer icatM1CommercEquip, Integer icatM1CommercRNIS, Integer icatM1CommercOther,
+
+                       Integer icatM2M3StateAll, Integer icatM2M3StateEquip, Integer icatM2M3StateRNIS, Integer icatM2M3StateOther,
+                       Integer icatM2M3MunicAll, Integer icatM2M3MunicEquip, Integer icatM2M3MunicRNIS, Integer icatM2M3MunicOther,
+                       Integer icatM2M3CommercAll, Integer icatM2M3CommercEquip, Integer icatM2M3CommercRNIS, Integer icatM2M3CommercOther,
+
+                       Integer icatLargeStateAll, Integer icatLargeStateEquip, Integer icatLargeStateRNIS, Integer icatLargeStateOther,
+                       Integer icatLargeMunicAll, Integer icatLargeMunicEquip, Integer icatLargeMunicRNIS, Integer icatLargeMunicOther,
+                       Integer icatLargeCommercAll, Integer icatLargeCommercEquip, Integer icatLargeCommercRNIS, Integer icatLargeCommercOther,
+
+                       Integer icatDangerStateAll, Integer icatDangerStateEquip, Integer icatDangerStateRNIS, Integer icatDangerStateOther,
+                       Integer icatDangerMunicAll, Integer icatDangerMunicEquip, Integer icatDangerMunicRNIS, Integer icatDangerMunicOther,
+                       Integer icatDangerCommercAll, Integer icatDangerCommercEquip, Integer icatDangerCommercRNIS, Integer icatDangerCommercOther,
+
+                       Integer icatSchoolStateAll, Integer icatSchoolStateEquip, Integer icatSchoolStateRNIS, Integer icatSchoolStateOther,
+                       Integer icatSchoolMunicAll, Integer icatSchoolMunicEquip, Integer icatSchoolMunicRNIS, Integer icatSchoolMunicOther,
+                       Integer icatSchoolCommercAll, Integer icatSchoolCommercEquip, Integer icatSchoolCommercRNIS, Integer icatSchoolCommercOther,
+
+                       Integer icatGKHStateAll, Integer icatGKHStateEquip, Integer icatGKHStateRNIS, Integer icatGKHStateOther,
+                       Integer icatGKHMunicAll, Integer icatGKHMunicEquip, Integer icatGKHMunicRNIS, Integer icatGKHMunicOther,
+                       Integer icatGKHCommercAll, Integer icatGKHCommercEquip, Integer icatGKHCommercRNIS, Integer icatGKHCommercOther,
+
+                       Integer icatDepartStateAll, Integer icatDepartStateEquip, Integer icatDepartStateRNIS, Integer icatDepartStateOther,
+                       Integer icatDepartMunicAll, Integer icatDepartMunicEquip, Integer icatDepartMunicRNIS, Integer icatDepartMunicOther,
+                       Integer icatDepartCommercAll, Integer icatDepartCommercEquip, Integer icatDepartCommercRNIS, Integer icatDepartCommercOther
+
+    ) {
+        this.userDraftreport = userReport;
+        this.dateReport = dateReport;
+
+        this.catM1StateAll = icatM1StateAll;
+        this.catM1StateEquip = icatM1StateEquip;
+        this.catM1StateRNIS = icatM1StateRNIS;
+        this.catM1StateOther = icatM1StateOther;
+        this.catM1MunicAll = icatM1MunicAll;
+        this.catM1MunicEquip = icatM1MunicEquip;
+        this.catM1MunicRNIS = icatM1MunicRNIS;
+        this.catM1MunicOther = icatM1MunicOther;
+        this.catM1CommercAll = icatM1CommercAll;
+        this.catM1CommercEquip = icatM1CommercEquip;
+        this.catM1CommercRNIS = icatM1CommercRNIS;
+        this.catM1CommercOther = icatM1CommercOther;
+
+        this.catM2M3StateAll = icatM2M3StateAll;
+        this.catM2M3StateEquip = icatM2M3StateEquip;
+        this.catM2M3StateRNIS = icatM2M3StateRNIS;
+        this.catM2M3StateOther = icatM2M3StateOther;
+        this.catM2M3MunicAll = icatM2M3MunicAll;
+        this.catM2M3MunicEquip = icatM2M3MunicEquip;
+        this.catM2M3MunicRNIS = icatM2M3MunicRNIS;
+        this.catM2M3MunicOther = icatM2M3MunicOther;
+        this.catM2M3CommercAll = icatM2M3CommercAll;
+        this.catM2M3CommercEquip = icatM2M3CommercEquip;
+        this.catM2M3CommercRNIS = icatM2M3CommercRNIS;
+        this.catM2M3CommercOther = icatM2M3CommercOther;
+
+        this.catLargeStateAll = icatLargeStateAll;
+        this.catLargeStateEquip = icatLargeStateEquip;
+        this.catLargeStateRNIS = icatLargeStateRNIS;
+        this.catLargeStateOther = icatLargeStateOther;
+        this.catLargeMunicAll = icatLargeMunicAll;
+        this.catLargeMunicEquip = icatLargeMunicEquip;
+        this.catLargeMunicRNIS = icatLargeMunicRNIS;
+        this.catLargeMunicOther = icatLargeMunicOther;
+        this.catLargeCommercAll = icatLargeCommercAll;
+        this.catLargeCommercEquip = icatLargeCommercEquip;
+        this.catLargeCommercRNIS = icatLargeCommercRNIS;
+        this.catLargeCommercOther = icatLargeCommercOther;
+
+        this.catDangerStateAll = icatDangerStateAll;
+        this.catDangerStateEquip = icatDangerStateEquip;
+        this.catDangerStateRNIS = icatDangerStateRNIS;
+        this.catDangerStateOther = icatDangerStateOther;
+        this.catDangerMunicAll = icatDangerMunicAll;
+        this.catDangerMunicEquip = icatDangerMunicEquip;
+        this.catDangerMunicRNIS = icatDangerMunicRNIS;
+        this.catDangerMunicOther = icatDangerMunicOther;
+        this.catDangerCommercAll = icatDangerCommercAll;
+        this.catDangerCommercEquip = icatDangerCommercEquip;
+        this.catDangerCommercRNIS = icatDangerCommercRNIS;
+        this.catDangerCommercOther = icatDangerCommercOther;
+
+        this.catSchoolStateAll = icatSchoolStateAll;
+        this.catSchoolStateEquip = icatSchoolStateEquip;
+        this.catSchoolStateRNIS = icatSchoolStateRNIS;
+        this.catSchoolStateOther = icatSchoolStateOther;
+        this.catSchoolMunicAll = icatSchoolMunicAll;
+        this.catSchoolMunicEquip = icatSchoolMunicEquip;
+        this.catSchoolMunicRNIS = icatSchoolMunicRNIS;
+        this.catSchoolMunicOther = icatSchoolMunicOther;
+        this.catSchoolCommercAll = icatSchoolCommercAll;
+        this.catSchoolCommercEquip = icatSchoolCommercEquip;
+        this.catSchoolCommercRNIS = icatSchoolCommercRNIS;
+        this.catSchoolCommercOther = icatSchoolCommercOther;
+
+        this.catGKHStateAll = icatGKHStateAll;
+        this.catGKHStateEquip = icatGKHStateEquip;
+        this.catGKHStateRNIS = icatGKHStateRNIS;
+        this.catGKHStateOther = icatGKHStateOther;
+        this.catGKHMunicAll = icatGKHMunicAll;
+        this.catGKHMunicEquip = icatGKHMunicEquip;
+        this.catGKHMunicRNIS = icatGKHMunicRNIS;
+        this.catGKHMunicOther = icatGKHMunicOther;
+        this.catGKHCommercAll = icatGKHCommercAll;
+        this.catGKHCommercEquip = icatGKHCommercEquip;
+        this.catGKHCommercRNIS = icatGKHCommercRNIS;
+        this.catGKHCommercOther = icatGKHCommercOther;
+
+        this.catDepartStateAll = icatDepartStateAll;
+        this.catDepartStateEquip = icatDepartStateEquip;
+        this.catDepartStateRNIS = icatDepartStateRNIS;
+        this.catDepartStateOther = icatDepartStateOther;
+        this.catDepartMunicAll = icatDepartMunicAll;
+        this.catDepartMunicEquip = icatDepartMunicEquip;
+        this.catDepartMunicRNIS = icatDepartMunicRNIS;
+        this.catDepartMunicOther = icatDepartMunicOther;
+        this.catDepartCommercAll = icatDepartCommercAll;
+        this.catDepartCommercEquip = icatDepartCommercEquip;
+        this.catDepartCommercRNIS = icatDepartCommercRNIS;
+        this.catDepartCommercOther = icatDepartCommercOther;
+
+        this.catM1ItogAll = icatM1StateAll + icatM1MunicAll + icatM1CommercAll;
+        this.catM2M3ItogAll = icatM2M3StateAll + icatM2M3MunicAll + icatM2M3CommercAll;
+        this.catLargeItogAll = icatLargeStateAll + icatLargeMunicAll + icatLargeCommercAll;
+        this.catDangerItogAll = icatDangerStateAll + icatDangerMunicAll + icatDangerCommercAll;
+        this.catSchoolItogAll = icatSchoolStateAll + icatSchoolMunicAll + icatSchoolCommercAll;
+        this.catGKHItogAll = icatGKHStateAll + icatGKHMunicAll + icatGKHCommercAll;
+        this.catDepartItogAll = icatDepartStateAll + icatDepartMunicAll + icatDepartCommercAll;
+
+        this.catM1ItogEquip = icatM1StateEquip + icatM1MunicEquip + icatM1CommercEquip;
+        this.catM2M3ItogEquip = icatM2M3StateEquip + icatM2M3MunicEquip + icatM2M3CommercEquip;
+        this.catLargeItogEquip = icatLargeStateEquip + icatLargeMunicEquip + icatLargeCommercEquip;
+        this.catDangerItogEquip = icatDangerStateEquip + icatDangerMunicEquip + icatDangerCommercEquip;
+        this.catSchoolItogEquip = icatSchoolStateEquip + icatSchoolMunicEquip + icatSchoolCommercEquip;
+        this.catGKHItogEquip = icatGKHStateEquip + icatGKHMunicEquip + icatGKHCommercEquip;
+        this.catDepartItogEquip = icatDepartStateEquip + icatDepartMunicEquip + icatDepartCommercEquip;
+
+        this.catM1ItogRNIS = icatM1StateRNIS + icatM1MunicRNIS + icatM1CommercRNIS;
+        this.catM2M3ItogRNIS = icatM2M3StateRNIS + icatM2M3MunicRNIS + icatM2M3CommercRNIS;
+        this.catLargeItogRNIS = icatLargeStateRNIS + icatLargeMunicRNIS + icatLargeCommercRNIS;
+        this.catDangerItogRNIS = icatDangerStateRNIS + icatDangerMunicRNIS + icatDangerCommercRNIS;
+        this.catSchoolItogRNIS = icatSchoolStateRNIS + icatSchoolMunicRNIS + icatSchoolCommercRNIS;
+        this.catGKHItogRNIS = icatGKHStateRNIS + icatGKHMunicRNIS + icatGKHCommercRNIS;
+        this.catDepartItogRNIS = icatDepartStateRNIS + icatDepartMunicRNIS + icatDepartCommercRNIS;
+
+        this.catM1ItogOther = icatM1StateOther + icatM1MunicOther + icatM1CommercOther;
+        this.catM2M3ItogOther = icatM2M3StateOther + icatM2M3MunicOther + icatM2M3CommercOther;
+        this.catLargeItogOther = icatLargeStateOther + icatLargeMunicOther + icatLargeCommercOther;
+        this.catDangerItogOther = icatDangerStateOther + icatDangerMunicOther + icatDangerCommercOther;
+        this.catSchoolItogOther = icatSchoolStateOther + icatSchoolMunicOther + icatSchoolCommercOther;
+        this.catGKHItogOther = icatGKHStateOther + icatGKHMunicOther + icatGKHCommercOther;
+        this.catDepartItogOther = icatDepartStateOther + icatDepartMunicOther + icatDepartCommercOther;
+
     }
 
-    public void setDateReport(Timestamp dateReport) {
+    public Integer getIdDraftreport() {
+        return idDraftreport;
+    }
+
+    public void setIdDraftreport(Integer idDraftreport) {
+        this.idDraftreport = idDraftreport;
+    }
+
+    public String getDateReport() {
+        try {
+            return new SimpleDateFormat("dd.MM.yyyy").format(this.dateReport);
+        } catch (NullPointerException e) {
+            return "Дата не определена";
+        }
+    }
+
+    public void setDateReport(Date dateReport) {
         this.dateReport = dateReport;
     }
 
-    @Basic
-    @Column(name = "catM1StateAll", nullable = true, insertable = true, updatable = true)
     public Integer getCatM1StateAll() {
         return catM1StateAll;
     }
@@ -156,8 +456,6 @@ public class Draftreport {
         this.catM1StateAll = catM1StateAll;
     }
 
-    @Basic
-    @Column(name = "catM1MunicAll", nullable = true, insertable = true, updatable = true)
     public Integer getCatM1MunicAll() {
         return catM1MunicAll;
     }
@@ -166,8 +464,6 @@ public class Draftreport {
         this.catM1MunicAll = catM1MunicAll;
     }
 
-    @Basic
-    @Column(name = "catM1CommercAll", nullable = true, insertable = true, updatable = true)
     public Integer getCatM1CommercAll() {
         return catM1CommercAll;
     }
@@ -176,8 +472,6 @@ public class Draftreport {
         this.catM1CommercAll = catM1CommercAll;
     }
 
-    @Basic
-    @Column(name = "catM1ItogAll", nullable = true, insertable = true, updatable = true)
     public Integer getCatM1ItogAll() {
         return catM1ItogAll;
     }
@@ -186,8 +480,6 @@ public class Draftreport {
         this.catM1ItogAll = catM1ItogAll;
     }
 
-    @Basic
-    @Column(name = "catM2M3StateAll", nullable = true, insertable = true, updatable = true)
     public Integer getCatM2M3StateAll() {
         return catM2M3StateAll;
     }
@@ -196,8 +488,6 @@ public class Draftreport {
         this.catM2M3StateAll = catM2M3StateAll;
     }
 
-    @Basic
-    @Column(name = "catM2M3MunicAll", nullable = true, insertable = true, updatable = true)
     public Integer getCatM2M3MunicAll() {
         return catM2M3MunicAll;
     }
@@ -206,8 +496,6 @@ public class Draftreport {
         this.catM2M3MunicAll = catM2M3MunicAll;
     }
 
-    @Basic
-    @Column(name = "catM2M3CommercAll", nullable = true, insertable = true, updatable = true)
     public Integer getCatM2M3CommercAll() {
         return catM2M3CommercAll;
     }
@@ -216,8 +504,6 @@ public class Draftreport {
         this.catM2M3CommercAll = catM2M3CommercAll;
     }
 
-    @Basic
-    @Column(name = "catM2M3ItogAll", nullable = true, insertable = true, updatable = true)
     public Integer getCatM2M3ItogAll() {
         return catM2M3ItogAll;
     }
@@ -226,8 +512,6 @@ public class Draftreport {
         this.catM2M3ItogAll = catM2M3ItogAll;
     }
 
-    @Basic
-    @Column(name = "catLargeStateAll", nullable = true, insertable = true, updatable = true)
     public Integer getCatLargeStateAll() {
         return catLargeStateAll;
     }
@@ -236,8 +520,6 @@ public class Draftreport {
         this.catLargeStateAll = catLargeStateAll;
     }
 
-    @Basic
-    @Column(name = "catLargeMunicAll", nullable = true, insertable = true, updatable = true)
     public Integer getCatLargeMunicAll() {
         return catLargeMunicAll;
     }
@@ -246,8 +528,6 @@ public class Draftreport {
         this.catLargeMunicAll = catLargeMunicAll;
     }
 
-    @Basic
-    @Column(name = "catLargeCommercAll", nullable = true, insertable = true, updatable = true)
     public Integer getCatLargeCommercAll() {
         return catLargeCommercAll;
     }
@@ -256,8 +536,6 @@ public class Draftreport {
         this.catLargeCommercAll = catLargeCommercAll;
     }
 
-    @Basic
-    @Column(name = "catLargeItogAll", nullable = true, insertable = true, updatable = true)
     public Integer getCatLargeItogAll() {
         return catLargeItogAll;
     }
@@ -266,8 +544,6 @@ public class Draftreport {
         this.catLargeItogAll = catLargeItogAll;
     }
 
-    @Basic
-    @Column(name = "catDangerStateAll", nullable = true, insertable = true, updatable = true)
     public Integer getCatDangerStateAll() {
         return catDangerStateAll;
     }
@@ -276,8 +552,6 @@ public class Draftreport {
         this.catDangerStateAll = catDangerStateAll;
     }
 
-    @Basic
-    @Column(name = "catDangerMunicAll", nullable = true, insertable = true, updatable = true)
     public Integer getCatDangerMunicAll() {
         return catDangerMunicAll;
     }
@@ -286,8 +560,6 @@ public class Draftreport {
         this.catDangerMunicAll = catDangerMunicAll;
     }
 
-    @Basic
-    @Column(name = "catDangerCommercAll", nullable = true, insertable = true, updatable = true)
     public Integer getCatDangerCommercAll() {
         return catDangerCommercAll;
     }
@@ -296,8 +568,6 @@ public class Draftreport {
         this.catDangerCommercAll = catDangerCommercAll;
     }
 
-    @Basic
-    @Column(name = "catDangerItogAll", nullable = true, insertable = true, updatable = true)
     public Integer getCatDangerItogAll() {
         return catDangerItogAll;
     }
@@ -306,8 +576,6 @@ public class Draftreport {
         this.catDangerItogAll = catDangerItogAll;
     }
 
-    @Basic
-    @Column(name = "catSchoolStateAll", nullable = true, insertable = true, updatable = true)
     public Integer getCatSchoolStateAll() {
         return catSchoolStateAll;
     }
@@ -316,8 +584,6 @@ public class Draftreport {
         this.catSchoolStateAll = catSchoolStateAll;
     }
 
-    @Basic
-    @Column(name = "catSchoolMunicAll", nullable = true, insertable = true, updatable = true)
     public Integer getCatSchoolMunicAll() {
         return catSchoolMunicAll;
     }
@@ -326,8 +592,6 @@ public class Draftreport {
         this.catSchoolMunicAll = catSchoolMunicAll;
     }
 
-    @Basic
-    @Column(name = "catSchoolCommercAll", nullable = true, insertable = true, updatable = true)
     public Integer getCatSchoolCommercAll() {
         return catSchoolCommercAll;
     }
@@ -336,8 +600,6 @@ public class Draftreport {
         this.catSchoolCommercAll = catSchoolCommercAll;
     }
 
-    @Basic
-    @Column(name = "catSchoolItogAll", nullable = true, insertable = true, updatable = true)
     public Integer getCatSchoolItogAll() {
         return catSchoolItogAll;
     }
@@ -346,48 +608,38 @@ public class Draftreport {
         this.catSchoolItogAll = catSchoolItogAll;
     }
 
-    @Basic
-    @Column(name = "catGKHStateAll", nullable = true, insertable = true, updatable = true)
-    public Integer getCatGkhStateAll() {
-        return catGkhStateAll;
+    public Integer getCatGKHStateAll() {
+        return catGKHStateAll;
     }
 
-    public void setCatGkhStateAll(Integer catGkhStateAll) {
-        this.catGkhStateAll = catGkhStateAll;
+    public void setCatGKHStateAll(Integer catGKHStateAll) {
+        this.catGKHStateAll = catGKHStateAll;
     }
 
-    @Basic
-    @Column(name = "catGKHMunicAll", nullable = true, insertable = true, updatable = true)
-    public Integer getCatGkhMunicAll() {
-        return catGkhMunicAll;
+    public Integer getCatGKHMunicAll() {
+        return catGKHMunicAll;
     }
 
-    public void setCatGkhMunicAll(Integer catGkhMunicAll) {
-        this.catGkhMunicAll = catGkhMunicAll;
+    public void setCatGKHMunicAll(Integer catGKHMunicAll) {
+        this.catGKHMunicAll = catGKHMunicAll;
     }
 
-    @Basic
-    @Column(name = "catGKHCommercAll", nullable = true, insertable = true, updatable = true)
-    public Integer getCatGkhCommercAll() {
-        return catGkhCommercAll;
+    public Integer getCatGKHCommercAll() {
+        return catGKHCommercAll;
     }
 
-    public void setCatGkhCommercAll(Integer catGkhCommercAll) {
-        this.catGkhCommercAll = catGkhCommercAll;
+    public void setCatGKHCommercAll(Integer catGKHCommercAll) {
+        this.catGKHCommercAll = catGKHCommercAll;
     }
 
-    @Basic
-    @Column(name = "catGKHItogAll", nullable = true, insertable = true, updatable = true)
-    public Integer getCatGkhItogAll() {
-        return catGkhItogAll;
+    public Integer getCatGKHItogAll() {
+        return catGKHItogAll;
     }
 
-    public void setCatGkhItogAll(Integer catGkhItogAll) {
-        this.catGkhItogAll = catGkhItogAll;
+    public void setCatGKHItogAll(Integer catGKHItogAll) {
+        this.catGKHItogAll = catGKHItogAll;
     }
 
-    @Basic
-    @Column(name = "catDepartStateAll", nullable = true, insertable = true, updatable = true)
     public Integer getCatDepartStateAll() {
         return catDepartStateAll;
     }
@@ -396,8 +648,6 @@ public class Draftreport {
         this.catDepartStateAll = catDepartStateAll;
     }
 
-    @Basic
-    @Column(name = "catDepartMunicAll", nullable = true, insertable = true, updatable = true)
     public Integer getCatDepartMunicAll() {
         return catDepartMunicAll;
     }
@@ -406,8 +656,6 @@ public class Draftreport {
         this.catDepartMunicAll = catDepartMunicAll;
     }
 
-    @Basic
-    @Column(name = "catDepartCommercAll", nullable = true, insertable = true, updatable = true)
     public Integer getCatDepartCommercAll() {
         return catDepartCommercAll;
     }
@@ -416,8 +664,6 @@ public class Draftreport {
         this.catDepartCommercAll = catDepartCommercAll;
     }
 
-    @Basic
-    @Column(name = "catDepartItogAll", nullable = true, insertable = true, updatable = true)
     public Integer getCatDepartItogAll() {
         return catDepartItogAll;
     }
@@ -426,8 +672,6 @@ public class Draftreport {
         this.catDepartItogAll = catDepartItogAll;
     }
 
-    @Basic
-    @Column(name = "catM1StateEquip", nullable = true, insertable = true, updatable = true)
     public Integer getCatM1StateEquip() {
         return catM1StateEquip;
     }
@@ -436,8 +680,6 @@ public class Draftreport {
         this.catM1StateEquip = catM1StateEquip;
     }
 
-    @Basic
-    @Column(name = "catM1MunicEquip", nullable = true, insertable = true, updatable = true)
     public Integer getCatM1MunicEquip() {
         return catM1MunicEquip;
     }
@@ -446,8 +688,6 @@ public class Draftreport {
         this.catM1MunicEquip = catM1MunicEquip;
     }
 
-    @Basic
-    @Column(name = "catM1CommercEquip", nullable = true, insertable = true, updatable = true)
     public Integer getCatM1CommercEquip() {
         return catM1CommercEquip;
     }
@@ -456,8 +696,6 @@ public class Draftreport {
         this.catM1CommercEquip = catM1CommercEquip;
     }
 
-    @Basic
-    @Column(name = "catM1ItogEquip", nullable = true, insertable = true, updatable = true)
     public Integer getCatM1ItogEquip() {
         return catM1ItogEquip;
     }
@@ -466,8 +704,6 @@ public class Draftreport {
         this.catM1ItogEquip = catM1ItogEquip;
     }
 
-    @Basic
-    @Column(name = "catM2M3StateEquip", nullable = true, insertable = true, updatable = true)
     public Integer getCatM2M3StateEquip() {
         return catM2M3StateEquip;
     }
@@ -476,8 +712,6 @@ public class Draftreport {
         this.catM2M3StateEquip = catM2M3StateEquip;
     }
 
-    @Basic
-    @Column(name = "catM2M3MunicEquip", nullable = true, insertable = true, updatable = true)
     public Integer getCatM2M3MunicEquip() {
         return catM2M3MunicEquip;
     }
@@ -486,8 +720,6 @@ public class Draftreport {
         this.catM2M3MunicEquip = catM2M3MunicEquip;
     }
 
-    @Basic
-    @Column(name = "catM2M3CommercEquip", nullable = true, insertable = true, updatable = true)
     public Integer getCatM2M3CommercEquip() {
         return catM2M3CommercEquip;
     }
@@ -496,8 +728,6 @@ public class Draftreport {
         this.catM2M3CommercEquip = catM2M3CommercEquip;
     }
 
-    @Basic
-    @Column(name = "catM2M3ItogEquip", nullable = true, insertable = true, updatable = true)
     public Integer getCatM2M3ItogEquip() {
         return catM2M3ItogEquip;
     }
@@ -506,8 +736,6 @@ public class Draftreport {
         this.catM2M3ItogEquip = catM2M3ItogEquip;
     }
 
-    @Basic
-    @Column(name = "catLargeStateEquip", nullable = true, insertable = true, updatable = true)
     public Integer getCatLargeStateEquip() {
         return catLargeStateEquip;
     }
@@ -516,8 +744,6 @@ public class Draftreport {
         this.catLargeStateEquip = catLargeStateEquip;
     }
 
-    @Basic
-    @Column(name = "catLargeMunicEquip", nullable = true, insertable = true, updatable = true)
     public Integer getCatLargeMunicEquip() {
         return catLargeMunicEquip;
     }
@@ -526,8 +752,6 @@ public class Draftreport {
         this.catLargeMunicEquip = catLargeMunicEquip;
     }
 
-    @Basic
-    @Column(name = "catLargeCommercEquip", nullable = true, insertable = true, updatable = true)
     public Integer getCatLargeCommercEquip() {
         return catLargeCommercEquip;
     }
@@ -536,8 +760,6 @@ public class Draftreport {
         this.catLargeCommercEquip = catLargeCommercEquip;
     }
 
-    @Basic
-    @Column(name = "catLargeItogEquip", nullable = true, insertable = true, updatable = true)
     public Integer getCatLargeItogEquip() {
         return catLargeItogEquip;
     }
@@ -546,8 +768,6 @@ public class Draftreport {
         this.catLargeItogEquip = catLargeItogEquip;
     }
 
-    @Basic
-    @Column(name = "catDangerStateEquip", nullable = true, insertable = true, updatable = true)
     public Integer getCatDangerStateEquip() {
         return catDangerStateEquip;
     }
@@ -556,8 +776,6 @@ public class Draftreport {
         this.catDangerStateEquip = catDangerStateEquip;
     }
 
-    @Basic
-    @Column(name = "catDangerMunicEquip", nullable = true, insertable = true, updatable = true)
     public Integer getCatDangerMunicEquip() {
         return catDangerMunicEquip;
     }
@@ -566,8 +784,6 @@ public class Draftreport {
         this.catDangerMunicEquip = catDangerMunicEquip;
     }
 
-    @Basic
-    @Column(name = "catDangerCommercEquip", nullable = true, insertable = true, updatable = true)
     public Integer getCatDangerCommercEquip() {
         return catDangerCommercEquip;
     }
@@ -576,8 +792,6 @@ public class Draftreport {
         this.catDangerCommercEquip = catDangerCommercEquip;
     }
 
-    @Basic
-    @Column(name = "catDangerItogEquip", nullable = true, insertable = true, updatable = true)
     public Integer getCatDangerItogEquip() {
         return catDangerItogEquip;
     }
@@ -586,8 +800,6 @@ public class Draftreport {
         this.catDangerItogEquip = catDangerItogEquip;
     }
 
-    @Basic
-    @Column(name = "catSchoolStateEquip", nullable = true, insertable = true, updatable = true)
     public Integer getCatSchoolStateEquip() {
         return catSchoolStateEquip;
     }
@@ -596,8 +808,6 @@ public class Draftreport {
         this.catSchoolStateEquip = catSchoolStateEquip;
     }
 
-    @Basic
-    @Column(name = "catSchoolMunicEquip", nullable = true, insertable = true, updatable = true)
     public Integer getCatSchoolMunicEquip() {
         return catSchoolMunicEquip;
     }
@@ -606,8 +816,6 @@ public class Draftreport {
         this.catSchoolMunicEquip = catSchoolMunicEquip;
     }
 
-    @Basic
-    @Column(name = "catSchoolCommercEquip", nullable = true, insertable = true, updatable = true)
     public Integer getCatSchoolCommercEquip() {
         return catSchoolCommercEquip;
     }
@@ -616,8 +824,6 @@ public class Draftreport {
         this.catSchoolCommercEquip = catSchoolCommercEquip;
     }
 
-    @Basic
-    @Column(name = "catSchoolItogEquip", nullable = true, insertable = true, updatable = true)
     public Integer getCatSchoolItogEquip() {
         return catSchoolItogEquip;
     }
@@ -626,48 +832,38 @@ public class Draftreport {
         this.catSchoolItogEquip = catSchoolItogEquip;
     }
 
-    @Basic
-    @Column(name = "catGKHStateEquip", nullable = true, insertable = true, updatable = true)
-    public Integer getCatGkhStateEquip() {
-        return catGkhStateEquip;
+    public Integer getCatGKHStateEquip() {
+        return catGKHStateEquip;
     }
 
-    public void setCatGkhStateEquip(Integer catGkhStateEquip) {
-        this.catGkhStateEquip = catGkhStateEquip;
+    public void setCatGKHStateEquip(Integer catGKHStateEquip) {
+        this.catGKHStateEquip = catGKHStateEquip;
     }
 
-    @Basic
-    @Column(name = "catGKHMunicEquip", nullable = true, insertable = true, updatable = true)
-    public Integer getCatGkhMunicEquip() {
-        return catGkhMunicEquip;
+    public Integer getCatGKHMunicEquip() {
+        return catGKHMunicEquip;
     }
 
-    public void setCatGkhMunicEquip(Integer catGkhMunicEquip) {
-        this.catGkhMunicEquip = catGkhMunicEquip;
+    public void setCatGKHMunicEquip(Integer catGKHMunicEquip) {
+        this.catGKHMunicEquip = catGKHMunicEquip;
     }
 
-    @Basic
-    @Column(name = "catGKHCommercEquip", nullable = true, insertable = true, updatable = true)
-    public Integer getCatGkhCommercEquip() {
-        return catGkhCommercEquip;
+    public Integer getCatGKHCommercEquip() {
+        return catGKHCommercEquip;
     }
 
-    public void setCatGkhCommercEquip(Integer catGkhCommercEquip) {
-        this.catGkhCommercEquip = catGkhCommercEquip;
+    public void setCatGKHCommercEquip(Integer catGKHCommercEquip) {
+        this.catGKHCommercEquip = catGKHCommercEquip;
     }
 
-    @Basic
-    @Column(name = "catGKHItogEquip", nullable = true, insertable = true, updatable = true)
-    public Integer getCatGkhItogEquip() {
-        return catGkhItogEquip;
+    public Integer getCatGKHItogEquip() {
+        return catGKHItogEquip;
     }
 
-    public void setCatGkhItogEquip(Integer catGkhItogEquip) {
-        this.catGkhItogEquip = catGkhItogEquip;
+    public void setCatGKHItogEquip(Integer catGKHItogEquip) {
+        this.catGKHItogEquip = catGKHItogEquip;
     }
 
-    @Basic
-    @Column(name = "catDepartStateEquip", nullable = true, insertable = true, updatable = true)
     public Integer getCatDepartStateEquip() {
         return catDepartStateEquip;
     }
@@ -676,8 +872,6 @@ public class Draftreport {
         this.catDepartStateEquip = catDepartStateEquip;
     }
 
-    @Basic
-    @Column(name = "catDepartMunicEquip", nullable = true, insertable = true, updatable = true)
     public Integer getCatDepartMunicEquip() {
         return catDepartMunicEquip;
     }
@@ -686,8 +880,6 @@ public class Draftreport {
         this.catDepartMunicEquip = catDepartMunicEquip;
     }
 
-    @Basic
-    @Column(name = "catDepartCommercEquip", nullable = true, insertable = true, updatable = true)
     public Integer getCatDepartCommercEquip() {
         return catDepartCommercEquip;
     }
@@ -696,8 +888,6 @@ public class Draftreport {
         this.catDepartCommercEquip = catDepartCommercEquip;
     }
 
-    @Basic
-    @Column(name = "catDepartItogEquip", nullable = true, insertable = true, updatable = true)
     public Integer getCatDepartItogEquip() {
         return catDepartItogEquip;
     }
@@ -706,288 +896,230 @@ public class Draftreport {
         this.catDepartItogEquip = catDepartItogEquip;
     }
 
-    @Basic
-    @Column(name = "catM1StateRNIS", nullable = true, insertable = true, updatable = true)
-    public Integer getCatM1StateRnis() {
-        return catM1StateRnis;
+    public Integer getCatM1StateRNIS() {
+        return catM1StateRNIS;
     }
 
-    public void setCatM1StateRnis(Integer catM1StateRnis) {
-        this.catM1StateRnis = catM1StateRnis;
+    public void setCatM1StateRNIS(Integer catM1StateRNIS) {
+        this.catM1StateRNIS = catM1StateRNIS;
     }
 
-    @Basic
-    @Column(name = "catM1MunicRNIS", nullable = true, insertable = true, updatable = true)
-    public Integer getCatM1MunicRnis() {
-        return catM1MunicRnis;
+    public Integer getCatM1MunicRNIS() {
+        return catM1MunicRNIS;
     }
 
-    public void setCatM1MunicRnis(Integer catM1MunicRnis) {
-        this.catM1MunicRnis = catM1MunicRnis;
+    public void setCatM1MunicRNIS(Integer catM1MunicRNIS) {
+        this.catM1MunicRNIS = catM1MunicRNIS;
     }
 
-    @Basic
-    @Column(name = "catM1CommercRNIS", nullable = true, insertable = true, updatable = true)
-    public Integer getCatM1CommercRnis() {
-        return catM1CommercRnis;
+    public Integer getCatM1CommercRNIS() {
+        return catM1CommercRNIS;
     }
 
-    public void setCatM1CommercRnis(Integer catM1CommercRnis) {
-        this.catM1CommercRnis = catM1CommercRnis;
+    public void setCatM1CommercRNIS(Integer catM1CommercRNIS) {
+        this.catM1CommercRNIS = catM1CommercRNIS;
     }
 
-    @Basic
-    @Column(name = "catM1ItogRNIS", nullable = true, insertable = true, updatable = true)
-    public Integer getCatM1ItogRnis() {
-        return catM1ItogRnis;
+    public Integer getCatM1ItogRNIS() {
+        return catM1ItogRNIS;
     }
 
-    public void setCatM1ItogRnis(Integer catM1ItogRnis) {
-        this.catM1ItogRnis = catM1ItogRnis;
+    public void setCatM1ItogRNIS(Integer catM1ItogRNIS) {
+        this.catM1ItogRNIS = catM1ItogRNIS;
     }
 
-    @Basic
-    @Column(name = "catM2M3StateRNIS", nullable = true, insertable = true, updatable = true)
-    public Integer getCatM2M3StateRnis() {
-        return catM2M3StateRnis;
+    public Integer getCatM2M3StateRNIS() {
+        return catM2M3StateRNIS;
     }
 
-    public void setCatM2M3StateRnis(Integer catM2M3StateRnis) {
-        this.catM2M3StateRnis = catM2M3StateRnis;
+    public void setCatM2M3StateRNIS(Integer catM2M3StateRNIS) {
+        this.catM2M3StateRNIS = catM2M3StateRNIS;
     }
 
-    @Basic
-    @Column(name = "catM2M3MunicRNIS", nullable = true, insertable = true, updatable = true)
-    public Integer getCatM2M3MunicRnis() {
-        return catM2M3MunicRnis;
+    public Integer getCatM2M3MunicRNIS() {
+        return catM2M3MunicRNIS;
     }
 
-    public void setCatM2M3MunicRnis(Integer catM2M3MunicRnis) {
-        this.catM2M3MunicRnis = catM2M3MunicRnis;
+    public void setCatM2M3MunicRNIS(Integer catM2M3MunicRNIS) {
+        this.catM2M3MunicRNIS = catM2M3MunicRNIS;
     }
 
-    @Basic
-    @Column(name = "catM2M3CommercRNIS", nullable = true, insertable = true, updatable = true)
-    public Integer getCatM2M3CommercRnis() {
-        return catM2M3CommercRnis;
+    public Integer getCatM2M3CommercRNIS() {
+        return catM2M3CommercRNIS;
     }
 
-    public void setCatM2M3CommercRnis(Integer catM2M3CommercRnis) {
-        this.catM2M3CommercRnis = catM2M3CommercRnis;
+    public void setCatM2M3CommercRNIS(Integer catM2M3CommercRNIS) {
+        this.catM2M3CommercRNIS = catM2M3CommercRNIS;
     }
 
-    @Basic
-    @Column(name = "catM2M3ItogRNIS", nullable = true, insertable = true, updatable = true)
-    public Integer getCatM2M3ItogRnis() {
-        return catM2M3ItogRnis;
+    public Integer getCatM2M3ItogRNIS() {
+        return catM2M3ItogRNIS;
     }
 
-    public void setCatM2M3ItogRnis(Integer catM2M3ItogRnis) {
-        this.catM2M3ItogRnis = catM2M3ItogRnis;
+    public void setCatM2M3ItogRNIS(Integer catM2M3ItogRNIS) {
+        this.catM2M3ItogRNIS = catM2M3ItogRNIS;
     }
 
-    @Basic
-    @Column(name = "catLargeStateRNIS", nullable = true, insertable = true, updatable = true)
-    public Integer getCatLargeStateRnis() {
-        return catLargeStateRnis;
+    public Integer getCatLargeStateRNIS() {
+        return catLargeStateRNIS;
     }
 
-    public void setCatLargeStateRnis(Integer catLargeStateRnis) {
-        this.catLargeStateRnis = catLargeStateRnis;
+    public void setCatLargeStateRNIS(Integer catLargeStateRNIS) {
+        this.catLargeStateRNIS = catLargeStateRNIS;
     }
 
-    @Basic
-    @Column(name = "catLargeMunicRNIS", nullable = true, insertable = true, updatable = true)
-    public Integer getCatLargeMunicRnis() {
-        return catLargeMunicRnis;
+    public Integer getCatLargeMunicRNIS() {
+        return catLargeMunicRNIS;
     }
 
-    public void setCatLargeMunicRnis(Integer catLargeMunicRnis) {
-        this.catLargeMunicRnis = catLargeMunicRnis;
+    public void setCatLargeMunicRNIS(Integer catLargeMunicRNIS) {
+        this.catLargeMunicRNIS = catLargeMunicRNIS;
     }
 
-    @Basic
-    @Column(name = "catLargeCommercRNIS", nullable = true, insertable = true, updatable = true)
-    public Integer getCatLargeCommercRnis() {
-        return catLargeCommercRnis;
+    public Integer getCatLargeCommercRNIS() {
+        return catLargeCommercRNIS;
     }
 
-    public void setCatLargeCommercRnis(Integer catLargeCommercRnis) {
-        this.catLargeCommercRnis = catLargeCommercRnis;
+    public void setCatLargeCommercRNIS(Integer catLargeCommercRNIS) {
+        this.catLargeCommercRNIS = catLargeCommercRNIS;
     }
 
-    @Basic
-    @Column(name = "catLargeItogRNIS", nullable = true, insertable = true, updatable = true)
-    public Integer getCatLargeItogRnis() {
-        return catLargeItogRnis;
+    public Integer getCatLargeItogRNIS() {
+        return catLargeItogRNIS;
     }
 
-    public void setCatLargeItogRnis(Integer catLargeItogRnis) {
-        this.catLargeItogRnis = catLargeItogRnis;
+    public void setCatLargeItogRNIS(Integer catLargeItogRNIS) {
+        this.catLargeItogRNIS = catLargeItogRNIS;
     }
 
-    @Basic
-    @Column(name = "catDangerStateRNIS", nullable = true, insertable = true, updatable = true)
-    public Integer getCatDangerStateRnis() {
-        return catDangerStateRnis;
+    public Integer getCatDangerStateRNIS() {
+        return catDangerStateRNIS;
     }
 
-    public void setCatDangerStateRnis(Integer catDangerStateRnis) {
-        this.catDangerStateRnis = catDangerStateRnis;
+    public void setCatDangerStateRNIS(Integer catDangerStateRNIS) {
+        this.catDangerStateRNIS = catDangerStateRNIS;
     }
 
-    @Basic
-    @Column(name = "catDangerMunicRNIS", nullable = true, insertable = true, updatable = true)
-    public Integer getCatDangerMunicRnis() {
-        return catDangerMunicRnis;
+    public Integer getCatDangerMunicRNIS() {
+        return catDangerMunicRNIS;
     }
 
-    public void setCatDangerMunicRnis(Integer catDangerMunicRnis) {
-        this.catDangerMunicRnis = catDangerMunicRnis;
+    public void setCatDangerMunicRNIS(Integer catDangerMunicRNIS) {
+        this.catDangerMunicRNIS = catDangerMunicRNIS;
     }
 
-    @Basic
-    @Column(name = "catDangerCommercRNIS", nullable = true, insertable = true, updatable = true)
-    public Integer getCatDangerCommercRnis() {
-        return catDangerCommercRnis;
+    public Integer getCatDangerCommercRNIS() {
+        return catDangerCommercRNIS;
     }
 
-    public void setCatDangerCommercRnis(Integer catDangerCommercRnis) {
-        this.catDangerCommercRnis = catDangerCommercRnis;
+    public void setCatDangerCommercRNIS(Integer catDangerCommercRNIS) {
+        this.catDangerCommercRNIS = catDangerCommercRNIS;
     }
 
-    @Basic
-    @Column(name = "catDangerItogRNIS", nullable = true, insertable = true, updatable = true)
-    public Integer getCatDangerItogRnis() {
-        return catDangerItogRnis;
+    public Integer getCatDangerItogRNIS() {
+        return catDangerItogRNIS;
     }
 
-    public void setCatDangerItogRnis(Integer catDangerItogRnis) {
-        this.catDangerItogRnis = catDangerItogRnis;
+    public void setCatDangerItogRNIS(Integer catDangerItogRNIS) {
+        this.catDangerItogRNIS = catDangerItogRNIS;
     }
 
-    @Basic
-    @Column(name = "catSchoolStateRNIS", nullable = true, insertable = true, updatable = true)
-    public Integer getCatSchoolStateRnis() {
-        return catSchoolStateRnis;
+    public Integer getCatSchoolStateRNIS() {
+        return catSchoolStateRNIS;
     }
 
-    public void setCatSchoolStateRnis(Integer catSchoolStateRnis) {
-        this.catSchoolStateRnis = catSchoolStateRnis;
+    public void setCatSchoolStateRNIS(Integer catSchoolStateRNIS) {
+        this.catSchoolStateRNIS = catSchoolStateRNIS;
     }
 
-    @Basic
-    @Column(name = "catSchoolMunicRNIS", nullable = true, insertable = true, updatable = true)
-    public Integer getCatSchoolMunicRnis() {
-        return catSchoolMunicRnis;
+    public Integer getCatSchoolMunicRNIS() {
+        return catSchoolMunicRNIS;
     }
 
-    public void setCatSchoolMunicRnis(Integer catSchoolMunicRnis) {
-        this.catSchoolMunicRnis = catSchoolMunicRnis;
+    public void setCatSchoolMunicRNIS(Integer catSchoolMunicRNIS) {
+        this.catSchoolMunicRNIS = catSchoolMunicRNIS;
     }
 
-    @Basic
-    @Column(name = "catSchoolCommercRNIS", nullable = true, insertable = true, updatable = true)
-    public Integer getCatSchoolCommercRnis() {
-        return catSchoolCommercRnis;
+    public Integer getCatSchoolCommercRNIS() {
+        return catSchoolCommercRNIS;
     }
 
-    public void setCatSchoolCommercRnis(Integer catSchoolCommercRnis) {
-        this.catSchoolCommercRnis = catSchoolCommercRnis;
+    public void setCatSchoolCommercRNIS(Integer catSchoolCommercRNIS) {
+        this.catSchoolCommercRNIS = catSchoolCommercRNIS;
     }
 
-    @Basic
-    @Column(name = "catSchoolItogRNIS", nullable = true, insertable = true, updatable = true)
-    public Integer getCatSchoolItogRnis() {
-        return catSchoolItogRnis;
+    public Integer getCatSchoolItogRNIS() {
+        return catSchoolItogRNIS;
     }
 
-    public void setCatSchoolItogRnis(Integer catSchoolItogRnis) {
-        this.catSchoolItogRnis = catSchoolItogRnis;
+    public void setCatSchoolItogRNIS(Integer catSchoolItogRNIS) {
+        this.catSchoolItogRNIS = catSchoolItogRNIS;
     }
 
-    @Basic
-    @Column(name = "catGKHStateRNIS", nullable = true, insertable = true, updatable = true)
-    public Integer getCatGkhStateRnis() {
-        return catGkhStateRnis;
+    public Integer getCatGKHStateRNIS() {
+        return catGKHStateRNIS;
     }
 
-    public void setCatGkhStateRnis(Integer catGkhStateRnis) {
-        this.catGkhStateRnis = catGkhStateRnis;
+    public void setCatGKHStateRNIS(Integer catGKHStateRNIS) {
+        this.catGKHStateRNIS = catGKHStateRNIS;
     }
 
-    @Basic
-    @Column(name = "catGKHMunicRNIS", nullable = true, insertable = true, updatable = true)
-    public Integer getCatGkhMunicRnis() {
-        return catGkhMunicRnis;
+    public Integer getCatGKHMunicRNIS() {
+        return catGKHMunicRNIS;
     }
 
-    public void setCatGkhMunicRnis(Integer catGkhMunicRnis) {
-        this.catGkhMunicRnis = catGkhMunicRnis;
+    public void setCatGKHMunicRNIS(Integer catGKHMunicRNIS) {
+        this.catGKHMunicRNIS = catGKHMunicRNIS;
     }
 
-    @Basic
-    @Column(name = "catGKHCommercRNIS", nullable = true, insertable = true, updatable = true)
-    public Integer getCatGkhCommercRnis() {
-        return catGkhCommercRnis;
+    public Integer getCatGKHCommercRNIS() {
+        return catGKHCommercRNIS;
     }
 
-    public void setCatGkhCommercRnis(Integer catGkhCommercRnis) {
-        this.catGkhCommercRnis = catGkhCommercRnis;
+    public void setCatGKHCommercRNIS(Integer catGKHCommercRNIS) {
+        this.catGKHCommercRNIS = catGKHCommercRNIS;
     }
 
-    @Basic
-    @Column(name = "catGKHItogRNIS", nullable = true, insertable = true, updatable = true)
-    public Integer getCatGkhItogRnis() {
-        return catGkhItogRnis;
+    public Integer getCatGKHItogRNIS() {
+        return catGKHItogRNIS;
     }
 
-    public void setCatGkhItogRnis(Integer catGkhItogRnis) {
-        this.catGkhItogRnis = catGkhItogRnis;
+    public void setCatGKHItogRNIS(Integer catGKHItogRNIS) {
+        this.catGKHItogRNIS = catGKHItogRNIS;
     }
 
-    @Basic
-    @Column(name = "catDepartStateRNIS", nullable = true, insertable = true, updatable = true)
-    public Integer getCatDepartStateRnis() {
-        return catDepartStateRnis;
+    public Integer getCatDepartStateRNIS() {
+        return catDepartStateRNIS;
     }
 
-    public void setCatDepartStateRnis(Integer catDepartStateRnis) {
-        this.catDepartStateRnis = catDepartStateRnis;
+    public void setCatDepartStateRNIS(Integer catDepartStateRNIS) {
+        this.catDepartStateRNIS = catDepartStateRNIS;
     }
 
-    @Basic
-    @Column(name = "catDepartMunicRNIS", nullable = true, insertable = true, updatable = true)
-    public Integer getCatDepartMunicRnis() {
-        return catDepartMunicRnis;
+    public Integer getCatDepartMunicRNIS() {
+        return catDepartMunicRNIS;
     }
 
-    public void setCatDepartMunicRnis(Integer catDepartMunicRnis) {
-        this.catDepartMunicRnis = catDepartMunicRnis;
+    public void setCatDepartMunicRNIS(Integer catDepartMunicRNIS) {
+        this.catDepartMunicRNIS = catDepartMunicRNIS;
     }
 
-    @Basic
-    @Column(name = "catDepartCommercRNIS", nullable = true, insertable = true, updatable = true)
-    public Integer getCatDepartCommercRnis() {
-        return catDepartCommercRnis;
+    public Integer getCatDepartCommercRNIS() {
+        return catDepartCommercRNIS;
     }
 
-    public void setCatDepartCommercRnis(Integer catDepartCommercRnis) {
-        this.catDepartCommercRnis = catDepartCommercRnis;
+    public void setCatDepartCommercRNIS(Integer catDepartCommercRNIS) {
+        this.catDepartCommercRNIS = catDepartCommercRNIS;
     }
 
-    @Basic
-    @Column(name = "catDepartItogRNIS", nullable = true, insertable = true, updatable = true)
-    public Integer getCatDepartItogRnis() {
-        return catDepartItogRnis;
+    public Integer getCatDepartItogRNIS() {
+        return catDepartItogRNIS;
     }
 
-    public void setCatDepartItogRnis(Integer catDepartItogRnis) {
-        this.catDepartItogRnis = catDepartItogRnis;
+    public void setCatDepartItogRNIS(Integer catDepartItogRNIS) {
+        this.catDepartItogRNIS = catDepartItogRNIS;
     }
 
-    @Basic
-    @Column(name = "catM1StateOther", nullable = true, insertable = true, updatable = true)
     public Integer getCatM1StateOther() {
         return catM1StateOther;
     }
@@ -996,8 +1128,6 @@ public class Draftreport {
         this.catM1StateOther = catM1StateOther;
     }
 
-    @Basic
-    @Column(name = "catM1MunicOther", nullable = true, insertable = true, updatable = true)
     public Integer getCatM1MunicOther() {
         return catM1MunicOther;
     }
@@ -1006,8 +1136,6 @@ public class Draftreport {
         this.catM1MunicOther = catM1MunicOther;
     }
 
-    @Basic
-    @Column(name = "catM1CommercOther", nullable = true, insertable = true, updatable = true)
     public Integer getCatM1CommercOther() {
         return catM1CommercOther;
     }
@@ -1016,8 +1144,6 @@ public class Draftreport {
         this.catM1CommercOther = catM1CommercOther;
     }
 
-    @Basic
-    @Column(name = "catM1ItogOther", nullable = true, insertable = true, updatable = true)
     public Integer getCatM1ItogOther() {
         return catM1ItogOther;
     }
@@ -1026,8 +1152,6 @@ public class Draftreport {
         this.catM1ItogOther = catM1ItogOther;
     }
 
-    @Basic
-    @Column(name = "catM2M3StateOther", nullable = true, insertable = true, updatable = true)
     public Integer getCatM2M3StateOther() {
         return catM2M3StateOther;
     }
@@ -1036,8 +1160,6 @@ public class Draftreport {
         this.catM2M3StateOther = catM2M3StateOther;
     }
 
-    @Basic
-    @Column(name = "catM2M3MunicOther", nullable = true, insertable = true, updatable = true)
     public Integer getCatM2M3MunicOther() {
         return catM2M3MunicOther;
     }
@@ -1046,8 +1168,6 @@ public class Draftreport {
         this.catM2M3MunicOther = catM2M3MunicOther;
     }
 
-    @Basic
-    @Column(name = "catM2M3CommercOther", nullable = true, insertable = true, updatable = true)
     public Integer getCatM2M3CommercOther() {
         return catM2M3CommercOther;
     }
@@ -1056,8 +1176,6 @@ public class Draftreport {
         this.catM2M3CommercOther = catM2M3CommercOther;
     }
 
-    @Basic
-    @Column(name = "catM2M3ItogOther", nullable = true, insertable = true, updatable = true)
     public Integer getCatM2M3ItogOther() {
         return catM2M3ItogOther;
     }
@@ -1066,8 +1184,6 @@ public class Draftreport {
         this.catM2M3ItogOther = catM2M3ItogOther;
     }
 
-    @Basic
-    @Column(name = "catLargeStateOther", nullable = true, insertable = true, updatable = true)
     public Integer getCatLargeStateOther() {
         return catLargeStateOther;
     }
@@ -1076,8 +1192,6 @@ public class Draftreport {
         this.catLargeStateOther = catLargeStateOther;
     }
 
-    @Basic
-    @Column(name = "catLargeMunicOther", nullable = true, insertable = true, updatable = true)
     public Integer getCatLargeMunicOther() {
         return catLargeMunicOther;
     }
@@ -1086,8 +1200,6 @@ public class Draftreport {
         this.catLargeMunicOther = catLargeMunicOther;
     }
 
-    @Basic
-    @Column(name = "catLargeCommercOther", nullable = true, insertable = true, updatable = true)
     public Integer getCatLargeCommercOther() {
         return catLargeCommercOther;
     }
@@ -1096,8 +1208,6 @@ public class Draftreport {
         this.catLargeCommercOther = catLargeCommercOther;
     }
 
-    @Basic
-    @Column(name = "catLargeItogOther", nullable = true, insertable = true, updatable = true)
     public Integer getCatLargeItogOther() {
         return catLargeItogOther;
     }
@@ -1106,8 +1216,6 @@ public class Draftreport {
         this.catLargeItogOther = catLargeItogOther;
     }
 
-    @Basic
-    @Column(name = "catDangerStateOther", nullable = true, insertable = true, updatable = true)
     public Integer getCatDangerStateOther() {
         return catDangerStateOther;
     }
@@ -1116,8 +1224,6 @@ public class Draftreport {
         this.catDangerStateOther = catDangerStateOther;
     }
 
-    @Basic
-    @Column(name = "catDangerMunicOther", nullable = true, insertable = true, updatable = true)
     public Integer getCatDangerMunicOther() {
         return catDangerMunicOther;
     }
@@ -1126,8 +1232,6 @@ public class Draftreport {
         this.catDangerMunicOther = catDangerMunicOther;
     }
 
-    @Basic
-    @Column(name = "catDangerCommercOther", nullable = true, insertable = true, updatable = true)
     public Integer getCatDangerCommercOther() {
         return catDangerCommercOther;
     }
@@ -1136,8 +1240,6 @@ public class Draftreport {
         this.catDangerCommercOther = catDangerCommercOther;
     }
 
-    @Basic
-    @Column(name = "catDangerItogOther", nullable = true, insertable = true, updatable = true)
     public Integer getCatDangerItogOther() {
         return catDangerItogOther;
     }
@@ -1146,8 +1248,6 @@ public class Draftreport {
         this.catDangerItogOther = catDangerItogOther;
     }
 
-    @Basic
-    @Column(name = "catSchoolStateOther", nullable = true, insertable = true, updatable = true)
     public Integer getCatSchoolStateOther() {
         return catSchoolStateOther;
     }
@@ -1156,8 +1256,6 @@ public class Draftreport {
         this.catSchoolStateOther = catSchoolStateOther;
     }
 
-    @Basic
-    @Column(name = "catSchoolMunicOther", nullable = true, insertable = true, updatable = true)
     public Integer getCatSchoolMunicOther() {
         return catSchoolMunicOther;
     }
@@ -1166,8 +1264,6 @@ public class Draftreport {
         this.catSchoolMunicOther = catSchoolMunicOther;
     }
 
-    @Basic
-    @Column(name = "catSchoolCommercOther", nullable = true, insertable = true, updatable = true)
     public Integer getCatSchoolCommercOther() {
         return catSchoolCommercOther;
     }
@@ -1176,8 +1272,6 @@ public class Draftreport {
         this.catSchoolCommercOther = catSchoolCommercOther;
     }
 
-    @Basic
-    @Column(name = "catSchoolItogOther", nullable = true, insertable = true, updatable = true)
     public Integer getCatSchoolItogOther() {
         return catSchoolItogOther;
     }
@@ -1186,48 +1280,38 @@ public class Draftreport {
         this.catSchoolItogOther = catSchoolItogOther;
     }
 
-    @Basic
-    @Column(name = "catGKHStateOther", nullable = true, insertable = true, updatable = true)
-    public Integer getCatGkhStateOther() {
-        return catGkhStateOther;
+    public Integer getCatGKHStateOther() {
+        return catGKHStateOther;
     }
 
-    public void setCatGkhStateOther(Integer catGkhStateOther) {
-        this.catGkhStateOther = catGkhStateOther;
+    public void setCatGKHStateOther(Integer catGKHStateOther) {
+        this.catGKHStateOther = catGKHStateOther;
     }
 
-    @Basic
-    @Column(name = "catGKHMunicOther", nullable = true, insertable = true, updatable = true)
-    public Integer getCatGkhMunicOther() {
-        return catGkhMunicOther;
+    public Integer getCatGKHMunicOther() {
+        return catGKHMunicOther;
     }
 
-    public void setCatGkhMunicOther(Integer catGkhMunicOther) {
-        this.catGkhMunicOther = catGkhMunicOther;
+    public void setCatGKHMunicOther(Integer catGKHMunicOther) {
+        this.catGKHMunicOther = catGKHMunicOther;
     }
 
-    @Basic
-    @Column(name = "catGKHCommercOther", nullable = true, insertable = true, updatable = true)
-    public Integer getCatGkhCommercOther() {
-        return catGkhCommercOther;
+    public Integer getCatGKHCommercOther() {
+        return catGKHCommercOther;
     }
 
-    public void setCatGkhCommercOther(Integer catGkhCommercOther) {
-        this.catGkhCommercOther = catGkhCommercOther;
+    public void setCatGKHCommercOther(Integer catGKHCommercOther) {
+        this.catGKHCommercOther = catGKHCommercOther;
     }
 
-    @Basic
-    @Column(name = "catGKHItogOther", nullable = true, insertable = true, updatable = true)
-    public Integer getCatGkhItogOther() {
-        return catGkhItogOther;
+    public Integer getCatGKHItogOther() {
+        return catGKHItogOther;
     }
 
-    public void setCatGkhItogOther(Integer catGkhItogOther) {
-        this.catGkhItogOther = catGkhItogOther;
+    public void setCatGKHItogOther(Integer catGKHItogOther) {
+        this.catGKHItogOther = catGKHItogOther;
     }
 
-    @Basic
-    @Column(name = "catDepartStateOther", nullable = true, insertable = true, updatable = true)
     public Integer getCatDepartStateOther() {
         return catDepartStateOther;
     }
@@ -1236,8 +1320,6 @@ public class Draftreport {
         this.catDepartStateOther = catDepartStateOther;
     }
 
-    @Basic
-    @Column(name = "catDepartMunicOther", nullable = true, insertable = true, updatable = true)
     public Integer getCatDepartMunicOther() {
         return catDepartMunicOther;
     }
@@ -1246,8 +1328,6 @@ public class Draftreport {
         this.catDepartMunicOther = catDepartMunicOther;
     }
 
-    @Basic
-    @Column(name = "catDepartCommercOther", nullable = true, insertable = true, updatable = true)
     public Integer getCatDepartCommercOther() {
         return catDepartCommercOther;
     }
@@ -1256,8 +1336,6 @@ public class Draftreport {
         this.catDepartCommercOther = catDepartCommercOther;
     }
 
-    @Basic
-    @Column(name = "catDepartItogOther", nullable = true, insertable = true, updatable = true)
     public Integer getCatDepartItogOther() {
         return catDepartItogOther;
     }
@@ -1266,358 +1344,37 @@ public class Draftreport {
         this.catDepartItogOther = catDepartItogOther;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+    public Users getUserDraftreport() {
+        return userDraftreport;
+    }
 
-        Draftreport that = (Draftreport) o;
-
-        if (idDraftreport != that.idDraftreport) return false;
-        if (catDangerCommercAll != null ? !catDangerCommercAll.equals(that.catDangerCommercAll) : that.catDangerCommercAll != null)
-            return false;
-        if (catDangerCommercEquip != null ? !catDangerCommercEquip.equals(that.catDangerCommercEquip) : that.catDangerCommercEquip != null)
-            return false;
-        if (catDangerCommercOther != null ? !catDangerCommercOther.equals(that.catDangerCommercOther) : that.catDangerCommercOther != null)
-            return false;
-        if (catDangerCommercRnis != null ? !catDangerCommercRnis.equals(that.catDangerCommercRnis) : that.catDangerCommercRnis != null)
-            return false;
-        if (catDangerItogAll != null ? !catDangerItogAll.equals(that.catDangerItogAll) : that.catDangerItogAll != null)
-            return false;
-        if (catDangerItogEquip != null ? !catDangerItogEquip.equals(that.catDangerItogEquip) : that.catDangerItogEquip != null)
-            return false;
-        if (catDangerItogOther != null ? !catDangerItogOther.equals(that.catDangerItogOther) : that.catDangerItogOther != null)
-            return false;
-        if (catDangerItogRnis != null ? !catDangerItogRnis.equals(that.catDangerItogRnis) : that.catDangerItogRnis != null)
-            return false;
-        if (catDangerMunicAll != null ? !catDangerMunicAll.equals(that.catDangerMunicAll) : that.catDangerMunicAll != null)
-            return false;
-        if (catDangerMunicEquip != null ? !catDangerMunicEquip.equals(that.catDangerMunicEquip) : that.catDangerMunicEquip != null)
-            return false;
-        if (catDangerMunicOther != null ? !catDangerMunicOther.equals(that.catDangerMunicOther) : that.catDangerMunicOther != null)
-            return false;
-        if (catDangerMunicRnis != null ? !catDangerMunicRnis.equals(that.catDangerMunicRnis) : that.catDangerMunicRnis != null)
-            return false;
-        if (catDangerStateAll != null ? !catDangerStateAll.equals(that.catDangerStateAll) : that.catDangerStateAll != null)
-            return false;
-        if (catDangerStateEquip != null ? !catDangerStateEquip.equals(that.catDangerStateEquip) : that.catDangerStateEquip != null)
-            return false;
-        if (catDangerStateOther != null ? !catDangerStateOther.equals(that.catDangerStateOther) : that.catDangerStateOther != null)
-            return false;
-        if (catDangerStateRnis != null ? !catDangerStateRnis.equals(that.catDangerStateRnis) : that.catDangerStateRnis != null)
-            return false;
-        if (catDepartCommercAll != null ? !catDepartCommercAll.equals(that.catDepartCommercAll) : that.catDepartCommercAll != null)
-            return false;
-        if (catDepartCommercEquip != null ? !catDepartCommercEquip.equals(that.catDepartCommercEquip) : that.catDepartCommercEquip != null)
-            return false;
-        if (catDepartCommercOther != null ? !catDepartCommercOther.equals(that.catDepartCommercOther) : that.catDepartCommercOther != null)
-            return false;
-        if (catDepartCommercRnis != null ? !catDepartCommercRnis.equals(that.catDepartCommercRnis) : that.catDepartCommercRnis != null)
-            return false;
-        if (catDepartItogAll != null ? !catDepartItogAll.equals(that.catDepartItogAll) : that.catDepartItogAll != null)
-            return false;
-        if (catDepartItogEquip != null ? !catDepartItogEquip.equals(that.catDepartItogEquip) : that.catDepartItogEquip != null)
-            return false;
-        if (catDepartItogOther != null ? !catDepartItogOther.equals(that.catDepartItogOther) : that.catDepartItogOther != null)
-            return false;
-        if (catDepartItogRnis != null ? !catDepartItogRnis.equals(that.catDepartItogRnis) : that.catDepartItogRnis != null)
-            return false;
-        if (catDepartMunicAll != null ? !catDepartMunicAll.equals(that.catDepartMunicAll) : that.catDepartMunicAll != null)
-            return false;
-        if (catDepartMunicEquip != null ? !catDepartMunicEquip.equals(that.catDepartMunicEquip) : that.catDepartMunicEquip != null)
-            return false;
-        if (catDepartMunicOther != null ? !catDepartMunicOther.equals(that.catDepartMunicOther) : that.catDepartMunicOther != null)
-            return false;
-        if (catDepartMunicRnis != null ? !catDepartMunicRnis.equals(that.catDepartMunicRnis) : that.catDepartMunicRnis != null)
-            return false;
-        if (catDepartStateAll != null ? !catDepartStateAll.equals(that.catDepartStateAll) : that.catDepartStateAll != null)
-            return false;
-        if (catDepartStateEquip != null ? !catDepartStateEquip.equals(that.catDepartStateEquip) : that.catDepartStateEquip != null)
-            return false;
-        if (catDepartStateOther != null ? !catDepartStateOther.equals(that.catDepartStateOther) : that.catDepartStateOther != null)
-            return false;
-        if (catDepartStateRnis != null ? !catDepartStateRnis.equals(that.catDepartStateRnis) : that.catDepartStateRnis != null)
-            return false;
-        if (catGkhCommercAll != null ? !catGkhCommercAll.equals(that.catGkhCommercAll) : that.catGkhCommercAll != null)
-            return false;
-        if (catGkhCommercEquip != null ? !catGkhCommercEquip.equals(that.catGkhCommercEquip) : that.catGkhCommercEquip != null)
-            return false;
-        if (catGkhCommercOther != null ? !catGkhCommercOther.equals(that.catGkhCommercOther) : that.catGkhCommercOther != null)
-            return false;
-        if (catGkhCommercRnis != null ? !catGkhCommercRnis.equals(that.catGkhCommercRnis) : that.catGkhCommercRnis != null)
-            return false;
-        if (catGkhItogAll != null ? !catGkhItogAll.equals(that.catGkhItogAll) : that.catGkhItogAll != null)
-            return false;
-        if (catGkhItogEquip != null ? !catGkhItogEquip.equals(that.catGkhItogEquip) : that.catGkhItogEquip != null)
-            return false;
-        if (catGkhItogOther != null ? !catGkhItogOther.equals(that.catGkhItogOther) : that.catGkhItogOther != null)
-            return false;
-        if (catGkhItogRnis != null ? !catGkhItogRnis.equals(that.catGkhItogRnis) : that.catGkhItogRnis != null)
-            return false;
-        if (catGkhMunicAll != null ? !catGkhMunicAll.equals(that.catGkhMunicAll) : that.catGkhMunicAll != null)
-            return false;
-        if (catGkhMunicEquip != null ? !catGkhMunicEquip.equals(that.catGkhMunicEquip) : that.catGkhMunicEquip != null)
-            return false;
-        if (catGkhMunicOther != null ? !catGkhMunicOther.equals(that.catGkhMunicOther) : that.catGkhMunicOther != null)
-            return false;
-        if (catGkhMunicRnis != null ? !catGkhMunicRnis.equals(that.catGkhMunicRnis) : that.catGkhMunicRnis != null)
-            return false;
-        if (catGkhStateAll != null ? !catGkhStateAll.equals(that.catGkhStateAll) : that.catGkhStateAll != null)
-            return false;
-        if (catGkhStateEquip != null ? !catGkhStateEquip.equals(that.catGkhStateEquip) : that.catGkhStateEquip != null)
-            return false;
-        if (catGkhStateOther != null ? !catGkhStateOther.equals(that.catGkhStateOther) : that.catGkhStateOther != null)
-            return false;
-        if (catGkhStateRnis != null ? !catGkhStateRnis.equals(that.catGkhStateRnis) : that.catGkhStateRnis != null)
-            return false;
-        if (catLargeCommercAll != null ? !catLargeCommercAll.equals(that.catLargeCommercAll) : that.catLargeCommercAll != null)
-            return false;
-        if (catLargeCommercEquip != null ? !catLargeCommercEquip.equals(that.catLargeCommercEquip) : that.catLargeCommercEquip != null)
-            return false;
-        if (catLargeCommercOther != null ? !catLargeCommercOther.equals(that.catLargeCommercOther) : that.catLargeCommercOther != null)
-            return false;
-        if (catLargeCommercRnis != null ? !catLargeCommercRnis.equals(that.catLargeCommercRnis) : that.catLargeCommercRnis != null)
-            return false;
-        if (catLargeItogAll != null ? !catLargeItogAll.equals(that.catLargeItogAll) : that.catLargeItogAll != null)
-            return false;
-        if (catLargeItogEquip != null ? !catLargeItogEquip.equals(that.catLargeItogEquip) : that.catLargeItogEquip != null)
-            return false;
-        if (catLargeItogOther != null ? !catLargeItogOther.equals(that.catLargeItogOther) : that.catLargeItogOther != null)
-            return false;
-        if (catLargeItogRnis != null ? !catLargeItogRnis.equals(that.catLargeItogRnis) : that.catLargeItogRnis != null)
-            return false;
-        if (catLargeMunicAll != null ? !catLargeMunicAll.equals(that.catLargeMunicAll) : that.catLargeMunicAll != null)
-            return false;
-        if (catLargeMunicEquip != null ? !catLargeMunicEquip.equals(that.catLargeMunicEquip) : that.catLargeMunicEquip != null)
-            return false;
-        if (catLargeMunicOther != null ? !catLargeMunicOther.equals(that.catLargeMunicOther) : that.catLargeMunicOther != null)
-            return false;
-        if (catLargeMunicRnis != null ? !catLargeMunicRnis.equals(that.catLargeMunicRnis) : that.catLargeMunicRnis != null)
-            return false;
-        if (catLargeStateAll != null ? !catLargeStateAll.equals(that.catLargeStateAll) : that.catLargeStateAll != null)
-            return false;
-        if (catLargeStateEquip != null ? !catLargeStateEquip.equals(that.catLargeStateEquip) : that.catLargeStateEquip != null)
-            return false;
-        if (catLargeStateOther != null ? !catLargeStateOther.equals(that.catLargeStateOther) : that.catLargeStateOther != null)
-            return false;
-        if (catLargeStateRnis != null ? !catLargeStateRnis.equals(that.catLargeStateRnis) : that.catLargeStateRnis != null)
-            return false;
-        if (catM1CommercAll != null ? !catM1CommercAll.equals(that.catM1CommercAll) : that.catM1CommercAll != null)
-            return false;
-        if (catM1CommercEquip != null ? !catM1CommercEquip.equals(that.catM1CommercEquip) : that.catM1CommercEquip != null)
-            return false;
-        if (catM1CommercOther != null ? !catM1CommercOther.equals(that.catM1CommercOther) : that.catM1CommercOther != null)
-            return false;
-        if (catM1CommercRnis != null ? !catM1CommercRnis.equals(that.catM1CommercRnis) : that.catM1CommercRnis != null)
-            return false;
-        if (catM1ItogAll != null ? !catM1ItogAll.equals(that.catM1ItogAll) : that.catM1ItogAll != null) return false;
-        if (catM1ItogEquip != null ? !catM1ItogEquip.equals(that.catM1ItogEquip) : that.catM1ItogEquip != null)
-            return false;
-        if (catM1ItogOther != null ? !catM1ItogOther.equals(that.catM1ItogOther) : that.catM1ItogOther != null)
-            return false;
-        if (catM1ItogRnis != null ? !catM1ItogRnis.equals(that.catM1ItogRnis) : that.catM1ItogRnis != null)
-            return false;
-        if (catM1MunicAll != null ? !catM1MunicAll.equals(that.catM1MunicAll) : that.catM1MunicAll != null)
-            return false;
-        if (catM1MunicEquip != null ? !catM1MunicEquip.equals(that.catM1MunicEquip) : that.catM1MunicEquip != null)
-            return false;
-        if (catM1MunicOther != null ? !catM1MunicOther.equals(that.catM1MunicOther) : that.catM1MunicOther != null)
-            return false;
-        if (catM1MunicRnis != null ? !catM1MunicRnis.equals(that.catM1MunicRnis) : that.catM1MunicRnis != null)
-            return false;
-        if (catM1StateAll != null ? !catM1StateAll.equals(that.catM1StateAll) : that.catM1StateAll != null)
-            return false;
-        if (catM1StateEquip != null ? !catM1StateEquip.equals(that.catM1StateEquip) : that.catM1StateEquip != null)
-            return false;
-        if (catM1StateOther != null ? !catM1StateOther.equals(that.catM1StateOther) : that.catM1StateOther != null)
-            return false;
-        if (catM1StateRnis != null ? !catM1StateRnis.equals(that.catM1StateRnis) : that.catM1StateRnis != null)
-            return false;
-        if (catM2M3CommercAll != null ? !catM2M3CommercAll.equals(that.catM2M3CommercAll) : that.catM2M3CommercAll != null)
-            return false;
-        if (catM2M3CommercEquip != null ? !catM2M3CommercEquip.equals(that.catM2M3CommercEquip) : that.catM2M3CommercEquip != null)
-            return false;
-        if (catM2M3CommercOther != null ? !catM2M3CommercOther.equals(that.catM2M3CommercOther) : that.catM2M3CommercOther != null)
-            return false;
-        if (catM2M3CommercRnis != null ? !catM2M3CommercRnis.equals(that.catM2M3CommercRnis) : that.catM2M3CommercRnis != null)
-            return false;
-        if (catM2M3ItogAll != null ? !catM2M3ItogAll.equals(that.catM2M3ItogAll) : that.catM2M3ItogAll != null)
-            return false;
-        if (catM2M3ItogEquip != null ? !catM2M3ItogEquip.equals(that.catM2M3ItogEquip) : that.catM2M3ItogEquip != null)
-            return false;
-        if (catM2M3ItogOther != null ? !catM2M3ItogOther.equals(that.catM2M3ItogOther) : that.catM2M3ItogOther != null)
-            return false;
-        if (catM2M3ItogRnis != null ? !catM2M3ItogRnis.equals(that.catM2M3ItogRnis) : that.catM2M3ItogRnis != null)
-            return false;
-        if (catM2M3MunicAll != null ? !catM2M3MunicAll.equals(that.catM2M3MunicAll) : that.catM2M3MunicAll != null)
-            return false;
-        if (catM2M3MunicEquip != null ? !catM2M3MunicEquip.equals(that.catM2M3MunicEquip) : that.catM2M3MunicEquip != null)
-            return false;
-        if (catM2M3MunicOther != null ? !catM2M3MunicOther.equals(that.catM2M3MunicOther) : that.catM2M3MunicOther != null)
-            return false;
-        if (catM2M3MunicRnis != null ? !catM2M3MunicRnis.equals(that.catM2M3MunicRnis) : that.catM2M3MunicRnis != null)
-            return false;
-        if (catM2M3StateAll != null ? !catM2M3StateAll.equals(that.catM2M3StateAll) : that.catM2M3StateAll != null)
-            return false;
-        if (catM2M3StateEquip != null ? !catM2M3StateEquip.equals(that.catM2M3StateEquip) : that.catM2M3StateEquip != null)
-            return false;
-        if (catM2M3StateOther != null ? !catM2M3StateOther.equals(that.catM2M3StateOther) : that.catM2M3StateOther != null)
-            return false;
-        if (catM2M3StateRnis != null ? !catM2M3StateRnis.equals(that.catM2M3StateRnis) : that.catM2M3StateRnis != null)
-            return false;
-        if (catSchoolCommercAll != null ? !catSchoolCommercAll.equals(that.catSchoolCommercAll) : that.catSchoolCommercAll != null)
-            return false;
-        if (catSchoolCommercEquip != null ? !catSchoolCommercEquip.equals(that.catSchoolCommercEquip) : that.catSchoolCommercEquip != null)
-            return false;
-        if (catSchoolCommercOther != null ? !catSchoolCommercOther.equals(that.catSchoolCommercOther) : that.catSchoolCommercOther != null)
-            return false;
-        if (catSchoolCommercRnis != null ? !catSchoolCommercRnis.equals(that.catSchoolCommercRnis) : that.catSchoolCommercRnis != null)
-            return false;
-        if (catSchoolItogAll != null ? !catSchoolItogAll.equals(that.catSchoolItogAll) : that.catSchoolItogAll != null)
-            return false;
-        if (catSchoolItogEquip != null ? !catSchoolItogEquip.equals(that.catSchoolItogEquip) : that.catSchoolItogEquip != null)
-            return false;
-        if (catSchoolItogOther != null ? !catSchoolItogOther.equals(that.catSchoolItogOther) : that.catSchoolItogOther != null)
-            return false;
-        if (catSchoolItogRnis != null ? !catSchoolItogRnis.equals(that.catSchoolItogRnis) : that.catSchoolItogRnis != null)
-            return false;
-        if (catSchoolMunicAll != null ? !catSchoolMunicAll.equals(that.catSchoolMunicAll) : that.catSchoolMunicAll != null)
-            return false;
-        if (catSchoolMunicEquip != null ? !catSchoolMunicEquip.equals(that.catSchoolMunicEquip) : that.catSchoolMunicEquip != null)
-            return false;
-        if (catSchoolMunicOther != null ? !catSchoolMunicOther.equals(that.catSchoolMunicOther) : that.catSchoolMunicOther != null)
-            return false;
-        if (catSchoolMunicRnis != null ? !catSchoolMunicRnis.equals(that.catSchoolMunicRnis) : that.catSchoolMunicRnis != null)
-            return false;
-        if (catSchoolStateAll != null ? !catSchoolStateAll.equals(that.catSchoolStateAll) : that.catSchoolStateAll != null)
-            return false;
-        if (catSchoolStateEquip != null ? !catSchoolStateEquip.equals(that.catSchoolStateEquip) : that.catSchoolStateEquip != null)
-            return false;
-        if (catSchoolStateOther != null ? !catSchoolStateOther.equals(that.catSchoolStateOther) : that.catSchoolStateOther != null)
-            return false;
-        if (catSchoolStateRnis != null ? !catSchoolStateRnis.equals(that.catSchoolStateRnis) : that.catSchoolStateRnis != null)
-            return false;
-        if (dateReport != null ? !dateReport.equals(that.dateReport) : that.dateReport != null) return false;
-
-        return true;
+    public void setUserDraftreport(Users userDraftreport) {
+        this.userDraftreport = userDraftreport;
     }
 
     @Override
     public int hashCode() {
-        int result = idDraftreport;
-        result = 31 * result + (dateReport != null ? dateReport.hashCode() : 0);
-        result = 31 * result + (catM1StateAll != null ? catM1StateAll.hashCode() : 0);
-        result = 31 * result + (catM1MunicAll != null ? catM1MunicAll.hashCode() : 0);
-        result = 31 * result + (catM1CommercAll != null ? catM1CommercAll.hashCode() : 0);
-        result = 31 * result + (catM1ItogAll != null ? catM1ItogAll.hashCode() : 0);
-        result = 31 * result + (catM2M3StateAll != null ? catM2M3StateAll.hashCode() : 0);
-        result = 31 * result + (catM2M3MunicAll != null ? catM2M3MunicAll.hashCode() : 0);
-        result = 31 * result + (catM2M3CommercAll != null ? catM2M3CommercAll.hashCode() : 0);
-        result = 31 * result + (catM2M3ItogAll != null ? catM2M3ItogAll.hashCode() : 0);
-        result = 31 * result + (catLargeStateAll != null ? catLargeStateAll.hashCode() : 0);
-        result = 31 * result + (catLargeMunicAll != null ? catLargeMunicAll.hashCode() : 0);
-        result = 31 * result + (catLargeCommercAll != null ? catLargeCommercAll.hashCode() : 0);
-        result = 31 * result + (catLargeItogAll != null ? catLargeItogAll.hashCode() : 0);
-        result = 31 * result + (catDangerStateAll != null ? catDangerStateAll.hashCode() : 0);
-        result = 31 * result + (catDangerMunicAll != null ? catDangerMunicAll.hashCode() : 0);
-        result = 31 * result + (catDangerCommercAll != null ? catDangerCommercAll.hashCode() : 0);
-        result = 31 * result + (catDangerItogAll != null ? catDangerItogAll.hashCode() : 0);
-        result = 31 * result + (catSchoolStateAll != null ? catSchoolStateAll.hashCode() : 0);
-        result = 31 * result + (catSchoolMunicAll != null ? catSchoolMunicAll.hashCode() : 0);
-        result = 31 * result + (catSchoolCommercAll != null ? catSchoolCommercAll.hashCode() : 0);
-        result = 31 * result + (catSchoolItogAll != null ? catSchoolItogAll.hashCode() : 0);
-        result = 31 * result + (catGkhStateAll != null ? catGkhStateAll.hashCode() : 0);
-        result = 31 * result + (catGkhMunicAll != null ? catGkhMunicAll.hashCode() : 0);
-        result = 31 * result + (catGkhCommercAll != null ? catGkhCommercAll.hashCode() : 0);
-        result = 31 * result + (catGkhItogAll != null ? catGkhItogAll.hashCode() : 0);
-        result = 31 * result + (catDepartStateAll != null ? catDepartStateAll.hashCode() : 0);
-        result = 31 * result + (catDepartMunicAll != null ? catDepartMunicAll.hashCode() : 0);
-        result = 31 * result + (catDepartCommercAll != null ? catDepartCommercAll.hashCode() : 0);
-        result = 31 * result + (catDepartItogAll != null ? catDepartItogAll.hashCode() : 0);
-        result = 31 * result + (catM1StateEquip != null ? catM1StateEquip.hashCode() : 0);
-        result = 31 * result + (catM1MunicEquip != null ? catM1MunicEquip.hashCode() : 0);
-        result = 31 * result + (catM1CommercEquip != null ? catM1CommercEquip.hashCode() : 0);
-        result = 31 * result + (catM1ItogEquip != null ? catM1ItogEquip.hashCode() : 0);
-        result = 31 * result + (catM2M3StateEquip != null ? catM2M3StateEquip.hashCode() : 0);
-        result = 31 * result + (catM2M3MunicEquip != null ? catM2M3MunicEquip.hashCode() : 0);
-        result = 31 * result + (catM2M3CommercEquip != null ? catM2M3CommercEquip.hashCode() : 0);
-        result = 31 * result + (catM2M3ItogEquip != null ? catM2M3ItogEquip.hashCode() : 0);
-        result = 31 * result + (catLargeStateEquip != null ? catLargeStateEquip.hashCode() : 0);
-        result = 31 * result + (catLargeMunicEquip != null ? catLargeMunicEquip.hashCode() : 0);
-        result = 31 * result + (catLargeCommercEquip != null ? catLargeCommercEquip.hashCode() : 0);
-        result = 31 * result + (catLargeItogEquip != null ? catLargeItogEquip.hashCode() : 0);
-        result = 31 * result + (catDangerStateEquip != null ? catDangerStateEquip.hashCode() : 0);
-        result = 31 * result + (catDangerMunicEquip != null ? catDangerMunicEquip.hashCode() : 0);
-        result = 31 * result + (catDangerCommercEquip != null ? catDangerCommercEquip.hashCode() : 0);
-        result = 31 * result + (catDangerItogEquip != null ? catDangerItogEquip.hashCode() : 0);
-        result = 31 * result + (catSchoolStateEquip != null ? catSchoolStateEquip.hashCode() : 0);
-        result = 31 * result + (catSchoolMunicEquip != null ? catSchoolMunicEquip.hashCode() : 0);
-        result = 31 * result + (catSchoolCommercEquip != null ? catSchoolCommercEquip.hashCode() : 0);
-        result = 31 * result + (catSchoolItogEquip != null ? catSchoolItogEquip.hashCode() : 0);
-        result = 31 * result + (catGkhStateEquip != null ? catGkhStateEquip.hashCode() : 0);
-        result = 31 * result + (catGkhMunicEquip != null ? catGkhMunicEquip.hashCode() : 0);
-        result = 31 * result + (catGkhCommercEquip != null ? catGkhCommercEquip.hashCode() : 0);
-        result = 31 * result + (catGkhItogEquip != null ? catGkhItogEquip.hashCode() : 0);
-        result = 31 * result + (catDepartStateEquip != null ? catDepartStateEquip.hashCode() : 0);
-        result = 31 * result + (catDepartMunicEquip != null ? catDepartMunicEquip.hashCode() : 0);
-        result = 31 * result + (catDepartCommercEquip != null ? catDepartCommercEquip.hashCode() : 0);
-        result = 31 * result + (catDepartItogEquip != null ? catDepartItogEquip.hashCode() : 0);
-        result = 31 * result + (catM1StateRnis != null ? catM1StateRnis.hashCode() : 0);
-        result = 31 * result + (catM1MunicRnis != null ? catM1MunicRnis.hashCode() : 0);
-        result = 31 * result + (catM1CommercRnis != null ? catM1CommercRnis.hashCode() : 0);
-        result = 31 * result + (catM1ItogRnis != null ? catM1ItogRnis.hashCode() : 0);
-        result = 31 * result + (catM2M3StateRnis != null ? catM2M3StateRnis.hashCode() : 0);
-        result = 31 * result + (catM2M3MunicRnis != null ? catM2M3MunicRnis.hashCode() : 0);
-        result = 31 * result + (catM2M3CommercRnis != null ? catM2M3CommercRnis.hashCode() : 0);
-        result = 31 * result + (catM2M3ItogRnis != null ? catM2M3ItogRnis.hashCode() : 0);
-        result = 31 * result + (catLargeStateRnis != null ? catLargeStateRnis.hashCode() : 0);
-        result = 31 * result + (catLargeMunicRnis != null ? catLargeMunicRnis.hashCode() : 0);
-        result = 31 * result + (catLargeCommercRnis != null ? catLargeCommercRnis.hashCode() : 0);
-        result = 31 * result + (catLargeItogRnis != null ? catLargeItogRnis.hashCode() : 0);
-        result = 31 * result + (catDangerStateRnis != null ? catDangerStateRnis.hashCode() : 0);
-        result = 31 * result + (catDangerMunicRnis != null ? catDangerMunicRnis.hashCode() : 0);
-        result = 31 * result + (catDangerCommercRnis != null ? catDangerCommercRnis.hashCode() : 0);
-        result = 31 * result + (catDangerItogRnis != null ? catDangerItogRnis.hashCode() : 0);
-        result = 31 * result + (catSchoolStateRnis != null ? catSchoolStateRnis.hashCode() : 0);
-        result = 31 * result + (catSchoolMunicRnis != null ? catSchoolMunicRnis.hashCode() : 0);
-        result = 31 * result + (catSchoolCommercRnis != null ? catSchoolCommercRnis.hashCode() : 0);
-        result = 31 * result + (catSchoolItogRnis != null ? catSchoolItogRnis.hashCode() : 0);
-        result = 31 * result + (catGkhStateRnis != null ? catGkhStateRnis.hashCode() : 0);
-        result = 31 * result + (catGkhMunicRnis != null ? catGkhMunicRnis.hashCode() : 0);
-        result = 31 * result + (catGkhCommercRnis != null ? catGkhCommercRnis.hashCode() : 0);
-        result = 31 * result + (catGkhItogRnis != null ? catGkhItogRnis.hashCode() : 0);
-        result = 31 * result + (catDepartStateRnis != null ? catDepartStateRnis.hashCode() : 0);
-        result = 31 * result + (catDepartMunicRnis != null ? catDepartMunicRnis.hashCode() : 0);
-        result = 31 * result + (catDepartCommercRnis != null ? catDepartCommercRnis.hashCode() : 0);
-        result = 31 * result + (catDepartItogRnis != null ? catDepartItogRnis.hashCode() : 0);
-        result = 31 * result + (catM1StateOther != null ? catM1StateOther.hashCode() : 0);
-        result = 31 * result + (catM1MunicOther != null ? catM1MunicOther.hashCode() : 0);
-        result = 31 * result + (catM1CommercOther != null ? catM1CommercOther.hashCode() : 0);
-        result = 31 * result + (catM1ItogOther != null ? catM1ItogOther.hashCode() : 0);
-        result = 31 * result + (catM2M3StateOther != null ? catM2M3StateOther.hashCode() : 0);
-        result = 31 * result + (catM2M3MunicOther != null ? catM2M3MunicOther.hashCode() : 0);
-        result = 31 * result + (catM2M3CommercOther != null ? catM2M3CommercOther.hashCode() : 0);
-        result = 31 * result + (catM2M3ItogOther != null ? catM2M3ItogOther.hashCode() : 0);
-        result = 31 * result + (catLargeStateOther != null ? catLargeStateOther.hashCode() : 0);
-        result = 31 * result + (catLargeMunicOther != null ? catLargeMunicOther.hashCode() : 0);
-        result = 31 * result + (catLargeCommercOther != null ? catLargeCommercOther.hashCode() : 0);
-        result = 31 * result + (catLargeItogOther != null ? catLargeItogOther.hashCode() : 0);
-        result = 31 * result + (catDangerStateOther != null ? catDangerStateOther.hashCode() : 0);
-        result = 31 * result + (catDangerMunicOther != null ? catDangerMunicOther.hashCode() : 0);
-        result = 31 * result + (catDangerCommercOther != null ? catDangerCommercOther.hashCode() : 0);
-        result = 31 * result + (catDangerItogOther != null ? catDangerItogOther.hashCode() : 0);
-        result = 31 * result + (catSchoolStateOther != null ? catSchoolStateOther.hashCode() : 0);
-        result = 31 * result + (catSchoolMunicOther != null ? catSchoolMunicOther.hashCode() : 0);
-        result = 31 * result + (catSchoolCommercOther != null ? catSchoolCommercOther.hashCode() : 0);
-        result = 31 * result + (catSchoolItogOther != null ? catSchoolItogOther.hashCode() : 0);
-        result = 31 * result + (catGkhStateOther != null ? catGkhStateOther.hashCode() : 0);
-        result = 31 * result + (catGkhMunicOther != null ? catGkhMunicOther.hashCode() : 0);
-        result = 31 * result + (catGkhCommercOther != null ? catGkhCommercOther.hashCode() : 0);
-        result = 31 * result + (catGkhItogOther != null ? catGkhItogOther.hashCode() : 0);
-        result = 31 * result + (catDepartStateOther != null ? catDepartStateOther.hashCode() : 0);
-        result = 31 * result + (catDepartMunicOther != null ? catDepartMunicOther.hashCode() : 0);
-        result = 31 * result + (catDepartCommercOther != null ? catDepartCommercOther.hashCode() : 0);
-        result = 31 * result + (catDepartItogOther != null ? catDepartItogOther.hashCode() : 0);
-        return result;
+        int hash = 0;
+        hash += (idDraftreport != null ? idDraftreport.hashCode() : 0);
+        return hash;
     }
+
+    @Override
+    public boolean equals(Object object) {
+        // TODO: Warning - this method won't work in the case the id fields are not set
+        if (!(object instanceof DraftReport)) {
+            return false;
+        }
+        DraftReport other = (DraftReport) object;
+        if ((this.idDraftreport == null && other.idDraftreport != null) || (this.idDraftreport != null && !this.idDraftreport.equals(other.idDraftreport))) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public String toString() {
+        return "Entity.Draftreport[ idDraftreport=" + idDraftreport + " ]";
+    }
+
 }
